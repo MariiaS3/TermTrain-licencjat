@@ -1,12 +1,11 @@
 // pojedyncza instancji ktora posiada prywatne elementy 
 var main = (function() {
 
-    //ignorowanie pierwszego zdarzenia i przejscie do drugiego
+    //ignorowanie pierwszego zdarzenia i przejscie do drugieg
     var ignoreEvent = function(event) {
         event.preventDefault();
         event.stopPropagation();
     };
-
 
     var scrollToBottom = function() {
         window.scrollTo(0, document.body.scrollHeight);
@@ -15,8 +14,6 @@ var main = (function() {
     //obsluga wyjatku niestandardowego,umożliwia śledzenie stosu w przeglądarkach
     var InvalidArgumentException = function(message) {
         this.message = message;
-
-
         if ("captureStackTrace" in Error) {
             Error.captureStackTrace(this, InvalidArgumentException);
         } else {
@@ -29,11 +26,9 @@ var main = (function() {
     InvalidArgumentException.prototype.name = "InvalidArgumentException";
     InvalidArgumentException.prototype.constructor = InvalidArgumentException;
 
-    //komendy
-    var cmds = {
-        LS: { value: "ls" }
-    };
-
+    // var cmds = {
+    //     LS: { value: "ls" },
+    // };
 
     // wyrażenie funkcyjne
     var Terminal = function(prompt, cmdLine, output) {
@@ -90,6 +85,8 @@ var main = (function() {
     };
 
     Terminal.prototype.init = function() {
+        // var cmd = cmds.LS.flags.split(",");
+        // alert(cmd[1]);
         //nasluchiwania zdarzen klawiatury (enter or tab) i wykonanie przupisanych czynnosci 
         this.cmdLine.addEventListener("keydown", function(event) {
             if (event.which === 13 || event.keyCode === 13) {
