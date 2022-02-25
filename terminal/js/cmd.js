@@ -57,6 +57,18 @@ var cmds = {
     },
     GREP: {
         value: "grep",
-        flags: "h"
+        flags: "-h"
     },
+    CLEAR: {
+        value: "clear",
+        flags: ""
+    },
+    SUDO: {
+        value: "sudo",
+        flags: "-h"
+    },
+    REBOOT: {
+        value: "reboot",
+        flags: ""
+    }
 }
