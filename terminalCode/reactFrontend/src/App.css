@@ -1,0 +1,129 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #444;
+    background: #fff;
+    height: 100%;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* buttons   */
+.btnMenu{
+    height: 40px;
+    width: 160px;
+    margin: 50px 15px;
+}
+.termMenu{
+    height: 40px;
+    width: 150px;
+    margin: 20px 30px;
+    
+}
+.btnQuiz{
+    height: 40px;
+    width: 160px;
+    margin: 5px;
+}
+
+.btnMenu,
+.termMenu,
+.btnQuiz{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #0B1F64;
+    transition: 0.5s;
+    background-size: 200% auto;
+    cursor: pointer;
+
+}
+
+.btnMenu:hover,
+.termMenu:hover,
+.btnQuiz:hover{
+    background-position: right center;
+}
+
+.btnMenu,
+.termMenu,
+.btnQuiz{
+    background-image: linear-gradient(to right, #ACF8D3 0%, #A091F8 50%, #ACF8D3 100%);
+}
+
+/* quiz */
+.qizItem{
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-between;
+    margin: 20px 0px 30px 0px;
+    width: 130vh;
+    border-radius: 5px;
+    background-color: #D2FFEA;
+    align-items: center;
+}
+.qiuzDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+/* terminal */
+.termDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.containerTerm{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #D2FFEA;
+}
+
+.termContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    width:90%;
+    height: 100vh;
+}
+
+.output{ 
+    margin-left: 20px ;
+    margin-top: 20px ;
+}
+
+li{
+    list-style-type: none;
+}
+
+.lineCmd{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px ;
+    color: #53D632;
+}
+
+.inputCmd{
+    font-size: 18px;
+    margin-left: 10px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
