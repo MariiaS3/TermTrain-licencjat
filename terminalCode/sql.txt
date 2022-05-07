@@ -1,0 +1,53 @@
+insert into quiz ( quiz_id, description   )
+values ('1','quiz for terminal application');
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('1','1','question 1');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('2','1','question 2');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('3','1','question 3');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('1','1','question 1 answer 1',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('2','1','question 1 answer 2',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('3','1','question 1 answer 3',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('4','1','question 1 answer 4',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('5','2','question 2 answer 1',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('6','2','question 2 answer 2',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('7','2','question 2 answer 3',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('8','2','question 2 answer 4',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('9','3','question 3 answer 1',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('10','3','question 3 answer 2',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('11','3','question 3 answer 3',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('12','3','question 3 answer 4',false);
+
+
+
+ mvn spring-boot:run
+npm start

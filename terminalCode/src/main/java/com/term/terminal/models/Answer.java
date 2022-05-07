@@ -36,8 +36,8 @@ public class Answer {
 	@Column(name = "text")
 	private String text;
 	
-	@Column(name = "isCorect")
-	private boolean   isCorect;
+	@Column(name = "corect")
+	private boolean   corect;
 
 	public Answer() {
 		
@@ -55,7 +55,6 @@ public class Answer {
 		return question;
 	}
 
-
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
@@ -69,11 +68,11 @@ public class Answer {
 	}
 
 	public boolean isCorect() {
-		return isCorect;
+		return corect;
 	}
 
-	public void setCorect(boolean isCorect) {
-		this.isCorect = isCorect;
+	public void setCorect(boolean corect) {
+		this.corect = corect;
 	}
 
 }

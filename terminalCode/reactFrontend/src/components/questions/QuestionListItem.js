@@ -1,7 +1,6 @@
 import React from "react";
 
 import axios from "axios";
-import QuestionItem from "./QuestionItem"
 import AnswerListItem from "./AnswerListItem"
 
 import { v4 as uuidv4 } from "uuid";
@@ -22,22 +21,23 @@ class QuestionListItem extends React.Component {
         console.log(response.data)
     }
 
-    answerClick = (isCorrect) =>{
-        if(isCorrect){
+    answerClick = (isCorect) => {
+        if (isCorect) {
             this.setState({
-                score:this.state.score+1
+                score: this.state.score + 1,
+
             })
         }
+        const nextQuestion = this.state.currentQuestion + 1;
+        console.log(nextQuestion);
 
-        const nextQuestion = this.state.currentQuestion+1;
-
-        if(nextQuestion <this.state.quest.length ){
+        if (nextQuestion < this.state.quest.length) {
             this.setState({
-                currentQuestion:nextQuestion
+                currentQuestion: nextQuestion
             })
-        }else{
+        } else {
             this.setState({
-                showScore:true
+                showScore: true
             })
         }
     }
@@ -45,19 +45,22 @@ class QuestionListItem extends React.Component {
     render() {
 
         return (
-            <ul>
+
+            <ul className="container">
                 {this.state.showScore ? (
-				<div className='score-section'>
-					You scored {this.state.score} out of {this.state.quest.length}
-				</div>
-			) : (
-                this.state.quest.map(quiz => (
-                    <div className="container" key={uuidv4()}>
-                        {this.state.quest[this.state.currentQuestion].text === quiz.text ? <div ><QuestionItem
-                            quest={quiz} />
-                            <AnswerListItem id={quiz.id} answerClickProps={this.answerClick}/></div> : <div></div>}
+                    <div className='score-section'>
+                        You scored {this.state.score} out of {this.state.quest.length}
                     </div>
-                )))}
+                ) : (
+                    this.state.quest.map(quiz => (
+                        <div  key={uuidv4()}>
+                            {this.state.quest[this.state.currentQuestion].text === quiz.text ? <div className="questionItem">
+                                <li>
+                                    {quiz.text}
+                                </li>
+                                <AnswerListItem id={quiz.id} answerClickProps={this.answerClick} /></div> : <div></div>}
+                        </div>
+                    )))}
             </ul>
         )
     }

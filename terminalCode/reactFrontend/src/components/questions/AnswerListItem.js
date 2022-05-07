@@ -1,12 +1,13 @@
 import React from "react";
 
 import axios from "axios";
-import AnswerItem from "./AnswerItem"
-
+import { v4 as uuidv4 } from "uuid";
 
 class AnswerListItem extends React.Component {
 
     state = {
+        textValue: "",
+        corect: false,
         quest: [],
     };
 
@@ -16,19 +17,35 @@ class AnswerListItem extends React.Component {
         this.setState({ quest: response.data });
         console.log(response.data)
     }
+    answerClick = (isCorect) => {
+        this.setState({
+            corect: isCorect
+        })
+        console.log("answerClick" + isCorect)
+    }
+
+    handleRadioChange = (e, isCorect) =>{
+        this.setState({ checkedOptionValue: e.target.value });
+        this.answerClick(isCorect)
+    }
 
     render() {
+
+
         return (
-            <ul>
+            <div className="checkQuiz">
                 {this.state.quest.map(quiz => (
-                    <AnswerItem
-                        key={quiz.id}
-                        quest={quiz} 
-                        answerClickProps={this.props.answerClickProps}/>
+                    <div key={quiz.id}>
+                        <input type="radio"  className="check" name="dynamic-radio" id={"checkbox"+quiz.id} onChange={(e) => this.handleRadioChange(e,quiz.corect)}/> 
+                        <label className="checkQuest" htmlFor={"checkbox" + quiz.id} >{quiz.text}</label>
+                    </div>
                 ))}
-            </ul>
+                <button className="sprawdz" onClick={() => this.props.answerClickProps(this.state.corect)} >Sprawdz</button>
+            </div>
         )
     }
 }
 
 export default AnswerListItem
+
+

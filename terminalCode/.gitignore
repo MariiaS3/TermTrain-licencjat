@@ -1,0 +1,5 @@
+.vscode
+target
+reactFrontend/node_modules
+reactFrontend/node_modules/*
+reactFrontend/node_modules/

@@ -33,9 +33,6 @@ public class Quiz {
 		this.id = id;
 	}
 
-	// @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
-	// private List<Question> questions;
-
 	public String getDescription() {
 		return description;
 	}
@@ -43,13 +40,5 @@ public class Quiz {
 	public void setDescription(String name) {
 		this.description = name;
 	}
-
-	// public List<Question> getQuestions() {
-	// 	return questions;
-	// }
-
-	// public void setQuestions(List<Question> questions) {
-	// 	this.questions = questions;
-	// }
 	
 }
