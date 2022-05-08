@@ -22,58 +22,22 @@ body{
 }
 
 /* buttons   */
+
 .btnMenu{
-    height: 40px;
-    width: 160px;
-    margin: 50px 15px;
-}
-.termMenu,
-.sprawdz{
-    height: 40px;
-    width: 150px;
-    margin-top: 20px;
-    margin-left: 23px;
-}
-.btnQuiz{
-    height: 40px;
-    width: 160px;
-    margin: 5px;
-}
-
-
-.btnMenu,
-.termMenu,
-.btnQuiz,
-.sprawdz{
-    font-family:'Times New Roman', Times, serif;
-    font-size: 20px;
-    border-radius: 10px;
-    text-align: center;
-    color: #0B1F64;
     transition: 0.5s;
     background-size: 200% auto;
     cursor: pointer;
-
 }
 
-.btnMenu:hover,
-.termMenu:hover,
-.btnQuiz:hover,
-.sprawdz:hover{
+.btnMenu:hover{
     background-position: right center;
 }
 
-.btnMenu,
-.termMenu,
-.btnQuiz,
-.sprawdz{
-    background-image: linear-gradient(to right, #ACF8D3 0%, #A091F8 50%, #ACF8D3 100%);
-}
+/* .btnMenu{
+    /* background-image: linear-gradient(to right, #CAFFE3 0%, #f2f8be 50%, #CAFFE3 100%); */
+    /* background-image: linear-gradient(to right, #68ce98 0%, #cbd47b 50%, #68ce98 100%);rgb(51, 47, 47); */
+/*} */
 
-.sprawdz{
-    margin-top: 50px;
-    margin-left: 5px;
-}
 /* terminal */
 .termContainer{
     display: flex;
@@ -88,22 +52,13 @@ body{
     flex-direction: row;
     margin: 0 auto;
     width: 100%;
-    background-color: #D2FFEA;
+    background-color: #eafaf3;
 }
 
 .termDiv{
     display: flex;
     flex-direction: column;
     width: 11%;
-}
-
-.output{ 
-    margin-left: 20px ;
-    margin-top: 20px ;
-}
-
-li{
-    list-style-type: none;
 }
 
 .lineCmd{
@@ -130,7 +85,7 @@ li{
     margin: 20px 0px 30px 0px;
     width: 130vh;
     border-radius: 5px;
-    background-color: #F2FBF7;
+    background-color: #eafaf3;
     align-items: center;
 }
 .qiuzDiv{
@@ -141,55 +96,23 @@ li{
 /* quiz */
 .containerQuest{
     display: flex;
-    background-color: #F2FBF7;
+    background-color: #eafaf3;
+    width: 100%;
 }
-
-.questDiv{
+.questBtn{
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 35%;
+    justify-content: flex-end;
+    justify-content: space-between;
+}
+.questDiv{
+    width: 60%;
 }
 
-.questDiv>*:first-child {
-    align-self: stretch;
-}
 .questionItem{
     color: #253304;
-    width: 450px;
     font-size: 30px;
+    hyphens: auto;
     margin-top: 100px;
+    margin-left: 20px;
 }
 
-.checkQuest{
-    color: #0B1F64;
-    width: 100%;
-    display:inline-block;
-    font-size: 25px;
-    align-items: center;
-    background-color:transparent;
-    border: none;
-    cursor: pointer;
-    padding-left: 30px;
-}
-
-
-.check:checked + .checkQuest{
-    background-color: #D2FFEA;
-    font-size: 27px;
-    border-radius: 15px;
-}
-.check {
-    position: absolute;
-    opacity: 0;
-  }
-
-  .checkQuiz{
-      margin-top: 20px;
-  }
-
-  .score-section{
-      color: #0B1F64;
-      font-size: 30px;
-      margin-top: 100px;
-  }

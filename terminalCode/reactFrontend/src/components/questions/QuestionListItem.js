@@ -46,20 +46,19 @@ class QuestionListItem extends React.Component {
 
         return (
 
-            <ul className="container">
+            <ul>
                 {this.state.showScore ? (
-                    <div className='score-section'>
+                    <div style={{color:'#780d8b', fontSize:'30px', marginTop:'100px'}}>
                         You scored {this.state.score} out of {this.state.quest.length}
                     </div>
                 ) : (
                     this.state.quest.map(quiz => (
-                        <div  key={uuidv4()}>
-                            {this.state.quest[this.state.currentQuestion].text === quiz.text ? <div className="questionItem">
-                                <li>
-                                    {quiz.text}
-                                </li>
-                                <AnswerListItem id={quiz.id} answerClickProps={this.answerClick} /></div> : <div></div>}
-                        </div>
+                        <div key={uuidv4()}>
+                            {this.state.quest[this.state.currentQuestion].text === quiz.text ?
+                                <div className="questionItem">
+                                    <a> {quiz.text}</a>
+                                    <AnswerListItem id={quiz.id} answerClickProps={this.answerClick} /></div> : <div></div>}
+                                </div>
                     )))}
             </ul>
         )

@@ -53,10 +53,10 @@ class Terminal extends React.Component {
     render() {
         return (
             <div className="termContainer">
-                <div className="output">
+                <div style={{marginLeft: '20px', marginTop:'20px'}}>
                     <ul>
                         {this.state.command.map(cmd =>
-                            <li key={cmd.id}>{
+                            <li style={{ listStyleType: "none"}} key={cmd.id}>{
                                 cmd.text.includes("#") || cmd.text.includes("$") ? 
                                     <span style={{color: "#53D632"}}>{cmd.text.includes("#")  ? cmd.text.split("#")[0] +"# " : cmd.text.split("$")[0]+"$ " } <a style={{color: "#D7DEDE"}}>{cmd.text.includes("#")  ? cmd.text.split("#")[1] : cmd.text.split("$")[1] }</a></span>  :
                                 <span style={{color: "#D7DEDE"}}>{cmd.text}</span>}
