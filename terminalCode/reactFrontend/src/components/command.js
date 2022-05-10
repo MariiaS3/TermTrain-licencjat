@@ -1,0 +1,54 @@
+// const command = [
+//     {
+//         name:"ls",
+//         flags:[
+//             {
+//                 name:"..",// ../..
+//                 info:"",
+//             },
+//             {
+//                 name:"a",
+//                 info:"",
+//             },
+//             {
+//                 name:"d",
+//                 info:"",
+//             },
+//             {
+//                 name:"R",
+//                 info:"",
+//             },
+//             {
+//                 name:"s",
+//                 info:"",
+//             },
+//             {
+//                 name:"l",
+//                 info:"",
+//             },
+//             {
+//                 name:"h",
+//                 info:"",
+//             },
+//             {
+//                 name:"t",
+//                 info:"",
+//             },
+//             {
+//                 name:"r",
+//                 info:"",
+//             },
+//             {
+//                 name:"S",
+//                 info:"",
+//             },
+//             {
+//                 name:"help",
+//                 info:"",
+//             },
+//         ],
+//         info:""
+//     }
+// ]
+
+// export default command

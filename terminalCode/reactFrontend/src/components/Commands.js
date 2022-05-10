@@ -54,7 +54,6 @@ class Commands extends React.Component {
     }
     //commands
     ls = () => {
-
         var d = this.props.prompt + " " + this.state.title + "\n"
         var isDirectory = false
         directory.map(dir => {

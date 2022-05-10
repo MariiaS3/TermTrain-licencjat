@@ -81,21 +81,6 @@ const directory= [
         path: "/",
     },
     {
-        name:"lost+found?????",
-        permissions:"",
-        path: "/",
-    },
-    {
-        name:"mnt????",
-        permissions:"",
-        path: "/",
-    },
-    {
-        name:"opt????",
-        permissions:"",
-        path: "/",
-    },
-    {
         name:"proc",
         permissions:"",
         path: "/",

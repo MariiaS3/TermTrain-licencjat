@@ -12,7 +12,7 @@ class TermContainer extends React.Component {
             width: '160px',
             marginTop: '40px',
             marginLeft: '23px',
-            fontSize: '18px', 
+            fontSize: '18px',
             borderRadius: '10px',
             textAlign: 'center',
             fontFamily:'\'Times New Roman\', Times, serif', 

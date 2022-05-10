@@ -33,11 +33,6 @@ body{
     background-position: right center;
 }
 
-/* .btnMenu{
-    /* background-image: linear-gradient(to right, #CAFFE3 0%, #f2f8be 50%, #CAFFE3 100%); */
-    /* background-image: linear-gradient(to right, #68ce98 0%, #cbd47b 50%, #68ce98 100%);rgb(51, 47, 47); */
-/*} */
-
 /* terminal */
 .termContainer{
     display: flex;
@@ -71,6 +66,7 @@ body{
 .inputCmd{
     font-size: 18px;
     margin-left: 10px;
+    hyphens: auto;
     color: #fff;
     background-color: transparent;
     border: none;
@@ -93,7 +89,7 @@ body{
     flex-direction: column;
 }
 
-/* quiz */
+/* question */
 .containerQuest{
     display: flex;
     background-color: #eafaf3;
