@@ -1,11 +1,10 @@
 import React from "react";
 
-import { v4 as uuidv4 } from "uuid"
-
 
 import directory from "./directory"
 import file from "./file"
 
+import command from "./command";
 
 
 class Commands extends React.Component {
@@ -21,26 +20,26 @@ class Commands extends React.Component {
     listenCmd = event => {
 
         if (event.key === "Enter") {
-            if (this.state.title.split(" ")[0] === "ls") {
+            if (this.state.title.split(/\s+/)[0] === "ls") {
                 this.ls()
             }
-            else if (this.state.title.split(" ")[0] === "history") {
+            else if (this.state.title.split(/\s+/)[0] === "history") {
                 this.history()
-            } else if (this.state.title.split(" ")[0] === "pwd") {
+            } else if (this.state.title.split(/\s+/)[0] === "pwd") {
                 this.pwd()
-            } else if (this.state.title.split(" ")[0] === "cd") {
+            } else if (this.state.title.split(/\s+/)[0] === "cd") {
                 this.cd()
-            } else if (this.state.title.split(" ")[0] === "touch") {
+            } else if (this.state.title.split(/\s+/)[0] === "touch") {
                 this.touch()
-            } else if (this.state.title.split(" ")[0] === "mv") {
+            } else if (this.state.title.split(/\s+/)[0] === "mv") {
                 this.mv()
-            } else if (this.state.title.split(" ")[0] === "mkdir") {
+            } else if (this.state.title.split(/\s+/)[0] === "mkdir") {
                 this.mkdir()
-            } else if (this.state.title.split(" ")[0] === "rmdir") {
+            } else if (this.state.title.split(/\s+/)[0] === "rmdir") {
                 this.rmdir()
-            } else if (this.state.title.split(" ")[0] === "rm") {
+            } else if (this.state.title.split(/\s+/)[0] === "rm") {
                 this.rm()
-            } else if (this.state.title.split(" ")[0] === "cat") {
+            } else if (this.state.title.split(/\s+/)[0] === "cat") {
                 this.cat()
             } else {
                 var d = this.props.prompt + " " + this.state.title;
@@ -54,6 +53,7 @@ class Commands extends React.Component {
     }
     //commands
     ls = () => {
+        console.log(this.state.title.split(/\s+/))
         var d = this.props.prompt + " " + this.state.title + "\n"
         var isDirectory = false
         directory.map(dir => {
@@ -94,13 +94,13 @@ class Commands extends React.Component {
     }
     cd = () => {
         var d = this.props.prompt + " " + this.state.title
-        if (this.state.title.split(" ")[1] === "..") {
+        if (this.state.title.split(/\s+/)[1] === "..") {
             this.props.changePathProp("/home/user")
-        } else if (this.state.title.split(" ")[1] === "-") {
+        } else if (this.state.title.split(/\s+/)[1] === "-") {
             this.props.changePathProp(this.props.prevPath)
         } else {
             directory.map(dir => {
-                if (dir.name === this.state.title.split(" ")[1] && dir.path === this.props.path) {
+                if (dir.name === this.state.title.split(/\s+/)[1] && dir.path === this.props.path) {
                     this.props.changePathProp(this.props.path + "/" + dir.name)
                 }
             })
@@ -111,14 +111,14 @@ class Commands extends React.Component {
         var d = this.props.prompt + " " + this.state.title
         var addFile = true
         file.map(f => {
-            if (this.props.path === f.path && this.state.title.split(" ")[1] === f.name) {
+            if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
                 addFile = false
             }
         })
-        if (this.state.title.split(" ")[1] !== "" && addFile === true) {
+        if (this.state.title.split(/\s+/)[1] !== "" && addFile === true) {
 
             const newFile = {
-                name: this.state.title.split(" ")[1],
+                name: this.state.title.split(/\s+/)[1],
                 permissions: "",
                 path: this.props.path,
                 text:"",
@@ -133,18 +133,18 @@ class Commands extends React.Component {
     }
     mv = () => {
         var d = this.props.prompt + " " + this.state.title
-        if (this.state.title.split(" ")[1] !== "") {
+        if (this.state.title.split(/\s+/)[1] !== "") {
             var isDirectory = true
             file.map(f => {
-                if (f.name === this.state.title.split(" ")[1] && f.path === this.props.path) {
+                if (f.name === this.state.title.split(/\s+/)[1] && f.path === this.props.path) {
                     directory.map(dir => {
-                        if (dir.name === this.state.title.split(" ")[2]) {
-                            f.path += "/" + this.state.title.split(" ")[2]
+                        if (dir.name === this.state.title.split(/\s+/)[2]) {
+                            f.path += "/" + this.state.title.split(/\s+/)[2]
                             isDirectory = false
                         }
                     })
                     if (isDirectory === true) {
-                        f.name = this.state.title.split(" ")[2]
+                        f.name = this.state.title.split(/\s+/)[2]
                     }
                 }
             })
@@ -159,14 +159,14 @@ class Commands extends React.Component {
         var d = this.props.prompt + " " + this.state.title
         var addDir = true
         directory.map(dir => {
-            if (this.props.path === dir.path && this.state.title.split(" ")[1] === dir.name) {
+            if (this.props.path === dir.path && this.state.title.split(/\s+/)[1] === dir.name) {
                 addDir = false
             }
         })
-        if (this.state.title.split(" ")[1] !== "" && addDir === true) {
+        if (this.state.title.split(/\s+/)[1] !== "" && addDir === true) {
 
             const newDir = {
-                name: this.state.title.split(" ")[1],
+                name: this.state.title.split(/\s+/)[1],
                 permissions: "",
                 path: this.props.path,
             }
@@ -182,13 +182,13 @@ class Commands extends React.Component {
         var d = this.props.prompt + " " + this.state.title
         var deleteDir = false
         directory.map(dir => {
-            if (this.props.path === dir.path && this.state.title.split(" ")[1] === dir.name) {
+            if (this.props.path === dir.path && this.state.title.split(/\s+/)[1] === dir.name) {
                 deleteDir = true
             }
         })
-        if (this.state.title.split(" ")[1] !== "" && deleteDir === true) {
+        if (this.state.title.split(/\s+/)[1] !== "" && deleteDir === true) {
             for (var i = 0; i < directory.length; i++) {
-                if (this.state.title.split(" ")[1] === directory[i].name) {
+                if (this.state.title.split(/\s+/)[1] === directory[i].name) {
                     directory.splice(i, 1);
                     break;
                 }
@@ -202,13 +202,13 @@ class Commands extends React.Component {
         var isDir = false
         var isFile = false
         directory.map(dir => {
-            if (this.props.path === dir.path && this.state.title.split(" ")[1] === dir.name) {
+            if (this.props.path === dir.path && this.state.title.split(/\s+/)[1] === dir.name) {
                 isDir = true
             }
         })
-        if (this.state.title.split(" ")[1] !== "" && isDir === true) {
+        if (this.state.title.split(/\s+/)[1] !== "" && isDir === true) {
             for (var i = 0; i < directory.length; i++) {
-                if (this.state.title.split(" ")[1] === directory[i].name) {
+                if (this.state.title.split(/\s+/)[1] === directory[i].name) {
                     directory.splice(i, 1);
                     break;
                 }
@@ -216,13 +216,13 @@ class Commands extends React.Component {
         }
         if (isDir === false) {
             file.map(f => {
-                if (this.props.path === f.path && this.state.title.split(" ")[1] === f.name) {
+                if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
                     isFile = true
                 }
             })
-            if (this.state.title.split(" ")[1] !== "" && isFile === true) {
-                for (var i = 0; i < file.length; i++) {
-                    if (this.state.title.split(" ")[1] === file[i].name) {
+            if (this.state.title.split(/\s+/)[1] !== "" && isFile === true) {
+                for ( i = 0; i < file.length; i++) {
+                    if (this.state.title.split(/\s+/)[1] === file[i].name) {
                         file.splice(i, 1);
                         break;
                     }
@@ -234,7 +234,7 @@ class Commands extends React.Component {
     cat = () =>{
         var d = this.props.prompt + " " + this.state.title +"\n"
         file.map(f => {
-            if (this.props.path === f.path && this.state.title.split(" ")[1] === f.name) {
+            if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
                 d+= f.text
             }
         })

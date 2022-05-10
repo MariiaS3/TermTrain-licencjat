@@ -1,7 +1,9 @@
-import { Button } from "@mui/material";
 import React from "react";
 
 import { Link } from "react-router-dom";
+
+import Button from '@mui/material/Button';
+
 
 import Terminal from "../Terminal"
 
@@ -24,9 +26,9 @@ class TermContainer extends React.Component {
             <div className="containerTerm">
                 <Terminal />
                 <div className="termDiv">
-                    <Link to="/"><Button Button variant="contained" className="btnMenu"   style={style}>Główna</Button></Link>
-                    <Link to="/quiz"><Button variant="contained" className="btnMenu"   style={style}>Quiz</Button></Link>
-                    <Button variant="contained" className="btnMenu"   style={style}>Forum</Button>
+                    <Link to="/"><Button  variant="contained" className="btnMenu" size="large"    style={style}>Główna</Button></Link>
+                    <Link to="/quiz"><Button  variant="contained" className="btnMenu" size="large"   style={style}>Quiz</Button></Link>
+                    <Button  variant="contained" className="btnMenu" size="large"   style={style}>Forum</Button>
                 </div>
             </div>
         )
