@@ -4,7 +4,7 @@ const command = {
         flags: [
             {
                 name: "a",
-                info: "wyświetla wszystkie pliki, w tym pliki ukryte, zaczynające się od '.'",
+                info: "wyświetla wszystkie pliki, w tym pliki ukryte, zaczynające się od '.' ",
             },
             {
                 name: "d",
@@ -55,10 +55,6 @@ const command = {
             {
                 name: "n",
                 info: "Numeruje wszystkie linie wyjściowe"
-            },
-            {
-                name: "s",
-                info: "Likwiduje powtarzające się puste linie wyjściowe "
             },
             {
                 name: "help",

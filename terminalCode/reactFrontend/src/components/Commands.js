@@ -5,6 +5,7 @@ import directory from "./directory"
 import file from "./file"
 
 import command from "./command";
+import { ContentPasteSearchOutlined } from "@mui/icons-material";
 
 
 class Commands extends React.Component {
@@ -41,6 +42,7 @@ class Commands extends React.Component {
                 this.rm()
             } else if (this.state.title.split(/\s+/)[0] === "cat") {
                 this.cat()
+                console.log("cat")
             } else {
                 var d = this.props.prompt + " " + this.state.title;
                 this.props.addCommandPops(d)
@@ -53,23 +55,154 @@ class Commands extends React.Component {
     }
     //commands
     ls = () => {
-        console.log(this.state.title.split(/\s+/))
         var d = this.props.prompt + " " + this.state.title + "\n"
-        var isDirectory = false
-        directory.map(dir => {
-            if (dir.path === this.props.path) {
-                d += dir.name + "     ";
-                isDirectory = true
+        if (this.state.title.split(/\s+/).length > 1) {
+            for (var i = 1; i < this.state.title.split(/\s+/).length; i++) {
+                if (this.state.title.split(/\s+/)[i] === '-a') {
+
+                    var isDirectory = false
+                    directory.map(dir => {
+                        if (dir.path === this.props.path) {
+                            d += dir.name + "     ";
+                            isDirectory = true
+                        }
+                    })
+                    if (isDirectory === true) {
+                        d += "\n"
+                    }
+                    file.map(file => {
+                        if (file.path === this.props.path) {
+                            d += file.name + "      ";
+                        }
+                    })
+                }
+                if (this.state.title.split(/\s+/)[i] === '-d') {
+                    if (this.state.title.split(/\s+/)[i + 1] === '*/') {
+                        var isDirectory = false
+                        directory.map(dir => {
+                            if (dir.path === this.props.path) {
+                                d += dir.name + "/     ";
+                                isDirectory = true
+                            }
+                        })
+                    } else if (this.state.title.split(/\s+/)[i + 1] === '/*') {
+                        var isDirectory = false
+                        directory.map(dir => {
+                            if (dir.path === '/') {
+                                d += dir.name + "/     ";
+                                isDirectory = true
+                            }
+                        })
+                    } else {
+                        d += ".";
+                    }
+                }
+                if (this.state.title.split(/\s+/)[i] === '-l') {
+                    var isDirectory = false
+                    directory.map(dir => {
+                        if (dir.path === this.props.path) {
+                            d += dir.permissions + " " + dir.link + " " + dir.user + " " + dir.group + " " + dir.size + " " + dir.time + " " + dir.name + "\n";
+                            isDirectory = true
+                        }
+                    })
+                    if (isDirectory === true) {
+                        d += "\n"
+                    }
+                    file.map(file => {
+                        if (file.path === this.props.path && file.name.charAt(0) !== '.') {
+                            d += file.permissions + " " + file.link + " " + file.user + " " + file.group + " " + file.size + " " + file.time + " " + file.name + "\n";
+                        }
+                    })
+                }
+                if (this.state.title.split(/\s+/)[i] === '-S') {
+                    let dir = [].concat(directory).sort((a, b) => a.size < b.size ? 1 : -1)
+                    let f = [].concat(file).sort((a, b) => a.size < b.size ? 1 : -1)
+
+                    if (this.state.title.split(/\s+/)[i + 1] === '-r') {
+                        dir.reverse()
+                        f.reverse()
+                        console.log(dir)
+                        var isDirectory = false
+                        dir.map(dir => {
+                            if (dir.path === this.props.path) {
+                                d += dir.name + "     ";
+                                isDirectory = true
+                            }
+                        })
+                        if (isDirectory === true) {
+                            d += "\n"
+                        }
+
+                        console.log(f)
+                        f.map(file => {
+                            if (file.path === this.props.path && file.name.charAt(0) !== '.') {
+                                d += file.name + "      ";
+                            }
+                        })
+                    } else {
+                        console.log(dir)
+                        var isDirectory = false
+                        dir.map(dir => {
+                            if (dir.path === this.props.path) {
+                                d += dir.name + "     ";
+                                isDirectory = true
+                            }
+                        })
+                        if (isDirectory === true) {
+                            d += "\n"
+                        }
+
+                        console.log(f)
+                        f.map(file => {
+                            if (file.path === this.props.path && file.name.charAt(0) !== '.') {
+                                d += file.name + "      ";
+                            }
+                        })
+                    }
+                }
+                if (this.state.title.split(/\s+/)[i] === '-r') {
+                    let dir = [].concat(directory).reverse()
+                    let f = [].concat(file).reverse()
+                    console.log(dir)
+                    var isDirectory = false
+                    dir.map(dir => {
+                        if (dir.path === this.props.path) {
+                            d += dir.name + "     ";
+                            isDirectory = true
+                        }
+                    })
+                    if (isDirectory === true) {
+                        d += "\n"
+                    }
+                    console.log(f)
+                    f.map(file => {
+                        if (file.path === this.props.path && file.name.charAt(0) !== '.') {
+                            d += file.name + "      ";
+                        }
+                    })
+                }
+                if (this.state.title.split(/\s+/)[i] === '--help') {
+
+                }
             }
-        })
-        if (isDirectory === true) {
-            d += "\n"
+        } else {
+
+            var isDirectory = false
+            directory.map(dir => {
+                if (dir.path === this.props.path) {
+                    d += dir.name + "     ";
+                    isDirectory = true
+                }
+            })
+            if (isDirectory === true) {
+                d += "\n"
+            }
+            file.map(file => {
+                if (file.path === this.props.path && file.name.charAt(0) !== '.') {
+                    d += file.name + "      ";
+                }
+            })
         }
-        file.map(file => {
-            if (file.path === this.props.path) {
-                d += file.name + "      ";
-            }
-        })
         console.log(d)
         this.props.addCommandPops(d)
 
@@ -121,14 +254,14 @@ class Commands extends React.Component {
                 name: this.state.title.split(/\s+/)[1],
                 permissions: "",
                 path: this.props.path,
-                text:"",
+                text: "",
             }
 
             file.push(newFile)
         }
-        // file.map(f =>{
-        //     console.log(f.name)
-        // })
+        file.map(f =>{
+            console.log(f.name)
+        })
         this.props.addCommandPops(d)
     }
     mv = () => {
@@ -173,9 +306,9 @@ class Commands extends React.Component {
 
             directory.push(newDir)
         }
-        // directory.map(f =>{
-        //     console.log(f.name)
-        // })
+        directory.map(f =>{
+            console.log(f.name)
+        })
         this.props.addCommandPops(d)
     }
     rmdir = () => {
@@ -221,7 +354,7 @@ class Commands extends React.Component {
                 }
             })
             if (this.state.title.split(/\s+/)[1] !== "" && isFile === true) {
-                for ( i = 0; i < file.length; i++) {
+                for (i = 0; i < file.length; i++) {
                     if (this.state.title.split(/\s+/)[1] === file[i].name) {
                         file.splice(i, 1);
                         break;
@@ -231,37 +364,57 @@ class Commands extends React.Component {
         }
         this.props.addCommandPops(d)
     }
-    cat = () =>{
-        var d = this.props.prompt + " " + this.state.title +"\n"
-        file.map(f => {
-            if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
-                d+= f.text
-            }
-        })
-        this.props.addCommandPops(d)
-    }
-    render() {
-
-        return (
-            <div className="lineCmd">
-                <span>
-                    {this.props.prompt}
-                </span>
-                <input type="text" className="inputCmd"
-                    value={this.state.title}
-                    name="title"
-                    onChange={this.onChange}
-                    onKeyDown={e => {
-                        if (e.key === "Enter") {
-                            this.listenCmd(e)
-                            this.props.addHistoryProps(this.state.title)
+    cat = () => {
+        var d = this.props.prompt + " " + this.state.title + "\n";
+      
+        if (this.state.title.split(/\s+/).length > 2) {
+            let j=1;
+            for (var i = 1; i < this.state.title.split(/\s+/).length; i++) {
+                if (this.state.title.split(/\s+/)[i] === '-n') {
+                    file.map(f => {
+                        if (this.props.path === f.path && this.state.title.split(/\s+/)[i+1] === f.name) {
+                            console.log(f.text.split('\n').length)
+                            f.text.split('\n').map(s =>{
+                                d += j + " "+s + "\n";
+                                j++;
+                            })
                         }
-                    }}>
-                </input>
-            </div>
-        )
+                    })
+                    console.log(d)
+                }
+            }
+        }
+        else {
+                file.map(f => {
+                    if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
+                        d += f.text
+                    }
+                })
+            }
+            this.props.addCommandPops(d)
+        }
+        render() {
+
+            return (
+                <div className="lineCmd">
+                    <span>
+                        {this.props.prompt}
+                    </span>
+                    <input type="text" className="inputCmd"
+                        value={this.state.title}
+                        name="title"
+                        onChange={this.onChange}
+                        onKeyDown={e => {
+                            if (e.key === "Enter") {
+                                this.listenCmd(e)
+                                this.props.addHistoryProps(this.state.title)
+                            }
+                        }}>
+                    </input>
+                </div>
+            )
+        }
     }
-}
 
 
 export default Commands
