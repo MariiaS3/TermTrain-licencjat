@@ -42,7 +42,8 @@ class Commands extends React.Component {
                 this.rm()
             } else if (this.state.title.split(/\s+/)[0] === "cat") {
                 this.cat()
-                console.log("cat")
+            } else if (this.state.title.split(/\s+/)[0] === "cp") {
+                this.cp()
             } else {
                 var d = this.props.prompt + " " + this.state.title;
                 this.props.addCommandPops(d)
@@ -243,44 +244,381 @@ class Commands extends React.Component {
     touch = () => {
         var d = this.props.prompt + " " + this.state.title
         var addFile = true
-        file.map(f => {
-            if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
-                addFile = false
-            }
-        })
-        if (this.state.title.split(/\s+/)[1] !== "" && addFile === true) {
-
-            const newFile = {
-                name: this.state.title.split(/\s+/)[1],
-                permissions: "",
-                path: this.props.path,
-                text: "",
-            }
-
-            file.push(newFile)
+        if (this.state.title.split(/\s+/)[1] === "-a") {
+            file.map(f => {
+                if (this.props.path === f.path && this.state.title.split(/\s+/)[2] === f.name) {
+                    f.time = "";
+                    addFile = false;
+                }
+            })
         }
-        file.map(f =>{
-            console.log(f.name)
-        })
+        else if (this.state.title.split(/\s+/)[1] === "-c") {
+            file.map(f => {
+                if (this.props.path === f.path && this.state.title.split(/\s+/)[2] === f.name) {
+                    addFile = false;
+                }
+            })
+            if (addFile === false) {
+                d += "\n Plik istnieje";
+            }
+        } else {
+            file.map(f => {
+                if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
+                    f.time = "";
+                    addFile = false
+                }
+            })
+            if (this.state.title.split(/\s+/)[1] !== "" && addFile === true) {
+
+                const newFile = {
+                    name: this.state.title.split(/\s+/)[1],
+                    permissions: "",
+                    path: this.props.path,
+                    text: "",
+                }
+
+                file.push(newFile)
+            }
+        }
         this.props.addCommandPops(d)
     }
     mv = () => {
         var d = this.props.prompt + " " + this.state.title
-        if (this.state.title.split(/\s+/)[1] !== "") {
-            var isDirectory = true
-            file.map(f => {
-                if (f.name === this.state.title.split(/\s+/)[1] && f.path === this.props.path) {
-                    directory.map(dir => {
-                        if (dir.name === this.state.title.split(/\s+/)[2]) {
-                            f.path += "/" + this.state.title.split(/\s+/)[2]
-                            isDirectory = false
+
+        if (this.state.title.split(/\s+/)[1] === '-f') {
+            for (var i = 2; i < this.state.title.split(/\s+/).length; i++) {
+                var isDirectory = false
+                file.map(f => {
+                    let isFile = false;
+                    if (f.name === this.state.title.split(/\s+/)[i] && f.path === this.props.path) {
+                        directory.map(dir => {
+                            if (dir.name === this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]) {
+                                file.map(plik => {
+                                    if (plik.name === f.name && plik.path === (f.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])) {
+
+                                        plik.text = f.text;
+                                        isFile = true;
+                                        isDirectory = true
+                                    }
+                                })
+                                if (isFile === false) {
+                                    f.path += "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]
+                                    isDirectory = true
+                                }
+                                else {
+                                    for (let j = 0; j < file.length; j++) {
+                                        if (this.state.title.split(/\s+/)[i] === file[j].name) {
+                                            file.splice(j, 1);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                        if (isDirectory === false) {
+                            f.name = this.state.title.split(/\s+/)[2]
                         }
-                    })
-                    if (isDirectory === true) {
-                        f.name = this.state.title.split(/\s+/)[2]
+
                     }
-                }
-            })
+                })
+            }
+        }
+        else if (this.state.title.split(/\s+/)[1] === '-i') {
+            for (var i = 2; i < this.state.title.split(/\s+/).length; i++) {
+                var isDirectory = false
+                file.map(f => {
+                    let isFile = false;
+                    if (f.name === this.state.title.split(/\s+/)[i] && f.path === this.props.path) {
+                        directory.map(dir => {
+                            if (dir.name === this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]) {
+                                file.map(plik => {
+                                    if (plik.name === f.name && plik.path === (f.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])) {
+                                        alert()
+                                        plik.text = f.text;
+                                        isFile = true;
+                                        isDirectory = true
+                                    }
+                                })
+                                if (isFile === false) {
+                                    f.path += "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]
+                                    isDirectory = true
+                                }
+                                else {
+                                    for (let j = 0; j < file.length; j++) {
+                                        if (this.state.title.split(/\s+/)[i] === file[j].name) {
+                                            file.splice(j, 1);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                        if (isDirectory === false) {
+                            f.name = this.state.title.split(/\s+/)[2]
+                        }
+
+                    }
+                })
+            }
+        }
+        else if (this.state.title.split(/\s+/)[1] === '-n') {
+            for (var i = 2; i < this.state.title.split(/\s+/).length; i++) {
+                var isDirectory = false
+                file.map(f => {
+                    let isFile = false;
+                    if (f.name === this.state.title.split(/\s+/)[i] && f.path === this.props.path) {
+                        directory.map(dir => {
+                            if (dir.name === this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]) {
+                                file.map(plik => {
+                                    if (plik.name === f.name && plik.path === (f.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])) {
+                                        isFile = true;
+                                        isDirectory = true
+                                    }
+                                })
+                                if (isFile === false) {
+                                    f.path += "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]
+                                    isDirectory = true
+                                }
+                            }
+                        })
+                        if (isDirectory === false) {
+                            f.name = this.state.title.split(/\s+/)[2]
+                        }
+
+                    }
+                })
+            }
+        }
+        else {
+            for (var i = 2; i < this.state.title.split(/\s+/).length; i++) {
+                var isDirectory = false
+                file.map(f => {
+                    let isFile = false;
+                    if (f.name === this.state.title.split(/\s+/)[i] && f.path === this.props.path) {
+                        directory.map(dir => {
+                            if (dir.name === this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]) {
+                                file.map(plik => {
+                                    if (plik.name === f.name && plik.path === (f.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])) {
+                                        plik.text = f.text;
+                                        isFile = true;
+                                        isDirectory = true
+                                    }
+                                })
+                                if (isFile === false) {
+                                    f.path += "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]
+                                    isDirectory = true
+                                }
+                                else {
+                                    for (let j = 0; j < file.length; j++) {
+                                        if (this.state.title.split(/\s+/)[i] === file[j].name) {
+                                            file.splice(j, 1);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                        if (isDirectory === false) {
+                            f.name = this.state.title.split(/\s+/)[2]
+                        }
+
+                    }
+                })
+            }
+        }
+
+        file.map(f => {
+            console.log(f.name + "    " + f.path)
+        })
+        this.props.addCommandPops(d)
+    }
+    cp = () => {
+        var d = this.props.prompt + " " + this.state.title
+
+        if (this.state.title.split(/\s+/)[1] === '-i') {
+            for (var i = 1; i < this.state.title.split(/\s+/).length; i++) {
+                var isDirectory = false
+                let isFile = false;
+                file.map(f => {
+                    if (f.name === this.state.title.split(/\s+/)[i] && f.path === this.props.path) {
+                        directory.map(dir => {
+                            if (dir.name === this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]) {
+                                file.map(plik => {
+                                    if (plik.name === f.name && plik.path === (f.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])) {
+                                        alert();
+                                        plik.text = f.text;
+                                        isFile = true;
+                                        isDirectory = true
+                                    }
+                                })
+                                if (isFile === false) {
+                                    const newFile = {
+                                        name: this.state.title.split(/\s+/)[1],
+                                        permissions: f.permissions,
+                                        path: this.props.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1],
+                                        text: f.text,
+                                        link: f.link,
+                                        user: f.user,
+                                        group: f.group,
+                                        size: f.size,
+                                        time: f.time,
+                                    }
+
+                                    file.push(newFile)
+                                    isDirectory = true
+                                }
+                            }
+                        })
+                        if (isDirectory === false) {
+
+                            file.map(plik => {
+                                if (plik.name === this.state.title.split(/\s+/)[2]) {
+                                    alert();
+                                    plik.text = f.text;
+                                    isFile=true;
+                                }
+                            })
+                            if (isFile === false) {
+                                const newFile = {
+                                    name: this.state.title.split(/\s+/)[2],
+                                    permissions: f.permissions,
+                                    path: this.props.path,
+                                    text: f.text,
+                                    link: f.link,
+                                    user: f.user,
+                                    group: f.group,
+                                    size: f.size,
+                                    time: f.time,
+                                }
+
+                                file.push(newFile)
+                            }
+                        }
+
+                    }
+                })
+            }
+        } else if(this.state.title.split(/\s+/)[1] === '-n'){
+            for (var i = 1; i < this.state.title.split(/\s+/).length; i++) {
+                var isDirectory = false
+                let isFile = false;
+                file.map(f => {
+                    if (f.name === this.state.title.split(/\s+/)[i] && f.path === this.props.path) {
+                        directory.map(dir => {
+                            if (dir.name === this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]) {
+                                file.map(plik => {
+                                    if (plik.name === f.name && plik.path === (f.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])) {
+                                        isFile = true;
+                                        isDirectory = true
+                                    }
+                                })
+                                if (isFile === false) {
+                                    const newFile = {
+                                        name: this.state.title.split(/\s+/)[1],
+                                        permissions: f.permissions,
+                                        path: this.props.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1],
+                                        text: f.text,
+                                        link: f.link,
+                                        user: f.user,
+                                        group: f.group,
+                                        size: f.size,
+                                        time: f.time,
+                                    }
+
+                                    file.push(newFile)
+                                    isDirectory = true
+                                }
+                            }
+                        })
+                        if (isDirectory === false) {
+
+                            file.map(plik => {
+                                if (plik.name === this.state.title.split(/\s+/)[2]) {
+                                    isFile=true;
+                                }
+                            })
+                            if (isFile === false) {
+                                const newFile = {
+                                    name: this.state.title.split(/\s+/)[2],
+                                    permissions: f.permissions,
+                                    path: this.props.path,
+                                    text: f.text,
+                                    link: f.link,
+                                    user: f.user,
+                                    group: f.group,
+                                    size: f.size,
+                                    time: f.time,
+                                }
+
+                                file.push(newFile)
+                            }
+                        }
+
+                    }
+                })
+            }
+        }
+        else {
+            for (var i = 1; i < this.state.title.split(/\s+/).length; i++) {
+                var isDirectory = false
+                let isFile = false;
+                file.map(f => {
+                    if (f.name === this.state.title.split(/\s+/)[i] && f.path === this.props.path) {
+                        directory.map(dir => {
+                            if (dir.name === this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]) {
+                                file.map(plik => {
+                                    if (plik.name === f.name && plik.path === (f.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])) {
+                                        plik.text = f.text;
+                                        isFile = true;
+                                        isDirectory = true
+                                    }
+                                })
+                                if (isFile === false) {
+                                    const newFile = {
+                                        name: this.state.title.split(/\s+/)[1],
+                                        permissions: f.permissions,
+                                        path: this.props.path + "/" + this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1],
+                                        text: f.text,
+                                        link: f.link,
+                                        user: f.user,
+                                        group: f.group,
+                                        size: f.size,
+                                        time: f.time,
+                                    }
+
+                                    file.push(newFile)
+                                    isDirectory = true
+                                }
+                            }
+                        })
+                        if (isDirectory === false) {
+
+                            file.map(plik => {
+                                if (plik.name === this.state.title.split(/\s+/)[2]) {
+                                    plik.text = f.text;
+                                    isFile=true;
+                                }
+                            })
+                            if (isFile === false) {
+                                const newFile = {
+                                    name: this.state.title.split(/\s+/)[2],
+                                    permissions: f.permissions,
+                                    path: this.props.path,
+                                    text: f.text,
+                                    link: f.link,
+                                    user: f.user,
+                                    group: f.group,
+                                    size: f.size,
+                                    time: f.time,
+                                }
+
+                                file.push(newFile)
+                            }
+                        }
+
+                    }
+                })
+            }
         }
 
         file.map(f => {
@@ -306,7 +644,7 @@ class Commands extends React.Component {
 
             directory.push(newDir)
         }
-        directory.map(f =>{
+        directory.map(f => {
             console.log(f.name)
         })
         this.props.addCommandPops(d)
@@ -366,16 +704,16 @@ class Commands extends React.Component {
     }
     cat = () => {
         var d = this.props.prompt + " " + this.state.title + "\n";
-      
+
         if (this.state.title.split(/\s+/).length > 2) {
-            let j=1;
+            let j = 1;
             for (var i = 1; i < this.state.title.split(/\s+/).length; i++) {
                 if (this.state.title.split(/\s+/)[i] === '-n') {
                     file.map(f => {
-                        if (this.props.path === f.path && this.state.title.split(/\s+/)[i+1] === f.name) {
+                        if (this.props.path === f.path && this.state.title.split(/\s+/)[i + 1] === f.name) {
                             console.log(f.text.split('\n').length)
-                            f.text.split('\n').map(s =>{
-                                d += j + " "+s + "\n";
+                            f.text.split('\n').map(s => {
+                                d += j + " " + s + "\n";
                                 j++;
                             })
                         }
@@ -385,36 +723,36 @@ class Commands extends React.Component {
             }
         }
         else {
-                file.map(f => {
-                    if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
-                        d += f.text
-                    }
-                })
-            }
-            this.props.addCommandPops(d)
+            file.map(f => {
+                if (this.props.path === f.path && this.state.title.split(/\s+/)[1] === f.name) {
+                    d += f.text
+                }
+            })
         }
-        render() {
-
-            return (
-                <div className="lineCmd">
-                    <span>
-                        {this.props.prompt}
-                    </span>
-                    <input type="text" className="inputCmd"
-                        value={this.state.title}
-                        name="title"
-                        onChange={this.onChange}
-                        onKeyDown={e => {
-                            if (e.key === "Enter") {
-                                this.listenCmd(e)
-                                this.props.addHistoryProps(this.state.title)
-                            }
-                        }}>
-                    </input>
-                </div>
-            )
-        }
+        this.props.addCommandPops(d)
     }
+    render() {
+
+        return (
+            <div className="lineCmd">
+                <span>
+                    {this.props.prompt}
+                </span>
+                <input type="text" className="inputCmd"
+                    value={this.state.title}
+                    name="title"
+                    onChange={this.onChange}
+                    onKeyDown={e => {
+                        if (e.key === "Enter") {
+                            this.listenCmd(e)
+                            this.props.addHistoryProps(this.state.title)
+                        }
+                    }}>
+                </input>
+            </div>
+        )
+    }
+}
 
 
 export default Commands

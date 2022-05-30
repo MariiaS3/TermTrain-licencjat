@@ -79,10 +79,6 @@ const command = {
                 info: "Kopiowanie struktury katalogów."
             },
             {
-                name: "f",
-                info: "Plik docelowy jest najpierw usuwany, a następnie odbywa się kopiowanie danych źródła do pliku docelowego."
-            },
-            {
                 name: "help",
                 info: ""
             }
@@ -171,10 +167,6 @@ const command = {
             {
                 name: "c",
                 info: "Służy do sprawdzania, czy plik został utworzony, czy nie. Jeśli nie został utworzony, nie twórz go."
-            },
-            {
-                name: "m",
-                info: "Służy tylko do zmiany czasu modyfikacji."
             },
             {
                 name: "help",

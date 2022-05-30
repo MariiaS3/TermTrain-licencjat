@@ -71,16 +71,6 @@ const directory= [
         time:"",
     },
     {
-        name:"Music",
-        permissions:"",
-        path: "/home/user",
-        link:2,
-        user: "",
-        group: "",
-        size: 1,
-        time:"",
-    },
-    {
         name:"Videos",
         permissions:"",
         path: "/home/user",
