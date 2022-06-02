@@ -2,7 +2,7 @@
 import './App.css';
 import React, { useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {BrowserRouter as Router,Route, Routes as Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router,Route, Routes as Switch} from 'react-router-dom';
 
 import HomeContainer from "./components/homePage/HomeContainer"
 import QuizContainer from "./components/QuizPage/QuizContainer"
@@ -31,7 +31,7 @@ function App() {
         },
     });
 
-    if (termTheme.palette.mode == "light") {
+    if (termTheme.palette.mode === "light") {
         termTheme.palette.background = {
             default: "#fff",
             paper: "#eafaf3",

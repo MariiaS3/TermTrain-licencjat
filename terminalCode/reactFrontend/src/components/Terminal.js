@@ -6,7 +6,7 @@ import Commands from "./Commands";
 class Terminal extends React.Component {
     state = {
         prompt: "user@localhost:~#",
-        prevPath:"/home/user",
+        prevPath: "/home/user",
         path: "/home/user",
         command: [],
         history: []
@@ -16,13 +16,13 @@ class Terminal extends React.Component {
             [e.target.name]: e.target.value,
         });
     };
-    changePath = newPath =>{
+    changePath = newPath => {
         this.setState({
             prevPath: this.state.path,
             path: newPath
         })
     }
-    
+
     addToHistory = (title) => {
         const newHistory = {
             id: uuidv4(),
@@ -36,30 +36,33 @@ class Terminal extends React.Component {
     addCommand = (text) => {
         var newCommand = []
         const t = text.split("\n")
-        for(var i=0;i<t.length;i++){
+        for (var i = 0; i < t.length; i++) {
             const newCmd = {
                 id: uuidv4(),
-                text:t[i]
+                text: t[i]
             }
-            newCommand=[...newCommand, newCmd]
+            newCommand = [...newCommand, newCmd]
         }
-    
+
         this.setState({
             command: [...this.state.command, ...newCommand],
         })
-        
+
     }
 
     render() {
         return (
             <div className="termContainer">
-                <div style={{marginLeft: '20px', marginTop:'20px'}}>
+                <div style={{ marginLeft: '20px', marginTop: '20px' }}>
                     <ul>
                         {this.state.command.map(cmd =>
-                            <li style={{ listStyleType: "none"}} key={cmd.id}>{
-                                cmd.text.includes("#") || cmd.text.includes("$") ? 
-                                    <span style={{color: "#53D632"}}>{cmd.text.includes("#")  ? cmd.text.split("#")[0] +"# " : cmd.text.split("$")[0]+"$ " } <a style={{color: "#D7DEDE"}}>{cmd.text.includes("#")  ? cmd.text.split("#")[1] : cmd.text.split("$")[1] }</a></span>  :
-                                <span style={{color: "#D7DEDE"}}>{cmd.text}</span>}
+                            <li style={{ listStyleType: "none" }} key={cmd.id}>{
+                                cmd.text.includes("#") || cmd.text.includes("$") ?
+                                    <span style={{ color: "#53D632" }}>
+                                        {cmd.text.includes("#") ? cmd.text.split("#")[0] + "# " : cmd.text.split("$")[0] + "$ "}
+                                        <span style={{ color: "#D7DEDE" }}>
+                                            {cmd.text.includes("#") ? cmd.text.split("#")[1] : cmd.text.split("$")[1]}
+                                        </span></span> : <span style={{ color: "#D7DEDE" }}>{cmd.text}</span>}
                             </li>
                         )}
                     </ul>
@@ -70,10 +73,10 @@ class Terminal extends React.Component {
                     addCommandPops={this.addCommand}
                     prompt={this.state.prompt}
                     path={this.state.path}
-                    history={this.state.history} 
+                    history={this.state.history}
                     changePathProp={this.changePath}
                     prevPath={this.state.prevPath}
-                   />
+                />
             </div>
         )
     }

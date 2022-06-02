@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 
 import QuizListItem from "./QuizListItem"
 import axios from "axios";
-import { Button, Paper } from "@mui/material";
-import { TabsContext } from "@mui/base";
+import { Button } from "@mui/material";
 
 const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz";
 

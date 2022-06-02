@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
-import { Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
-import { RadioButtonChecked } from "@mui/icons-material";
+
+import { Button, FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
+
 
 class AnswerListItem extends React.Component {
 
@@ -14,7 +14,7 @@ class AnswerListItem extends React.Component {
     };
 
     async componentDidMount() {
-        const QUIZ_API_BASE_URL = "http://localhost:8080/api/question/" + `${this.props.id}` + "/answer";
+        const QUIZ_API_BASE_URL = 'http://localhost:8080/api/question/' + `${this.props.id}` + '/answer';
         const response = await axios.get(QUIZ_API_BASE_URL);
         this.setState({ quest: response.data });
         console.log(response.data)

@@ -56,7 +56,7 @@ class QuestionListItem extends React.Component {
                         <div key={uuidv4()}>
                             {this.state.quest[this.state.currentQuestion].text === quiz.text ?
                                 <div className="questionItem">
-                                    <a> {quiz.text}</a>
+                                    <p> {quiz.text}</p>
                                     <AnswerListItem id={quiz.id} answerClickProps={this.answerClick} /></div> : <div></div>}
                                 </div>
                     )))}
