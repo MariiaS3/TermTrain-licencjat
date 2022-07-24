@@ -26,8 +26,8 @@ class QuizContainer extends React.Component {
     const style = {
       height: '40px',
       width: '160px',
-      marginTop: '30px',
-      marginLeft: '23px',
+      marginTop: '50px',
+      marginLeft: '40px',
       fontSize: '18px',
       borderRadius: '10px',
       textAlign: 'center',
@@ -40,12 +40,13 @@ class QuizContainer extends React.Component {
     //   return <p>Loading...</p>;
     // }
     return (
-      <div className="container">
-          <div >
-            <Link to="/"><Button variant="contained" className="btnMenu" style={style}>Główna</Button></Link>
-            <Link to="/term"><Button variant="contained" className="btnMenu" style={style}>Terminal</Button></Link>
-            <Button variant="contained" className="btnMenu" style={style}>Forum</Button>
-          </div>
+      <div className="quizContainer">
+        <div >
+          <Link to="/"><Button variant="contained" className="btnMenu" style={style}>Główna</Button></Link>
+          <Link to="/term"><Button variant="contained" className="btnMenu" style={style}>Terminal</Button></Link>
+          <Link to='/add/quiz'><Button variant="contained" className="btnMenu" style={style}>Edytuj</Button></Link>
+          <Button variant="contained" className="btnMenu" style={style}>Forum</Button>
+        </div>
           <QuizListItem quiz={this.state.quiz} />
       </div>
     )

@@ -1,0 +1,35 @@
+.containerTerm{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    justify-content:space-between; 
+}
+
+.termDiv{
+    display: flex;
+    flex-direction: column;
+    background-color: #eafaf3;
+    width: 14%;
+    min-height: 100%;
+}
+
+.lineCmd{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px ;
+    color: #53D632;
+}
+
+.inputCmd{
+    font-size: 18px;
+    margin-left: 10px;
+    hyphens: auto;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 1000;
+}

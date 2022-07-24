@@ -25,7 +25,6 @@ class QuestionListItem extends React.Component {
         if (isCorect) {
             this.setState({
                 score: this.state.score + 1,
-
             })
         }
         const nextQuestion = this.state.currentQuestion + 1;
@@ -43,7 +42,6 @@ class QuestionListItem extends React.Component {
     }
 
     render() {
-
         return (
 
             <ul>

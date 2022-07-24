@@ -1,4 +1,4 @@
-import { Button, List, Paper } from "@mui/material";
+import { Button } from "@mui/material";
 import React from "react";
 
 import { Link } from "react-router-dom";
@@ -20,22 +20,20 @@ class QuizListItem extends React.Component {
         }
 
         return (
-            <List>
-                {this.props.quiz.map(quiz => (
-                    <Paper>
-                        <li key={quiz.id} className="qizItem">
-                            <span style={{
-                                "marginLeft": "50px",
-                                "fontSize": "23px"
-                            }}>{quiz.description}</span>
-                            <div className="qiuzDiv">
-                                <Button variant="contained" className="btnMenu" style={style}>Teoria</Button>
-                                <Link to={`/quiz/questions/${quiz.id}`}><Button variant="contained" className="btnMenu" style={style}>Rozwiąż Quiz</Button></Link>
-                            </div>
-                        </li>
-                    </Paper>
-                ))}
-            </List>
+            <div className="quizList">
+                    {this.props.quiz.map(quiz => (
+                            <li key={quiz.id} className="qizItem">
+                                <span style={{
+                                    "marginLeft": "50px",
+                                    "fontSize": "23px"
+                                }}>{quiz.description}</span>
+                                <div className="qiuzDiv">
+                                    <Button variant="contained" className="btnMenu" style={style}>Teoria</Button>
+                                    <Link to={`/quiz/questions/${quiz.id}`}><Button variant="contained" className="btnMenu" style={style}>Rozwiąż Quiz</Button></Link>
+                                </div>
+                            </li>
+                    ))}
+            </div>
         )
     }
 }
