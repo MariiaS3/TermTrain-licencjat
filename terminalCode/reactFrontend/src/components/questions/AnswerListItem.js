@@ -1,7 +1,7 @@
 import React from "react";
 
 import axios from "axios";
-
+ 
 import { Button, FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
 
@@ -16,8 +16,12 @@ class AnswerListItem extends React.Component {
     async componentDidMount() {
         const QUIZ_API_BASE_URL = 'http://localhost:8080/api/question/' + `${this.props.id}` + '/answer';
         const response = await axios.get(QUIZ_API_BASE_URL);
+        // const USER_API_BASE_URL = 'http://localhost:8080/api/user/';
+        // const user = {name: 'Hello', surname:'Hi', email:'h@gmail.com', pass:'12345', admin: true};
+        // const res = await axios.post(USER_API_BASE_URL,user)
+        // console.log(res.data)
         this.setState({ quest: response.data });
-        console.log(response.data)
+        // console.log(response.data)
     }
     answerClick = (isCorect) => {
         this.setState({
@@ -51,7 +55,7 @@ class AnswerListItem extends React.Component {
                         {this.state.quest.map(quiz => (
                             <div key={quiz.id} style={{ marginLeft: '30px', marginTop: '10px' }}>
                                 <FormControlLabel  value={quiz.text}  control={ <Radio  color='success' />}  onChange={(e) => this.handleRadioChange(e, quiz.corect)}/>
-                                <label  style={{color:"#0B1F64" , fontSize:"25px"}}  >{quiz.text}</label>
+                                <label  style={{color:"#0B1F64" , fontSize:"21px"}}  >{quiz.text}</label>
                             </div>
                         ))}
                     </RadioGroup>

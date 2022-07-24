@@ -1,0 +1,48 @@
+.containerQuest{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.questDiv{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+     background-color: #eafaf3; 
+}
+
+.questBtn{
+    display: flex;
+    /* justify-content: flex-end; */
+    justify-content: space-between;
+}
+
+.lineCmd{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px ;
+    color: #53D632;
+}
+
+.inputCmd{
+    font-size: 18px;
+    margin-left: 10px;
+    hyphens: auto;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 1000;
+}
+
+.questionItem{
+    color: #253304;
+    font-size: 25px;
+    /* hyphens: auto; */
+    margin-top: 80px;
+    margin-left: 30px;
+}

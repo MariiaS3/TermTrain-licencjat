@@ -51,8 +51,9 @@ class Terminal extends React.Component {
     }
 
     render() {
+    
         return (
-            <div className="termContainer">
+            <div className="termContainer" style={this.props.termStyle}>
                 <div style={{ marginLeft: '20px', marginTop: '20px' }}>
                     <ul>
                         {this.state.command.map(cmd =>

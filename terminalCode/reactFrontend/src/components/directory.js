@@ -240,6 +240,26 @@ const directory= [
         size: 80,
         time:"",
     },
+    {
+        name:"mnt",
+        permissions:"",
+        path: "/",
+        link:2,
+        user: "",
+        group: "",
+        size: 80,
+        time:"",
+    },
+    {
+        name:"kernel",
+        permissions:"",
+        path: "/",
+        link:2,
+        user: "",
+        group: "",
+        size: 80,
+        time:"",
+    },
 ]
 
 export default directory

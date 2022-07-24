@@ -9,7 +9,7 @@ class HomeContainer extends React.Component {
     render() {
         const style ={
             height: '40px',
-            width: '180px',
+            width: '160px',
             margin: '50px 15px',  
             fontSize: '18px',
             borderRadius: '10px',
