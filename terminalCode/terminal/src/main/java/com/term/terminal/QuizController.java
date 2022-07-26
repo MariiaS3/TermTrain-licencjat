@@ -1,7 +1,6 @@
 package com.term.terminal;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.term.terminal.models.Quiz;
 import com.term.terminal.service.QuizService;
@@ -28,7 +27,6 @@ public class QuizController {
     
     @PostMapping( "/quiz")
     public ResponseEntity<?> createQuiz(@RequestBody  Quiz quiz) {
-        //    System.out.println(quiz.getDescription());
             Quiz savedQuiz = quizService.save(quiz);
             return new ResponseEntity<>(savedQuiz, HttpStatus.CREATED);
     }
