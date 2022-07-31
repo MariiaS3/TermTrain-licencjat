@@ -42,7 +42,7 @@ class QuizContainer extends React.Component {
     return (
       <div className="quizContainer">
         <div >
-          <Link to="/"><Button variant="contained" className="btnMenu" style={style}>Główna</Button></Link>
+          <Link to="/"><Button variant="contained" className="btnMenu" style={style} >Główna</Button></Link>
           <Link to="/term"><Button variant="contained" className="btnMenu" style={style}>Terminal</Button></Link>
           <Link to='/add/quiz'><Button variant="contained" className="btnMenu" style={style}>Edytuj</Button></Link>
           <Button variant="contained" className="btnMenu" style={style}>Forum</Button>

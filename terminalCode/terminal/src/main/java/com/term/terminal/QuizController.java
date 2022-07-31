@@ -38,6 +38,12 @@ public class QuizController {
         return new ResponseEntity<>(quiz, HttpStatus.OK);
     }
 
+    @PostMapping("/quiz/{id}")
+    public ResponseEntity<?> getQuiz(@PathVariable int id) {
+        Quiz quiz = quizService.findById(id).get();
+        return new ResponseEntity<>(quiz, HttpStatus.OK);
+    }
+
     @DeleteMapping("/quiz/{id}")
     public void deleteQuiz(@PathVariable int id){
        Quiz quiz = quizService.findById(id).get();

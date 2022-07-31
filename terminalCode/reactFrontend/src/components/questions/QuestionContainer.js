@@ -46,7 +46,7 @@ function QuestionContainer() {
                     <Button variant="contained" className="btnMenu" style={style}>Forum</Button>
                 </div>
                 <div>
-                    <QuestionListItem id={id} />
+                    <QuestionListItem id={id} propsToken={this.props.propsToken} />
                 </div>
             </div>
         </div>
