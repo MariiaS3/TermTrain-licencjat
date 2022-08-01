@@ -14,7 +14,7 @@ export default class AddNewQuiz extends React.Component {
         quiz: [],
         name: "",
     };
-
+  
     async componentDidMount() {
         const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/";
         const response = await axios.get(QUIZ_API_BASE_URL);

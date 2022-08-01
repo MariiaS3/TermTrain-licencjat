@@ -22,7 +22,7 @@ class QuizContainer extends React.Component {
   }
 
   render() {
-
+    
     const style = {
       height: '40px',
       width: '160px',
@@ -47,7 +47,7 @@ class QuizContainer extends React.Component {
           <Link to='/add/quiz'><Button variant="contained" className="btnMenu" style={style}>Edytuj</Button></Link>
           <Button variant="contained" className="btnMenu" style={style}>Forum</Button>
         </div>
-          <QuizListItem quiz={this.state.quiz} />
+          <QuizListItem quiz={this.state.quiz} propsToken={this.props.propsToken}/>
       </div>
     )
   }

@@ -33,7 +33,7 @@ public class ListOfResults {
     private String data;
 
     @Column(name="result")
-    private Integer result;
+    private String result;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "account_id", nullable = false)
@@ -61,11 +61,11 @@ public class ListOfResults {
         this.data = data;
     }
 
-    public Integer getResult() {
+    public String getResult() {
         return result;
     }
 
-    public void setResult(Integer result) {
+    public void setResult(String result) {
         this.result = result;
     }
 

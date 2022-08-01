@@ -19,8 +19,8 @@ class HomeContainer extends React.Component {
             backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #f2f8be 50%, #CAFFE3 100%)'
         }
         return (
-            <div className="container" >
-                <div>
+            <div className="container">
+                <div >
                     <Link to="/"><Button  variant="contained" className="btnMenu" size="large"  style={style}>Główna</Button></Link>
                     <Link to="/term"><Button  variant="contained" className="btnMenu" size="large" style={style}>Terminal</Button></Link>
                     <Link to="/quiz"><Button  variant="contained" className="btnMenu" size="large" style={style}>Quiz</Button></Link>

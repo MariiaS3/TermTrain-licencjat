@@ -8,9 +8,10 @@ import Terminal from "../Terminal"
 import Button from '@mui/material/Button';
 import "./quiz.css"
 
-function QuestionContainer() {
+function QuestionContainer(props) {
     const { id } = useParams();
 
+    
     const style = {
         height: '40px',
         width: '150px',
@@ -46,7 +47,7 @@ function QuestionContainer() {
                     <Button variant="contained" className="btnMenu" style={style}>Forum</Button>
                 </div>
                 <div>
-                    <QuestionListItem id={id} propsToken={this.props.propsToken} />
+                    <QuestionListItem id={id} propsToken={props.propsToken} />
                 </div>
             </div>
         </div>

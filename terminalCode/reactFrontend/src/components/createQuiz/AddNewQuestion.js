@@ -6,7 +6,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
 async function createQuestion(credentials, id ) {
-    return axios.post('http://localhost:8080/api/quiz/'+ `${id}` + "/question", credentials)
+    return axios.post('http://localhost:8080/api/quiz/'+ `${id}`+'/question' , credentials)
 }
 
 export default class AddNewQuiz extends React.Component {
@@ -25,6 +25,7 @@ export default class AddNewQuiz extends React.Component {
     }
 
     render() {
+  
         const handleSubmit = async e => {
             e.preventDefault();
             

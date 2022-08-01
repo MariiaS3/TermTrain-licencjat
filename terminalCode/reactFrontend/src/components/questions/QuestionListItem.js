@@ -17,10 +17,10 @@ class QuestionListItem extends React.Component {
         quest: [],
         quizName: "",
     };
-
+    
 
     async componentDidMount() {
-        const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/" + `${this.props.id}` + "/question";
+        const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/"+`${this.props.id}`+"/question";
         const response = await axios.get(QUIZ_API_BASE_URL);
         const res = await axios.post("http://localhost:8080/api/quiz/"+`${this.props.id}`)
         this.setState({quizName:res.data.name_quiz})
@@ -47,9 +47,11 @@ class QuestionListItem extends React.Component {
             })
             const result = await addResult({
                 data:"",
-                result: this.state.score,
+                result: this.state.score+"/"+this.state.quest.length,
                 name_quiz: this.state.quizName
             })
+
+            console.log(result)
         }
     }
 

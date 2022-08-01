@@ -23,7 +23,7 @@ function App() {
     const { token, setToken } = useToken();
 
     if(!token) {
-      return <LoginPage setToken={setToken} />
+      return <LoginPage propsToken={token} setToken={setToken} />
     }
 
     const termTheme = createTheme({
@@ -66,7 +66,7 @@ function App() {
                         <Route exact path='/add/answer/:id' element={<AddNewAnswer  toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}  />} >   </Route>
                         <Route exact path='/quiz' element={<QuizContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} />}>   </Route>
                         <Route exact path='/term' element={<TermContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}  />}>   </Route>
-                        <Route exact path='/quiz/questions/:id' element={<QuestionContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
+                        <Route exact path='/quiz/question/:id' element={<QuestionContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
                     </Switch>
                 </Router>
             </div>

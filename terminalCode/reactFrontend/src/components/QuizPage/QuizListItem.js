@@ -29,7 +29,7 @@ class QuizListItem extends React.Component {
                                 }}>{quiz.description}</span>
                                 <div className="qiuzDiv">
                                     <Button variant="contained" className="btnMenu" style={style}>Teoria</Button>
-                                    <Link to={`/quiz/questions/${quiz.id}`}><Button variant="contained" className="btnMenu" style={style} >Rozwiąż Quiz</Button></Link>
+                                    <Link to={`/quiz/question/${quiz.id}`}  ><Button variant="contained" className="btnMenu" style={style} >Rozwiąż Quiz</Button></Link>
                                 </div>
                             </li>
                     ))}
