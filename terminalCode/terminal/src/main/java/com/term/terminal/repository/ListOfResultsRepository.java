@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
  
 public interface ListOfResultsRepository extends JpaRepository<ListOfResults, Integer> {
-    List<ListOfResults> findByAccountId(Integer postId);
+    List<ListOfResults> findByUser(Integer postId);
 }
 

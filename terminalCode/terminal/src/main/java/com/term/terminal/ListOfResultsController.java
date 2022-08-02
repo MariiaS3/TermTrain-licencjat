@@ -28,15 +28,17 @@ public class ListOfResultsController {
     @Autowired
     private ListOfResultsRepository listOfResultsRepository;
 
-    @PostMapping("/user/add-results/{accountId}")
+    @PostMapping("/user/add-results")
     public ResponseEntity<?>  addResult(@RequestBody ListOfResults newlistOfResults){
+        System.out.println(newlistOfResults.getResult());
+        System.out.println(newlistOfResults.getName_quiz());
         ListOfResults listOfResults = listOfResultsService.save(newlistOfResults);
         return new ResponseEntity<>(listOfResults, HttpStatus.CREATED);
     }
 
     @PostMapping("/user/get-results/{accountId}")
     public ResponseEntity<?> getResults(@PathVariable(value = "accountId") Integer accountId){
-        List<ListOfResults> listOfResults = listOfResultsRepository.findByAccountId(accountId);
+        List<ListOfResults> listOfResults = listOfResultsRepository.findByUser(accountId);
             return  new ResponseEntity<>(listOfResults, HttpStatus.OK);
     }
 

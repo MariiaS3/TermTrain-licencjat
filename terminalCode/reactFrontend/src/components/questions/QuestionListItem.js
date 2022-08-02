@@ -6,7 +6,7 @@ import AnswerListItem from "./AnswerListItem"
 import { v4 as uuidv4 } from "uuid";
 
 async function addResult(credentials) {
-    return axios.post('http://localhost:8080/api/user/add-results/'+ `${this.props.propsToken}` , credentials)
+    return axios.post('http://localhost:8080/api/user/add-results' , credentials)
 }
 
 class QuestionListItem extends React.Component {
@@ -23,7 +23,7 @@ class QuestionListItem extends React.Component {
         const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/"+`${this.props.id}`+"/question";
         const response = await axios.get(QUIZ_API_BASE_URL);
         const res = await axios.post("http://localhost:8080/api/quiz/"+`${this.props.id}`)
-        this.setState({quizName:res.data.name_quiz})
+        this.setState({quizName:res.data.description})
         this.setState({ quest: response.data });
         console.log(response.data)
     }
@@ -45,17 +45,36 @@ class QuestionListItem extends React.Component {
             this.setState({
                 showScore: true
             })
+            const current = new Date();
+            let date = "";
+            if(current.getDate()<10){
+                if(current.getMonth()+1<10){
+                     date = `${0}${current.getDate()}-${0}${current.getMonth()+1}-${current.getFullYear()}`;
+                }else{
+                     date = `${0}${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()}`;
+                }
+            }else{
+                if(current.getMonth()+1<10){
+                     date = `${0}${current.getDate()}-${0}${current.getMonth()+1}-${current.getFullYear()}`;
+                }else{
+                     date = `${0}${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()}`;
+                }
+            }
+            const id  = this.props.propsToken.split(':')[0];
             const result = await addResult({
-                data:"",
+                data:date,
                 result: this.state.score+"/"+this.state.quest.length,
-                name_quiz: this.state.quizName
+                name_quiz: this.state.quizName,
+                user: id,
             })
 
-            console.log(result)
+            console.log(date)
+            console.log(result.data)
         }
     }
 
     render() {
+        {console.log(this.props.propsToken)}
         return (
 
             <ul>

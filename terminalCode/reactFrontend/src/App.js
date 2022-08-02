@@ -59,8 +59,8 @@ function App() {
             <div style={{ background: termTheme.palette.background.default }}>
                 <Router basename={process.env.PUBLIC_URL}>
                     <Switch>
-                        {/* <Route exact path='/' element={<HomeContainer    toggleDark={toggleDark} settoggleDark={settoggleDark}/>}>   </Route> */}
-                        <Route exact path='/' element={<Dashboard    toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
+                        <Route exact path='/' element={<HomeContainer    toggleDark={toggleDark} settoggleDark={settoggleDark}/>}>   </Route>
+                        <Route exact path='/dashboard' element={<Dashboard    toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
                         <Route exact path='/add/quiz' element={<AddNewQuiz    toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
                         <Route exact path='/add/question/:id' element={<AddNewQuestion   toggleDark={toggleDark} settoggleDark={settoggleDark}  propsToken={token}/>}>   </Route>
                         <Route exact path='/add/answer/:id' element={<AddNewAnswer  toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}  />} >   </Route>

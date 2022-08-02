@@ -47,14 +47,14 @@ values ('11','3','question 3 answer 3',true);
 insert into answer   ( answer_id ,question_id ,text, corect      )
 values ('12','3','question 3 answer 4',false);
 
-insert into list_of_results( list_id, data, name_quiz,result, account_id   )
-values ('1','28.07.2022', 'quiz for terminal application','80', '1');
+insert into list_of_results( list_id, data, name_quiz,result, user_id   )
+values ('1','28.07.2022', 'quiz for terminal application','80/100', '1');
 
-insert into list_of_results( list_id, data, name_quiz,result, account_id   )
-values ('2','28.07.2022', 'quiz for terminal application','80', '1');
+insert into list_of_results( list_id, data, name_quiz,result, user_id   )
+values ('2','28.07.2022', 'quiz for terminal application','80/100', '1');
 
-insert into list_of_results( list_id, data, name_quiz,result, account_id   )
-values ('3','28.07.2022', 'quiz for terminal application','80', '1');
+insert into list_of_results( list_id, data, name_quiz,result, user_id   )
+values ('3','28.07.2022', 'quiz for terminal application','80/100', '1');
 
  mvn spring-boot:run
 npm start

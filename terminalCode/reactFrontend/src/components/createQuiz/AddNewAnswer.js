@@ -52,7 +52,7 @@ export default class AddNewQuiz extends React.Component {
 
         const style = {
             height: '30px',
-            width: '100px',
+            width: '130px',
             marginBottom: '5px',
             margin: '10px',
             fontSize: '18px',
@@ -64,26 +64,25 @@ export default class AddNewQuiz extends React.Component {
         }
 
         const styleBtn = {
-            height: '30px',
-            width: '120px',
-            margin: '20px 15px',
+            height: '20px',
+            width: '150px',
+            margin: '30px',  
             fontSize: '18px',
-            borderRadius: '10px',
             textAlign: 'center',
-            fontFamily: '\'Times New Roman\', Times, serif',
-            color: '#0B1F64',
-            backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #f2f8be 50%, #CAFFE3 100%)'
+            fontFamily:'\'Times New Roman\', Times, serif', 
+            color:'#0B1F64',
         }
         return (
             <div className="addQuiz">
-                <div>
-                    <Link to="/"><Button variant="contained" className="btnMenu" size="large" style={styleBtn}>Główna</Button></Link>
-                    <Link to="/term"><Button variant="contained" className="btnMenu" size="large" style={styleBtn}>Terminal</Button></Link>
-                    <Link to="/quiz"><Button variant="contained" className="btnMenu" size="large" style={styleBtn}>Quiz</Button></Link>
-                    <Button variant="contained" className="btnMenu" size="large" style={styleBtn} >Forum</Button>
+                <div className="mainMenu">
+                    <Link to="/"><Button className="btnMenu" size="large" style={styleBtn}>Główna</Button></Link>
+                    <Link to="/term"><Button className="btnMenu" size="large" style={styleBtn}>Terminal</Button></Link>
+                    <Link to="/dashboard"><Button  className="btnMenu" size="large"  style={styleBtn}>Dashboard</Button></Link>
+                    <Link to="/quiz"><Button className="btnMenu" size="large" style={styleBtn}>Quiz</Button></Link>
+                    <Button className="btnMenu" size="large" style={styleBtn} >Forum</Button>
                 </div>
                 <form className="formAdd" onSubmit={handleSubmit}>
-                    <input style={{ width: '70%', maxHeight: '30px', minHeight: '30px' }} type="text" onChange={e => this.setState({ name: e.target.value })} placeholder="Add new answer..." />
+                    <input style={{ width: '70%', maxHeight: '25px', minHeight: '25px' }} type="text" onChange={e => this.setState({ name: e.target.value })} placeholder="Add new answer..." />
                     <span style={{margin:'10px'}}>is corect</span>
                     <input style={{ width: '15px', height: '15px' }} type="checkbox" onChange={e => this.setState({ corect: e.target.checked })}  />
                     <Button className="btnMenu" type="submit" style={style}>Add</Button>
@@ -93,8 +92,8 @@ export default class AddNewQuiz extends React.Component {
                         {this.state.answers.map(answer => (
                             <tr key={uuidv4()}>
                                 <td >{answer.text}</td>
-                                <td style={{ width: '80px' }}>{answer.corect ? "true": "false"}</td>
-                                <td style={{ width: '70px' }}> <button id='del' type="submit" onClick={() => handleDelete(answer.id)}>Delete</button></td>
+                                <td style={{ width: '80px', textAlign:'center' }}>{answer.corect ? "true": "false"}</td>
+                                <td style={{  width: '160px', textAlign:'center' }}> <button id='del' type="submit" onClick={() => handleDelete(answer.id)}>Delete</button></td>
                             </tr>
                         ))}
                     </thead>

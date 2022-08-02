@@ -6,15 +6,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.stereotype.Component;
 
 @Component
 @Entity
@@ -35,21 +31,26 @@ public class ListOfResults {
     @Column(name="result")
     private String result;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "account_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-	private Account account;
+    @Column(name = "user_id", nullable = false)
+	private Integer user;
 
+
+    public Integer getUser() {
+        return user;
+    }
+
+    public void setUser(Integer account_id) {
+        this.user = account_id;
+    }
 
     public ListOfResults() {
     }
 
-    public String getId_quiz() {
+    public String getName_quiz() {
         return nameQuiz;
     }
 
-    public void setId_quiz(String id_quiz) {
+    public void setName_quiz(String id_quiz) {
         this.nameQuiz = id_quiz;
     }
 
