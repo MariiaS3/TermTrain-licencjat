@@ -66,8 +66,5 @@ public class Question {
 		this.quiz = quiz;
 	}
 
-	
-	
-	
 
 }

@@ -31,7 +31,7 @@ public class AccountController {
         if (user!= null && newUser.getPass()== user.getPass()){
             return new ResponseEntity<String>(user.getEmail()+" "+user.getUsername(), HttpStatus.OK);
         }
-        return new ResponseEntity<String>(user.getEmail()+" "+user.getUsername(), HttpStatus.OK);
+        return new ResponseEntity<String>(user.getId() + ":"+ user.getEmail()+" "+user.getUsername(), HttpStatus.OK);
     }
 
     @PostMapping(  "/user")

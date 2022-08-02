@@ -16,10 +16,6 @@ class AnswerListItem extends React.Component {
     async componentDidMount() {
         const QUIZ_API_BASE_URL = 'http://localhost:8080/api/question/' + `${this.props.id}` + '/answer';
         const response = await axios.get(QUIZ_API_BASE_URL);
-        // const USER_API_BASE_URL = 'http://localhost:8080/api/user/';
-        // const user = {name: 'Hello', surname:'Hi', email:'h@gmail.com', pass:'12345', admin: true};
-        // const res = await axios.post(USER_API_BASE_URL,user)
-        // console.log(res.data)
         this.setState({ quest: response.data });
         // console.log(response.data)
     }

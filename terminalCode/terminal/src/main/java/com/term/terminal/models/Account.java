@@ -1,6 +1,10 @@
 package com.term.terminal.models;
 
+import java.util.List;
+
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +36,11 @@ public class Account {
 
     @Column(name = "is_admin")
     private boolean is_admin;
+
+    @ElementCollection // 1
+    @CollectionTable(name = "my_list") // 2
+    @Column(name = "list") // 3
+    private List<Integer> list;
 
     public Account(){
         

@@ -8,16 +8,17 @@
 }
 
 .questDiv{
-    width: 40%;
+    width: 35%;
     height: 100%;
     display: flex;
+    overflow:scroll;
     flex-direction: column;
      background-color: #eafaf3; 
 }
 
 .questBtn{
     display: flex;
-    /* justify-content: flex-end; */
+    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -42,7 +43,6 @@
 .questionItem{
     color: #253304;
     font-size: 25px;
-    /* hyphens: auto; */
-    margin-top: 80px;
-    margin-left: 30px;
+    margin-top: 150px;
+    margin-left: 60px;
 }
