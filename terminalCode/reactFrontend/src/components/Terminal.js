@@ -3,6 +3,8 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid"
 import Commands from "./Commands";
 
+
+
 class Terminal extends React.Component {
     state = {
         prompt: "user@localhost:~#",
@@ -32,7 +34,14 @@ class Terminal extends React.Component {
             history: [...this.state.history, newHistory],
         })
     }
-
+    deleteHistory = () =>{
+        this.state.history.length = 0;
+        this.setState({ history: this.state.history })
+    }
+    deleteCommand = () => {
+        this.state.command.length = 0;
+        this.setState({ command: this.state.command })
+    }
     addCommand = (text) => {
         var newCommand = []
         const t = text.split("\n")
@@ -43,15 +52,16 @@ class Terminal extends React.Component {
             }
             newCommand = [...newCommand, newCmd]
         }
-
         this.setState({
             command: [...this.state.command, ...newCommand],
         })
 
     }
 
-    render() {
     
+      
+    render() {
+
         return (
             <div className="termContainer" style={this.props.termStyle}>
                 <div style={{ marginLeft: '20px', marginTop: '20px' }}>
@@ -72,8 +82,11 @@ class Terminal extends React.Component {
                     command={this.state.command}
                     addHistoryProps={this.addToHistory}
                     addCommandPops={this.addCommand}
+                    delCommandProps={this.deleteCommand}
+                    delHistoryProps={this.deleteHistory}
                     prompt={this.state.prompt}
                     path={this.state.path}
+                    sleep={this.sleep}
                     history={this.state.history}
                     changePathProp={this.changePath}
                     prevPath={this.state.prevPath}

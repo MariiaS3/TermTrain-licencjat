@@ -72,6 +72,18 @@ const file= [
         name:"file.txt",
         permissions:"",
         path: "/home/user",
+        text:"hello,how are you \n i am fine and you \n  me too thanks",
+        link:1,
+        user: "",
+        group: "",
+        size: 0,
+        time:"",
+    },
+    {
+
+        name:"file1.txt",
+        permissions:"",
+        path: "/home/user",
         text:"hello,how are you \n i am fine and you \n me too thanks",
         link:1,
         user: "",
