@@ -1,30 +1,30 @@
-.containerTerm{
+.containerTerm {
     width: 100%;
     height: 100%;
     position: absolute;
     display: flex;
     flex-direction: row;
     background-color: black;
-    justify-content:space-between; 
+    justify-content: space-between;
 }
 
-.termDiv{
+.termDiv {
     width: 150px;
     min-height: 100%;
     display: flex;
     flex-direction: column;
     background-color: #eafaf3;
-    
+
 }
 
-.lineCmd{
+.lineCmd {
     display: flex;
     flex-direction: row;
-    margin-left: 20px ;
+    margin-left: 20px;
     color: #53D632;
 }
 
-.inputCmd{
+.inputCmd {
     font-size: 18px;
     margin-left: 10px;
     hyphens: auto;
@@ -33,4 +33,18 @@
     border: none;
     outline: none;
     width: 1000;
+}
+
+
+
+.text {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    bottom: 20px;
+    right: 10px;
+    line-height: 20px;
+    overflow: hidden;
+    outline: none;
+    color: #fff;
 }

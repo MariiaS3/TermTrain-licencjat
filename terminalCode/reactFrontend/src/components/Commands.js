@@ -16,6 +16,10 @@ import mv from "./commands/mv"
 import cat from "./commands/cat"
 import tail from "./commands/tail";
 import head from "./commands/head";
+import echo from "./commands/echo";
+import wc from "./commands/wc";
+import nano from "./commands/nano";
+import date from "./commands/date";
 
 
 
@@ -194,7 +198,6 @@ class Commands extends React.Component {
                         }
 
                     } else {
-                        console.log("rmmmmmmmmmmmmmmmmmmmmmmmmmm")
                         let isFile = false;
                         let m = "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?" + this.state.prompt;
                         if (this.state.prompt === "yes") {
@@ -206,8 +209,6 @@ class Commands extends React.Component {
                                     isFile = true
                                 }
                             }
-                            console.log(isFile)
-                            console.log(this.state.indexStop+1)
                             if (isFile === true) {
                                 this.props.addCommandPops(m)
                                 this.setState({
@@ -325,6 +326,16 @@ class Commands extends React.Component {
                 this.props.addCommandPops(tail(this.props.prompt, this.state.title, this.props.history))
             }else if (this.state.title.split(/\s+/)[0] === "head") {
                 this.props.addCommandPops(head(this.props.prompt, this.state.title, this.props.history))
+            }else if (this.state.title.split(/\s+/)[0] === "echo") {
+                this.props.addCommandPops(echo(this.props.prompt, this.state.title, this.props.path))
+            }else if (this.state.title.split(/\s+/)[0] === "wc") {
+                this.props.addCommandPops(wc(this.props.prompt, this.state.title, this.props.path))
+            }else if (this.state.title.split(/\s+/)[0] === "date") {
+                this.props.addCommandPops(date(this.props.prompt, this.state.title))
+            }else if (this.state.title.split(/\s+/)[0] === "nano") {
+                this.props.addCommandPops(nano(this.props.prompt, this.state.title, this.props.path))
+                this.props.addTitlePops(this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length-1])
+                this.props.showModalProps()
             }
             else {
                 console.log(this.state.title)
