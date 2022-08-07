@@ -20,6 +20,7 @@ import echo from "./commands/echo";
 import wc from "./commands/wc";
 import nano from "./commands/nano";
 import date from "./commands/date";
+import whoami from "./commands/whoami";
 
 
 
@@ -62,7 +63,7 @@ class Commands extends React.Component {
             } else if (this.state.title.split(/\s+/)[0] === "pwd") {
                 this.props.addCommandPops(pwd(this.props.prompt, this.state.title, this.props.path))
             } else if (this.state.title.split(/\s+/)[0] === "cd") {
-                this.props.changePathProp(cd(this.state.title, this.props.prevPath, this.props.path))
+                this.props.changePathProp(cd(this.props.prompt,this.state.title, this.props.prevPath, this.props.path))
             } else if (this.state.title.split(/\s+/)[0] === "touch") {
                 this.props.addCommandPops(touch(this.props.prompt, this.state.title, this.props.path))
             } else if (this.state.title.split(/\s+/)[0] === "mv" && this.state.title.split(/\s+/).length > 1) {
@@ -336,6 +337,8 @@ class Commands extends React.Component {
                 this.props.addCommandPops(nano(this.props.prompt, this.state.title, this.props.path))
                 this.props.addTitlePops(this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length-1])
                 this.props.showModalProps()
+            }else if (this.state.title.split(/\s+/)[0] === "whoami") {
+                this.props.addCommandPops(whoami(this.props.prompt, this.state.title))
             }
             else {
                 console.log(this.state.title)

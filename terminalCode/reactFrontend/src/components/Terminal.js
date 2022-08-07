@@ -2,21 +2,50 @@ import React from "react";
 
 import { v4 as uuidv4 } from "uuid"
 import Commands from "./Commands";
+import directory from "./directory";
 import file from "./file";
 
 import Modal from "./Modal"
 
 class Terminal extends React.Component {
-    state = {
-        prompt: "user@localhost:~$",
-        prevPath: "/home/user",
-        path: "/home/user",
-        command: [],
-        showModal: false,
-        history: [],
-        title: "",
-        text:""
+
+    constructor(props) {
+        super(props);
+
+        const userName = props.propsToken.split(/\s+/)[this.props.propsToken.split(/\s+/).length - 1]
+
+        this.state = {
+            prompt: userName + "@localhost:~$",
+            prevPath: "/home/" + userName,
+            path: "/home/" + userName,
+            command: [],
+            showModal: false,
+            history: [],
+            title: "",
+            text: ""
+        }
+        file.map(file => {
+            if (file.path === '/home/') {
+                file.path += userName;
+                file.user = userName;
+                file.group = userName;
+            }
+        })
+
+        directory.map(dir  => {
+            if (dir.path === '/home/') {
+                dir.path += userName;
+                dir.user = userName;
+                dir.group = userName;
+            }
+            if(dir.name==='user'){
+                dir.name = userName
+                dir.user = userName;
+                dir.group = userName;
+            }
+        })
     }
+
     onChange = e => {
         this.setState({
             [e.target.name]: e.target.value,
@@ -30,7 +59,7 @@ class Terminal extends React.Component {
     }
 
     addTitle = (title) => {
-        let t= ""
+        let t = ""
         file.map(file => {
             if (file.name === title && file.path === this.state.path) {
                 t += file.text
@@ -126,7 +155,7 @@ class Terminal extends React.Component {
                         history={this.state.history}
                         prevPath={this.state.prevPath}
                     />
-                </div> : <div><Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text}/></div>}
+                </div> : <div><Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text} /></div>}
             </div>
         )
     }

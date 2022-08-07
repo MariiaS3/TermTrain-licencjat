@@ -14,7 +14,9 @@ const nano =(prompt, title, path) =>{
 
         const newFile = {
             name: title.split(/\s+/)[1],
-            permissions: "",
+            permissions: "-rw-r--r--",
+            user:prompt.split(/[@]/)[0],
+            group:prompt.split(/[@]/)[0],
             path: path,
             text: "",
         }

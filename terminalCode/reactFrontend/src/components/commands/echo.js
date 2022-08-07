@@ -13,7 +13,6 @@ const echo = (prompt, title, path) => {
         })
     } else {
         for (var i = 1; i < title.split(/\s+/).length; i++) {
-
             d += title.split(/\s+/)[i]
         }
     }
