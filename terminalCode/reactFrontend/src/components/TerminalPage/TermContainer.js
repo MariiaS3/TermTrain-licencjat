@@ -34,7 +34,7 @@ class TermContainer extends React.Component {
         return (
             <div className="containerTerm">
                 <div>
-                    <Terminal termStyle={termStyle} />
+                    <Terminal termStyle={termStyle} propsToken={this.props.propsToken}/>
                 </div>
                 <div className="termDiv">
                     <ul style={{ paddingTop: '50px', paddingLeft: '30px', listStyle: "none" }}>

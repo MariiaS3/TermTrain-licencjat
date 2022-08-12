@@ -24,7 +24,7 @@ const ls = (prompt, title, path) => {
         if (title.includes('*/')) {
             var isDirectory = false
             dir.map(dir => {
-                if (dir.path === path) {
+                if (dir.path === path && dir.name.charAt(0) !== '.') {
                     d += dir.name + "/     ";
                     isDirectory = true
                 }
@@ -32,7 +32,7 @@ const ls = (prompt, title, path) => {
         } else if (title.includes('/*')) {
             var isDirectory = false
             dir.map(dir => {
-                if (dir.path === '/') {
+                if (dir.path === '/' && dir.name.charAt(0) !== '.') {
                     d += "/" + dir.name + "     ";
                     isDirectory = true
                 }
@@ -44,7 +44,7 @@ const ls = (prompt, title, path) => {
         var isDirectory = false
         if (title.includes('a')) {
             dir.map(dir => {
-                if (dir.path === path) {
+                if (dir.path === path ) {
                     d += dir.permissions + " " + dir.link + " " + dir.user + " " + dir.group + " " + dir.size + " " + dir.time + " " + dir.name + "\n";
                     isDirectory = true
                 }
@@ -53,14 +53,14 @@ const ls = (prompt, title, path) => {
                 d += "\n"
             }
             fil.map(file => {
-                if (file.path === path) {
+                if (file.path === path ) {
                     d += file.permissions + " " + file.link + " " + file.user + " " + file.group + " " + file.size + " " + file.time + " " + file.name + "\n";
                 }
             })
         } else {
             var isDirectory = false
             dir.map(dir => {
-                if (dir.path === path) {
+                if (dir.path === path && dir.name.charAt(0) !== '.') {
                     d += dir.permissions + " " + dir.link + " " + dir.user + " " + dir.group + " " + dir.size + " " + dir.time + " " + dir.name + "\n";
                     isDirectory = true
                 }
@@ -95,7 +95,7 @@ const ls = (prompt, title, path) => {
     } else {
         var isDirectory = false
         dir.map(dir => {
-            if (dir.path === path) {
+            if (dir.path === path && dir.name.charAt(0) !== '.') {
                 d += dir.name + "     ";
                 isDirectory = true
             }

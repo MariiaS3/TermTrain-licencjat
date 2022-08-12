@@ -8,6 +8,7 @@ const rm = (prompt, title, path, index) => {
         for (var i = 2; i < title.split(/\s+/).length; i++) {
             var isDir = false
             var isFile = false
+            
             file.map(f => {
                 if (path === f.path && title.split(/\s+/)[i] === f.name) {
                     isFile = true
@@ -27,6 +28,19 @@ const rm = (prompt, title, path, index) => {
                     }
                 })
                 if (isDir === true) {
+                    if(path!=='/'){
+                        let tempPath = path.split(/[/]/)
+                        let newPath = ""
+                        for(var i=1;i<tempPath.length-1;i++){
+                            newPath += "/"+tempPath[i]
+                        }
+                        console.log(newPath)
+                        directory.map(dir => {
+                            if (newPath === dir.path && tempPath[tempPath.length-1]=== dir.name) {
+                                dir.link= dir.link -1
+                            }
+                        })
+                    }
                     for (var j = 0; j < directory.length; j++) {
                         if (title.split(/\s+/)[i] === directory[j].name) {
                             directory.splice(j, 1);
