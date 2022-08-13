@@ -155,7 +155,7 @@ class Terminal extends React.Component {
                         history={this.state.history}
                         prevPath={this.state.prevPath}
                     />
-                </div> : <div><Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text} /></div>}
+                </div> : <div>{!this.showMan ?<Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text}  /> : <div ></div>}</div>}
             </div>
         )
     }

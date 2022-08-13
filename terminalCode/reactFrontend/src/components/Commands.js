@@ -324,9 +324,9 @@ class Commands extends React.Component {
             } else if (this.state.title.split(/\s+/)[0] === "clear") {
                 this.props.delCommandProps()
             }else if (this.state.title.split(/\s+/)[0] === "tail") {
-                this.props.addCommandPops(tail(this.props.prompt, this.state.title, this.props.history))
+                this.props.addCommandPops(tail(this.props.prompt, this.state.title, this.props.path))
             }else if (this.state.title.split(/\s+/)[0] === "head") {
-                this.props.addCommandPops(head(this.props.prompt, this.state.title, this.props.history))
+                this.props.addCommandPops(head(this.props.prompt, this.state.title, this.props.path))
             }else if (this.state.title.split(/\s+/)[0] === "echo") {
                 this.props.addCommandPops(echo(this.props.prompt, this.state.title, this.props.path))
             }else if (this.state.title.split(/\s+/)[0] === "wc") {
