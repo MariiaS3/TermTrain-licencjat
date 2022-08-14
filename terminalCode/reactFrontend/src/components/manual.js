@@ -1,153 +1,175 @@
-const command = {
-    info: "W manualu wyświetlane są tylko komendy i flagi z których można korzystać w tym terminalu (które zostale zaprogramowane)\n",
-    ls: {
-        name: "ls - lista zawatości katalogu",
-        skladnia: "ls [OPTION]... [FILE]..." ,
-        info: "Wyświetla informacje o PLIKACH (bieżący katalog domyślnie). Sortuj wpisy alfabetycznie",
-        flags:` -a  wyświetla wszystkie pliki, w tym pliki ukryte, zaczynające się od '.' \n 
-                -d  wyświetla katalogi a nie ich zawartość \n
-                -l  wyświetli więcej informacji o plikach \n
-                -r  odwrotna kolejność podczas sortowania \n
-                -S  sortuj według rozmiaru pliku \n
+const command = [
+    {
+        id:"",
+        name:"",
+        skladnia:"",
+        info: "W manualu wyświetlane są tylko komendy i flagi z których można korzystać w tym terminalu (które zostale zaprogramowane)\n",
+        flags:""
+    },
+     {
+        id:"ls",
+        name: "ls - lista zawatości katalogu \n",
+        skladnia: "ls [OPTION]... [FILE]...\n" ,
+        info: "Wyświetla informacje o PLIKACH (bieżący katalog domyślnie). Sortuj wpisy alfabetycznie\n",
+        flags:` -a  wyświetla wszystkie pliki, w tym pliki ukryte, zaczynające się od '.' 
+                -d  wyświetla katalogi a nie ich zawartość 
+                -l  wyświetli więcej informacji o plikach 
+                -r  odwrotna kolejność podczas sortowania 
+                -S  sortuj według rozmiaru pliku 
                 --help`
     },
-    cd: {
-        name: "cd - zmienia katalog roboczy(w prawdziwym manualy nie ma opisukomendy cd)",
-        skladnia: "cd [OPTION / DIRECTORY] " ,
-        info: "Jeśli podano DIRECTORY, zmienia katalog roboczy powłoki na DIRECTORY. Domyślnie zmienia się na HOME (zmienna powłoki).",
-        flags:` ..  przechodzi do katalogu o jeden wyższego w drzewie katalogów niż obecny\n
+     {
+        id:"cd",
+        name: "cd - zmienia katalog roboczy(w prawdziwym manualy nie ma opisukomendy cd)\n",
+        skladnia: "cd [OPTION / DIRECTORY] \n" ,
+        info: "Jeśli podano DIRECTORY, zmienia katalog roboczy powłoki na DIRECTORY. Domyślnie zmienia się na HOME (zmienna powłoki).\n",
+        flags:` ..  przechodzi do katalogu o jeden wyższego w drzewie katalogów niż obecny
                 -   wraca do poprzedniego katalogu`
     },
-    pwd: {
-        name: "pwd - wypisz nazwę bieżącego/roboczego katalogu",
-        skladnia: "pwd [OPTION]... " ,
-        info: "Wydrukuje pełną nazwę pliku bieżącego katalogu roboczego.",
+     {
+        id:"pwd",
+        name: "pwd - wypisz nazwę bieżącego/roboczego katalogu\n",
+        skladnia: "pwd [OPTION]... \n" ,
+        info: "Wydrukuje pełną nazwę pliku bieżącego katalogu roboczego.\n",
         flags:` --help`
     },
-    cat: {
-        name: "cat - łączyć pliki i drukuje na standardowym wyjściu",
-        skladnia: "cat [OPTION]... [FILE]..." ,
-        info: "łączy PLIK(i) i wdrukuje na standardowym wyjściu.",
-        flags:` -n  numeruje wszystkie linie wyjściowe \n 
+    {
+        id:"cat",
+        name: "cat - łączyć pliki i drukuje na standardowym wyjściu\n",
+        skladnia: "cat [OPTION]... [FILE]...\n" ,
+        info: "łączy PLIK(i) i wdrukuje na standardowym wyjściu.\n",
+        flags:` -n  numeruje wszystkie linie wyjściowe  
                 --help`
     },
-    cp: {
-        name: "cp - kopiuje pliki i katalogi",
-        skladnia: "cp [OPTION]... SOURCE... DIRECTORY" ,
-        info: "Skopiuj SOURCE do DIRECTORY lub wiele SOURCE(s) do DIRECTORY.",
-        flags:` -i  powiadamia przed nadpisaniem istniejącego pliku\n
-                -n  nie nadpisuje istniejącego pliku\n
-                -f  usuwa istniejące pliki docelowe, nigdy nie pyta\n
-                -l  łączy pliki zamiast nadpisywać\n
+     {
+        id:"cp",
+        name: "cp - kopiuje pliki i katalogi\n",
+        skladnia: "cp [OPTION]... SOURCE... DIRECTORY\n" ,
+        info: "Skopiuj SOURCE do DIRECTORY lub wiele SOURCE(s) do DIRECTORY.\n",
+        flags:` -i  powiadamia przed nadpisaniem istniejącego pliku
+                -n  nie nadpisuje istniejącego pliku
+                -f  usuwa istniejące pliki docelowe, nigdy nie pyta
+                -l  łączy pliki zamiast nadpisywać
                 --help`
     },
-    mv: {
-        name: "mv - przenosi lub zmienia nazwy plików ",
-        skladnia: "mv [OPTION]... SOURCE... DIRECTORY" ,
-        info: "Zmień nazwę SOURCE na DEST lub przenieś SOURCE(s) do DIRECTORY.",
-        flags:` -i  powiadamia przed nadpisaniem istniejącego pliku\n
-                -n  nie nadpisuje istniejącego pliku\n
-                -f  Nie powiadamia przed nadpisaniem istniejącego pliku\n
+     {
+        id:"mv",
+        name: "mv - przenosi lub zmienia nazwy plików\n ",
+        skladnia: "mv [OPTION]... SOURCE... DIRECTORY\n" ,
+        info: "Zmień nazwę SOURCE na DEST lub przenieś SOURCE(s) do DIRECTORY.\n",
+        flags:` -i   powiadamia przed nadpisaniem istniejącego pliku
+                -n   nie nadpisuje istniejącego pliku
+                -f   nie powiadamia przed nadpisaniem istniejącego pliku
                 --help`  
     },
-    mkdir: {
-        name: "Tworzy katalogi",
-        skladnia: "mkdir [OPTION]... DIRECTORY..." ,
-        info: "Utwórz KATALOG(I), jeśli jeszcze nie istnieją.",
+     {
+        id:"mkdir",
+        name: "mkdir - tworzy katalogi\n",
+        skladnia: "mkdir [OPTION]... DIRECTORY...\n" ,
+        info: "Utwórz KATALOG(I), jeśli jeszcze nie istnieją.\n",
         flags:` --help`  
     },
-    rmdir: {
-        name: "rmdir - usuwa puste katalogi",
-        skladnia: "mkdir [OPTION]... DIRECTORY..." ,
-        info: "Usuwa KATALOG(-i), jeśli są puste.",
+     {
+        id:"rmdir",
+        name: "rmdir - usuwa puste katalogi\n",
+        skladnia: "mkdir [OPTION]... DIRECTORY...\n" ,
+        info: "Usuwa KATALOG(-i), jeśli są puste.\n",
         flags:` --help`  
     },
-    rm: {
-        name: "rm - usuwa pliki lub katalogi",
-        skladnia: "rm [OPTION]... [FILE]..." ,
-        info: "Usuwa pliki lub katalogi",
-        flags:` -i  pyta przed każdym usunięciem.\n
-                -r  usuwa katalogi i ich zawartość.\n
-                -f  ignoruje ​​nieistniejące pliki, nigdy nie pyta.\n
+    {
+        id:"rm",
+        name: "rm - usuwa pliki lub katalogi\n",
+        skladnia: "rm [OPTION]... [FILE]...\n" ,
+        info: "Usuwa pliki lub katalogi\n",
+        flags:` -i  pyta przed każdym usunięciem.
+                -r  usuwa katalogi i ich zawartość.
+                -f  ignoruje nieistniejące pliki, nigdy nie pyta.
                 --help`  
     },
-    touch: {
-        name: "touch - zmienia znaczniki czasu plików",
-        skladnia: "touch [OPTION]... FILE...",
-        info: `Aktualizuje czasy dostępu i modyfikacji każdego PLIKU do Obecny czas. Argument FILE, który nie istnieje, jest tworzony jako pusty.`,
-        flags:` -a  zmienia tylko czas dostępu..\n
-                -c  nie tworzy żadnych plików.\n
-                -m  zmienia tylko czas modyfikacji. \n
+    {
+        id:"touch",
+        name: "touch - zmienia znaczniki czasu plików\n",
+        skladnia: "touch [OPTION]... FILE...\n",
+        info: `Aktualizuje czasy dostępu i modyfikacji każdego PLIKU do Obecny czas. Argument FILE, który nie istnieje, jest tworzony jako pusty.\n`,
+        flags:` -a  zmienia tylko czas dostępu..
+                -c  nie tworzy żadnych plików.
+                -m  zmienia tylko czas modyfikacji. 
                 --help`  
     },
-    history: {
-        name: "history -  wyświetla historię wiersza poleceń",
-        skladnia: "history [OPTION]...",
-        info: ` Wyświetla historię wiersza poleceń.`,
-        flags:` -c   czysci liste historii.\n
+    {
+        id:"history",
+        name: "history -  wyświetla historię wiersza poleceń\n",
+        skladnia: "history [OPTION]...\n",
+        info: ` Wyświetla historię wiersza poleceń.\n`,
+        flags:` -c   czysci liste historii.
                 --help`  
     },
-    clear: {
-        name: "clear -  czyści ekran terminala",
+    {
+        id:"clear",
+        name: "clear -  czyści ekran terminala\n",
         skladnia: "",
-        info: ` Czyści ekran terminala`,
+        info: ` Czyści ekran terminala\n`,
         flags:``  
     },
-    tail: {
-        name: "tail -  wyświetla ostatnią część plików",
-        skladnia: "tail [OPTION]... [FILE]...",
-        info: ` Wydrukuj ostatnie 10 wierszy każdego PLIKU na standardowe wyjście.\n Z więcej niż jeden PLIK, poprzedź każdy nagłówkiem podając plik
-        Nazwa.
- `,
-        flags:` -n   wypisuje ostatnie N ​​wierszy.\n
+    {
+        id:"tail",
+        name: "tail -  wyświetla ostatnią część plików\n",
+        skladnia: "tail [OPTION]... [FILE]...\n",
+        info: ` Wydrukuj ostatnie 10 wierszy każdego PLIKU na standardowe wyjście.\n Z więcej niż jeden PLIK, poprzedź każdy nagłówkiem podając plik Nazwa.\n`,
+        flags:` -n   wypisuje ostatnie N wierszy.
                 --help`  
     },
-    head: {
-        name: "head -  wyświetla pierwszą część plików",
-        skladnia: "head [OPTION]... [FILE]...",
-        info: ` Wydrukuj pierwsze 10 wierszy każdego PLIKU na standardowe wyjście.\n Z więcej niż jeden PLIK, poprzedź każdy nagłówkiem podając plik
-        Nazwa.
- `,
-        flags:` -n   wypisuje ostatnie N ​​wierszy.\n
+    {
+        id:"head",
+        name: "head -  wyświetla pierwszą część plików\n",
+        skladnia: "head [OPTION]... [FILE]...\n",
+        info: ` Wydrukuj pierwsze 10 wierszy każdego PLIKU na standardowe wyjście.\n Z więcej niż jeden PLIK, poprzedź każdy nagłówkiem podając plik Nazwa.\n `,
+        flags:` -n   wypisuje ostatnie N wierszy.
                 --help`  
     },
-    date: {
-        name: "date -  wydrukuj datę i godzinę systemową",
+    {
+        id:"date",
+        name: "date -  wydrukuj datę i godzinę systemową\n",
         skladnia: "",
-        info: ` Wyświetl aktualny czas i datę`,
+        info: ` Wyświetl aktualny czas i datę\n`,
         flags:``  
     },
-    nano: {
-        name: "nano - edytor",
+    {
+        id:"nano",
+        name: "nano - edytor\n",
         skladnia: "",
-        info: `Edytor`,
+        info: `Aby zapisać wprowadzone dane natiśnij Ctrl+q (w prawdziwym terminalu Ctrl+o) 
+        aby wyjść naciśnij Ctrl+x`,
         flags:``  
     },
-    echo: {
-        name: "echo - wyświetla linię tekstu",
-        skladnia: "echo [STRING]...",
-        info: `Echo STRING(i) na standardowe wyjście.`,
+     {
+        id:"echo",
+        name: "echo - wyświetla linię tekstu\n",
+        skladnia: "echo [STRING]...\n",
+        info: `Echo STRING(i) na standardowe wyjście.\n`,
         flags:`--help`  
     },
-    wc: {
-        name: "wc - wypisuje liczbę nowych linii, słów i bajtów dla każdego pliku",
-        skladnia: "wc [OPTION]... [FILE]...",
-        info: `Wyświetlaj liczbę nowych wierszy, słów i bajtów dla każdego PLIKU oraz sumę
-        wiersz,\n
+    {
+        id:"wc",
+        name: "wc - wypisuje liczbę nowych linii, słów i bajtów dla każdego pliku\n",
+        skladnia: "wc [OPTION]... [FILE]...\n",
+        info: `Wyświetlaj liczbę nowych wierszy, słów i bajtów dla każdego PLIKU oraz sumę wierszy,\n
         Poniższe opcje mogą służyć do wybrania, które zliczenia mają być drukowane,
         zawsze w następującej kolejności: nowa linia, słowo, znak, bajt,\n
-        maksymalna długość linii. `,
-        flags:` -c  drukuje tylko liczbę bajtów.\n
-                -l  drukuje tylko liczbę wierszy.\n
-                -m  drukuje tylko liczbę znaków.\n
-                -w  drukuje tylko liczbę słów.\n
+        maksymalna długość linii.\n `,
+        flags:` -c  drukuje tylko liczbę bajtów.
+                -l  drukuje tylko liczbę wierszy.
+                -m  drukuje tylko liczbę znaków.
+                -w  drukuje tylko liczbę słów.
                 --help`  
     },
-    whoami: {
-        name: "whoami - drukuje identyfikator użytkownika",
-        skladnia: "whoami [OPTION]...",
-        info: `Wydrukuj nazwę użytkownika powiązaną z aktualnym aktywnym użytkownikiem.`,
+    {
+        id:"whoami",
+        name: "whoami - drukuje identyfikator użytkownika\n",
+        skladnia: "whoami [OPTION]...\n",
+        info: `Wydrukuj nazwę użytkownika powiązaną z aktualnym aktywnym użytkownikiem.\n`,
         flags:`--help`  
     },
-}
+]
+
 export default command
