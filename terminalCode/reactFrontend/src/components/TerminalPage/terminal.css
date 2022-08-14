@@ -12,6 +12,7 @@
     width: 150px;
     min-height: 100%;
     display: flex;
+    overflow: auto;
     flex-direction: column;
     background-color: #eafaf3;
 

@@ -1,4 +1,5 @@
 import file from "../file"
+import command from "../manual"
 
 
 const nano =(prompt, title, path) =>{
@@ -9,8 +10,18 @@ const nano =(prompt, title, path) =>{
             f.time = "";
             addFile = false
         }
-    })
-    if (title.split(/\s+/)[1] !== "" && addFile === true) {
+    }) 
+    if (title.includes('--help')) {
+        d += `\nTu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu. \nŻeby poznać więcej informacji, które można wykorzystać w prawdziwym terminalu proszę ptrzejść ma stronę:
+         https://linux.die.net/man/1/nano \n\n`
+        command.map(cmd => {
+            if (cmd.id === "nano") {
+                d += cmd.skladnia + " \n "
+                d += cmd.info + " \n "
+                d += cmd.flags
+            }
+        })
+    }else if (title.split(/\s+/)[1] !== "" && addFile === true) {
 
         const newFile = {
             name: title.split(/\s+/)[1],

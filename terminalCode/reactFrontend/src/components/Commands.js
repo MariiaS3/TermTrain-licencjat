@@ -33,7 +33,9 @@ class Commands extends React.Component {
         index: 2,
         indexYes: [],
         indexNo: [],
-        indexStop: 0
+        indexStop: 0,
+        scrollUp: -1,
+        overwrite:""
     }
 
 
@@ -44,8 +46,6 @@ class Commands extends React.Component {
     };
 
     listenCmd = (e) => {
-
-        console.log(e)
         if (e === "Enter") {
             if (this.state.showAlet === false) {
                 var d = this.props.prompt + " " + this.state.title + "\n";
@@ -63,29 +63,37 @@ class Commands extends React.Component {
             } else if (this.state.title.split(/\s+/)[0] === "pwd") {
                 this.props.addCommandPops(pwd(this.props.prompt, this.state.title, this.props.path))
             } else if (this.state.title.split(/\s+/)[0] === "cd") {
-                this.props.changePathProp(cd(this.props.prompt,this.state.title, this.props.prevPath, this.props.path))
+                let res = cd(this.props.prompt, this.state.title, this.props.prevPath, this.props.path)
+                this.props.changePathProp(res[0])
+                this.props.addCommandPops(res[1])
             } else if (this.state.title.split(/\s+/)[0] === "touch") {
                 this.props.addCommandPops(touch(this.props.prompt, this.state.title, this.props.path))
-            } else if (this.state.title.split(/\s+/)[0] === "mv" && this.state.title.split(/\s+/).length > 1) {
+            }else if (this.state.title.split(/\s+/)[0] === "mkdir") {
+                this.props.addCommandPops(mkdir(this.props.prompt, this.state.title, this.props.path))
+            } else if (this.state.title.split(/\s+/)[0] === "rmdir") {
+                this.props.addCommandPops(rmdir(this.props.prompt, this.state.title, this.props.path))
+            } else if (this.state.title.split(/\s+/)[0] === "mv" ) {
                 if (this.state.title.includes('-i')) {
                     if (this.state.prompt === 'yes') {
                         let d = mv(this.props.prompt, this.state.title, this.props.path);
-                        let m = "mv: overwrite '" + `${this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}` + "'?" + this.state.prompt;
+                        let m = this.state.overwrite + this.state.prompt;
                         this.props.addCommandPops(m)
                         this.setState({
                             prompt: "",
                             showAlet: false,
                             command: this.state.title,
-                            title: ""
+                            title: "",
+                            overwrite:""
                         })
                     } else if (this.state.prompt === 'no') {
-                        let m = "mv: overwrite '" + `${this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}` + "'?" + this.state.prompt;
+                        let m = this.state.overwrite + this.state.prompt;
                         this.props.addCommandPops(m)
                         this.setState({
                             prompt: "",
                             showAlet: false,
                             command: this.state.title,
-                            title: ""
+                            title: "",
+                            overwrite:"",
                         })
                     } else {
                         var isFile = false;
@@ -111,20 +119,24 @@ class Commands extends React.Component {
                             this.props.addCommandPops(d)
                             this.setState({
                                 showAlet: true,
+                                overwrite: "mv: overwrite '" + `${this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}` + "'?",
                             })
                         } else {
                             this.props.addCommandPops(mv(this.props.prompt, this.state.title, this.props.path))
+                            this.setState({
+                                prompt: "",
+                                showAlet: false,
+                                command: this.state.title,
+                                title: "",
+                                overwrite:"",
+                            })
                         }
                     }
                 }
                 else {
                     this.props.addCommandPops(mv(this.props.prompt, this.state.title, this.props.path))
                 }
-            } else if (this.state.title.split(/\s+/)[0] === "mkdir") {
-                this.props.addCommandPops(mkdir(this.props.prompt, this.state.title, this.props.path))
-            } else if (this.state.title.split(/\s+/)[0] === "rmdir") {
-                this.props.addCommandPops(rmdir(this.props.prompt, this.state.title, this.props.path))
-            } else if (this.state.title.split(/\s+/)[0] === "rm") {
+            }  else if (this.state.title.split(/\s+/)[0] === "rm") {
                 if (this.state.title.includes('-i')) {
                     if (this.state.title.split(/\s+/).length > 2 && this.state.title.split(/\s+/).length > this.state.index) {
                         let j = 0
@@ -185,7 +197,8 @@ class Commands extends React.Component {
                                 indexStop: n + 1,
                                 response: tempRes,
                                 indexYes: tempYes,
-                                indexNo: tempNo
+                                indexNo: tempNo,
+                                overwrite: "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?"
                             })
                         } else {
                             this.props.addCommandPops(m)
@@ -194,13 +207,14 @@ class Commands extends React.Component {
                                 showAlet: true,
                                 indexStop: 2,
                                 indexYes: tempYes,
-                                indexNo: tempNo
+                                indexNo: tempNo,
+                                overwrite: "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?"
                             })
                         }
 
                     } else {
                         let isFile = false;
-                        let m = "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?" + this.state.prompt;
+                        let m = this.state.overwrite + this.state.prompt;
                         if (this.state.prompt === "yes") {
                             rm(this.props.prompt, this.state.title, this.props.path, this.state.indexStop)
                         }
@@ -216,6 +230,7 @@ class Commands extends React.Component {
                                     showAlet: true,
                                     indexStop: this.state.indexStop + 1,
                                     prompt: "",
+                                    overwrite: "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?"
                                 })
                             } else {
                                 let n;
@@ -238,6 +253,7 @@ class Commands extends React.Component {
                                         showAlet: true,
                                         indexStop: n + 1,
                                         prompt: "",
+                                        overwrite: "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?"
                                     })
                                 } else {
                                     this.props.addCommandPops(m)
@@ -246,7 +262,8 @@ class Commands extends React.Component {
                                         showAlet: false,
                                         indexStop: 0,
                                         title: "",
-                                        prompt: ""
+                                        prompt: "",
+                                        overwrite:""
                                     })
                                 }
                             }
@@ -257,36 +274,38 @@ class Commands extends React.Component {
                                 showAlet: false,
                                 indexStop: 0,
                                 title: "",
-                                promp: "",
+                                prompt: "",
+                                overwrite:""
                             })
                         }
                     }
 
                 }else {
                     this.props.addCommandPops(rm(this.props.prompt, this.state.title, this.props.path, 0))
+                  
                 }
-            } else if (this.state.title.split(/\s+/)[0] === "cat") {
-                this.props.addCommandPops(cat(this.props.prompt, this.state.title, this.props.path))
             } else if (this.state.title.split(/\s+/)[0] === "cp") {
                 if (this.state.title.includes('-i')) {
                     if (this.state.prompt === 'yes') {
                         let d = cp(this.props.prompt, this.state.title, this.props.path);
-                        let m = "cp: overwrite '" + `${this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}` + "'?" + this.state.prompt;
+                        let m = this.state.overwrite + this.state.prompt;
                         this.props.addCommandPops(m)
                         this.setState({
                             prompt: "",
                             showAlet: false,
                             command: this.state.title,
-                            title: ""
+                            title: "",
+                            overwrite:""
                         })
                     } else if (this.state.prompt === 'no') {
-                        let m = "cp: overwrite '" + `${this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}` + "'?" + this.state.prompt;
+                        let m = this.state.overwrite + this.state.prompt;
                         this.props.addCommandPops(m)
                         this.setState({
                             prompt: "",
                             showAlet: false,
                             command: this.state.title,
-                            title: ""
+                            title: "",
+                            overwrite:""
                         })
                     } else {
                         var isFile = false;
@@ -312,48 +331,91 @@ class Commands extends React.Component {
                             this.props.addCommandPops(d)
                             this.setState({
                                 showAlet: true,
+                                overwrite: "cp: overwrite '" + `${this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}` + "'?" 
                             })
                         } else {
                             this.props.addCommandPops(cp(this.props.prompt, this.state.title, this.props.path))
+                            this.setState({
+                                command: this.state.title,
+                                title: "",
+                            })
                         }
                     }
                 }
                 else {
                     this.props.addCommandPops(cp(this.props.prompt, this.state.title, this.props.path))
                 }
+            }else if (this.state.title.split(/\s+/)[0] === "cat") {
+                this.props.addCommandPops(cat(this.props.prompt, this.state.title, this.props.path))
             } else if (this.state.title.split(/\s+/)[0] === "clear") {
                 this.props.delCommandProps()
-            }else if (this.state.title.split(/\s+/)[0] === "tail") {
-                this.props.addCommandPops(tail(this.props.prompt, this.state.title, this.props.history))
-            }else if (this.state.title.split(/\s+/)[0] === "head") {
-                this.props.addCommandPops(head(this.props.prompt, this.state.title, this.props.history))
-            }else if (this.state.title.split(/\s+/)[0] === "echo") {
+            } else if (this.state.title.split(/\s+/)[0] === "tail") {
+                this.props.addCommandPops(tail(this.props.prompt, this.state.title, this.props.path))
+            } else if (this.state.title.split(/\s+/)[0] === "head") {
+                this.props.addCommandPops(head(this.props.prompt, this.state.title, this.props.path))
+            } else if (this.state.title.split(/\s+/)[0] === "echo") {
                 this.props.addCommandPops(echo(this.props.prompt, this.state.title, this.props.path))
-            }else if (this.state.title.split(/\s+/)[0] === "wc") {
+            } else if (this.state.title.split(/\s+/)[0] === "wc") {
                 this.props.addCommandPops(wc(this.props.prompt, this.state.title, this.props.path))
-            }else if (this.state.title.split(/\s+/)[0] === "date") {
+            } else if (this.state.title.split(/\s+/)[0] === "date") {
                 this.props.addCommandPops(date(this.props.prompt, this.state.title))
-            }else if (this.state.title.split(/\s+/)[0] === "nano") {
+            } else if (this.state.title.split(/\s+/)[0] === "nano") {
                 this.props.addCommandPops(nano(this.props.prompt, this.state.title, this.props.path))
-                this.props.addTitlePops(this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length-1])
-                this.props.showModalProps()
-            }else if (this.state.title.split(/\s+/)[0] === "whoami") {
+                if(!this.state.title.split(/\s+/)[1]==="--help"){
+                    this.props.addTitlePops(this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])
+                    this.props.showModalProps()
+                }
+            } else if (this.state.title.split(/\s+/)[0] === "man") {
+                this.props.addManCommandProp(this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])
+                this.props.showManProps()
+            } else if (this.state.title.split(/\s+/)[0] === "whoami") {
                 this.props.addCommandPops(whoami(this.props.prompt, this.state.title))
             }
             else {
                 console.log(this.state.title)
-                var d = this.props.prompt + " " + this.state.title;
+                d = this.props.prompt + " " + this.state.title + "\n";
+                d += this.state.title + ": nie znaleziono polecenia"
                 this.props.addCommandPops(d)
             }
-            if ((!(this.state.title.split(/\s+/)[0] === "mv" && this.state.title.includes('-i'))) && (!(this.state.title.split(/\s+/)[0] === "rm" && this.state.title.includes('-i')))) {
+            if ((!(this.state.title.split(/\s+/)[0] === "mv" && this.state.title.includes('-i'))) && (!(this.state.title.split(/\s+/)[0] === "rm" && this.state.title.includes('-i'))) && (!(this.state.title.split(/\s+/)[0] === "cp" && this.state.title.includes('-i')))) {
+                console.log(this.state.title)
                 this.setState({
                     command: this.state.title,
-                    title: ""
+                    title: "",
                 })
             }
         }
     }
+    scrollHistoryUp = () => {
+        if (this.props.history.length !== 0) {
+            if (this.state.scrollUp === -1) {
+                this.setState({
+                    title: this.props.history[this.props.history.length - 1].title,
+                    scrollUp: this.props.history.length - 1
+                })
+            } else if (this.state.scrollUp === 0) {
 
+            } else {
+                this.setState({
+                    title: this.props.history[this.state.scrollUp - 1].title,
+                    scrollUp: this.state.scrollUp - 1
+                })
+            }
+        }
+    }
+    scrollHistoryDown = () => {
+        if (this.state.scrollUp === this.props.history.length - 1) {
+            this.setState({
+                title: "",
+                scrollUp: -1
+            })
+        } else if (this.state.scrollUp !== -1) {
+            this.setState({
+                title: this.props.history[this.state.scrollUp + 1].title,
+                scrollUp: this.state.scrollUp + 1
+            })
+        }
+    }
     render() {
 
         return (
@@ -368,12 +430,19 @@ class Commands extends React.Component {
                         onKeyDown={e => {
                             if (e.key === "Enter") {
                                 this.listenCmd("Enter")
+                                this.setState({
+                                    scrollUp: -1
+                                })
                                 this.props.addHistoryProps(this.state.title)
+                            }else if (e.key === "ArrowUp") {
+                                this.scrollHistoryUp()
+                            } else if (e.key === "ArrowDown") {
+                                this.scrollHistoryDown()
                             }
                         }}>
                     </input> </div> : <div>
                     <span style={{ color: 'white' }}>
-                        '{this.state.title.split(/\s+/)[0]}': overwrite '{this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}'?
+                        {this.state.overwrite}
                     </span>
                     <input type="text" className="inputCmd"
                         value={this.state.prompt}
@@ -394,6 +463,7 @@ class Commands extends React.Component {
 
 
 export default Commands
+
 
 
 // handleClick() {

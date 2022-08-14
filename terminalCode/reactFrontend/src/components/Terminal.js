@@ -4,8 +4,11 @@ import { v4 as uuidv4 } from "uuid"
 import Commands from "./Commands";
 import directory from "./directory";
 import file from "./file";
+import Man from "./Man";
+import command from "./manual";
 
 import Modal from "./Modal"
+
 
 class Terminal extends React.Component {
 
@@ -20,9 +23,10 @@ class Terminal extends React.Component {
             path: "/home/" + userName,
             command: [],
             showModal: false,
+            showMan: false,
             history: [],
             title: "",
-            text: ""
+            text: "",
         }
         file.map(file => {
             if (file.path === '/home/') {
@@ -32,13 +36,13 @@ class Terminal extends React.Component {
             }
         })
 
-        directory.map(dir  => {
+        directory.map(dir => {
             if (dir.path === '/home/') {
                 dir.path += userName;
                 dir.user = userName;
                 dir.group = userName;
             }
-            if(dir.name==='user'){
+            if (dir.name === 'user') {
                 dir.name = userName
                 dir.user = userName;
                 dir.group = userName;
@@ -65,6 +69,7 @@ class Terminal extends React.Component {
                 t += file.text
             }
         })
+
         console.log(t)
         this.setState({
             title: title,
@@ -110,6 +115,18 @@ class Terminal extends React.Component {
             showModal: !this.state.showModal
         });
     };
+    addManCommand = (text) => {
+        this.setState({
+            text: text
+        })
+    }
+    showMan = () => {
+        this.setState({
+            showModal: !this.state.showModal,
+            showMan: !this.state.showMan,
+
+        });
+    };
     saveText = (text) => {
         console.log(text)
         file.map(file => {
@@ -118,6 +135,8 @@ class Terminal extends React.Component {
             }
         })
     };
+
+ 
     render() {
 
         return (
@@ -134,7 +153,7 @@ class Terminal extends React.Component {
                                                 {cmd.text.includes(":~#") ? cmd.text.split(":~#")[1] : cmd.text.split(":~$")[1]}
                                             </span>
                                         </span> :
-                                        <span style={{ color: "#D7DEDE" }}>{cmd.text}</span>}
+                                        <span style={{ color: "#D7DEDE", paddingLeft:"10px" }}>{cmd.text}</span>}
                                 </li>
                             )}
                         </ul>
@@ -149,13 +168,15 @@ class Terminal extends React.Component {
                         addTitlePops={this.addTitle}
                         changePathProp={this.changePath}
                         showModalProps={this.showModal}
+                        showManProps={this.showMan}
+                        addManCommandProp={this.addManCommand}
                         prompt={this.state.prompt}
                         path={this.state.path}
                         sleep={this.sleep}
                         history={this.state.history}
                         prevPath={this.state.prevPath}
                     />
-                </div> : <div><Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text} /></div>}
+                </div> : <div>{!this.showMan ? <Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text} /> : <Man onClose={this.showMan} cmd={this.state.text} />} </div>}
             </div>
         )
     }
