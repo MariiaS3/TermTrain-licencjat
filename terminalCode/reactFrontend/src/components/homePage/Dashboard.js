@@ -16,10 +16,9 @@ class Dashboard extends React.Component {
 
     async componentDidMount() {
         const id = (this.props.propsToken).split(':')
-        const LIST_RESULTS_URL = "http://localhost:8080/api/user/get-results/" + `${id[0]}`;
+        const LIST_RESULTS_URL = "http://localhost:8080/api/user/get-results/" + id[0];
         const res = await axios.post(LIST_RESULTS_URL, id[0])
         this.setState({ results: res.data })
-        console.log(this.state.results)
     }
 
     render() {
@@ -37,7 +36,6 @@ class Dashboard extends React.Component {
             textAlign: 'center',
             fontSize: '16px',
             marginTop: '30px',
-            textAlign: 'center',
         }
         return (
             <div className="dashboard">
@@ -53,21 +51,23 @@ class Dashboard extends React.Component {
                 </div>
                 <div className="panelsDash">
                     <div className="panelDash" id="result-panel">
-                        <div  className="array">
-                        <table>
-                            <thead >
-                                <td style={{ width: '500px', height: '40px' }}>Name</td>
-                                <td style={{ width: '500px', height: '40px' }}>Wynik</td>
-                                <td style={{ width: '500px', height: '40px' }}>Data</td>
-                                {this.state.results.map(result => (
-                                    <tr key={uuidv4()}>
-                                        <td style={{ width: '500px', height: '40px' }}>{result.name_quiz}</td>
-                                        <td style={{ width: '500px', height: '40px' }}>{result.result}</td>
-                                        <td style={{ width: '500px', height: '40px' }}>{result.data}</td>
+                        <div className="array">
+                            <table>
+                                <thead >
+                                    <tr>
+                                        <td style={{ width: '400px', height: '30px' }}>Name</td>
+                                        <td style={{ width: '400px', height: '30px' }}>Wynik</td>
+                                        <td style={{ width: '400px', height: '30px' }}>Data</td>
                                     </tr>
-                                ))}
-                            </thead>
-                        </table>
+                                    {this.state.results.map(result => (
+                                        <tr key={uuidv4()}>
+                                            <td style={{ width: '400px', height: '30px' }}>{result.name_quiz}</td>
+                                            <td style={{ width: '400px', height: '30px' }}>{result.result}</td>
+                                            <td style={{ width: '400px', height: '30px' }}>{result.data}</td>
+                                        </tr>
+                                    ))}
+                                </thead>
+                            </table>
                         </div>
                     </div>
                     <div className="panelDash" id="pass-panel">

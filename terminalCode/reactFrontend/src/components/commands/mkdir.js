@@ -1,20 +1,30 @@
 
 import directory from "../directory"
+import command from "../manual"
 
 const mkdir = (prompt, title, path) => {
     var d = prompt + " " + title
     if (title.split(/\s+/).length<2) {
-        d += "\nmkdir:" + " brakuje operand \n"
-        d += "Spróbuj \'mkdir --help\' po więcej informacji"
+        d += "\nmkdir: brakuje operand \nSpróbuj 'mkdir --help' po więcej informacji"
+    } else if (title.includes('--help')) {
+        d += `\nTu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu. \nŻeby poznać więcej informacji, które można wykorzystać w prawdziwym terminalu proszę ptrzejść do jednej ze stron:
+        https://man7.org/linux/man-pages/man1/mkdir.1.html \n https://linux.die.net/man/1/mkdir \n\n`
+        for (let k = 0; k < command.length; k++) {
+            if (command[k].id === "mkdir") {
+                d += command[k].skladnia + " \n "
+                d += command[k].info + " \n "
+                d += command[k].flags
+            }
+        }
     }
     else  if(!title.includes('-')) {
         var addDir = true
-        directory.map(dir => {
-            if (path === dir.path && title.split(/\s+/)[1] === dir.name) {
+        for (let k = 0; k < directory.length; k++) {
+            if (path === directory[k].path && title.split(/\s+/)[1] === directory[k].name) {
                 addDir = false
-                d += "\nmkdir:" + " nie można utworzyć katalogu "+ title.split(/\s+/)[1] + ": Plik istnieje"
+                d += "\nmkdir: nie można utworzyć katalogu "+ title.split(/\s+/)[1] + ": Plik istnieje"
             }
-        })
+        }
         if (title.split(/\s+/)[1] !== "" && addDir === true) {
 
             const newDir = {
@@ -26,23 +36,22 @@ const mkdir = (prompt, title, path) => {
                 size: 4096,
                 path: path,
             }
-            console.log(path.split('/'))
 
             let tempPath = ""
-            for (var i = 1; i < path.split('/').length - 1; i++) {
+            for (let i = 1; i < path.split('/').length - 1; i++) {
                 tempPath += "/" + path.split('/')[i]
             }
-            console.log(tempPath)
-            directory.map(dir => {
-                if (dir.name === path.split('/')[path.split('/').length - 1] && dir.path === tempPath) {
-                    dir.link = dir.link + 1
+
+            for (let k = 0; k < directory.length; k++) {
+                if (directory[k].name === path.split('/')[path.split('/').length - 1] && directory[k].path === tempPath) {
+                    directory[k].link = directory[k].link + 1
                 }
-            })
+            }
             directory.push(newDir)
         }
     }else{
-        d+= "mkdir:"+ " nieprawidłowa opcja -- \'"+  title.split(/\s+/)[title.split(/\s+/).length-1][1]+"\'\n"
-        d+= "Spróbuj \'mhdir --help\' po więcej informacji"
+        d+= "mkdir: nieprawidłowa opcja -- '"+  title.split(/\s+/)[title.split(/\s+/).length-1][1]+"'\n"
+        d+= "Spróbuj 'mhdir --help' po więcej informacji"
     }
     return d
 }

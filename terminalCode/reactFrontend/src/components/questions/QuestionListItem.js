@@ -20,12 +20,11 @@ class QuestionListItem extends React.Component {
     
 
     async componentDidMount() {
-        const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/"+`${this.props.id}`+"/question";
+        const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/"+this.props.id+"/question";
         const response = await axios.get(QUIZ_API_BASE_URL);
-        const res = await axios.post("http://localhost:8080/api/quiz/"+`${this.props.id}`)
+        const res = await axios.post("http://localhost:8080/api/quiz/"+this.props.id)
         this.setState({quizName:res.data.description})
         this.setState({ quest: response.data });
-        console.log(response.data)
     }
 
     answerClick = async (isCorect) => {
@@ -35,7 +34,6 @@ class QuestionListItem extends React.Component {
             })
         }
         const nextQuestion = this.state.currentQuestion + 1;
-        console.log(nextQuestion);
 
         if (nextQuestion < this.state.quest.length) {
             this.setState({
@@ -67,14 +65,10 @@ class QuestionListItem extends React.Component {
                 name_quiz: this.state.quizName,
                 user: id,
             })
-
-            console.log(date)
-            console.log(result.data)
         }
     }
 
     render() {
-        {console.log(this.props.propsToken)}
         return (
 
             <ul>

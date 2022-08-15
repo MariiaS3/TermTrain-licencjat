@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './Login.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+
 
 async function loginUser(credentials) {
   return axios.post('http://localhost:8080/api/user/login',credentials)
@@ -18,7 +18,6 @@ export default function Login({ setToken }) {
       email:email, 
       pass:password
     });
-    console.log(token.data)
     setToken(token.data);
     window.location.reload(false);
   }

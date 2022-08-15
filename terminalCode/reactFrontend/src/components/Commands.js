@@ -48,7 +48,7 @@ class Commands extends React.Component {
     listenCmd = (e) => {
         if (e === "Enter") {
             if (this.state.showAlet === false) {
-                var d = this.props.prompt + " " + this.state.title + "\n";
+                var d = this.props.prompt + " " + this.state.title;
                 this.props.addCommandPops(d)
             }
             if (this.state.title.split(/\s+/)[0] === "ls") {
@@ -75,7 +75,7 @@ class Commands extends React.Component {
             } else if (this.state.title.split(/\s+/)[0] === "mv" ) {
                 if (this.state.title.includes('-i')) {
                     if (this.state.prompt === 'yes') {
-                        let d = mv(this.props.prompt, this.state.title, this.props.path);
+                        d += mv(this.props.prompt, this.state.title, this.props.path);
                         let m = this.state.overwrite + this.state.prompt;
                         this.props.addCommandPops(m)
                         this.setState({
@@ -96,30 +96,28 @@ class Commands extends React.Component {
                             overwrite:"",
                         })
                     } else {
-                        var isFile = false;
+                        let isFile = false;
                         let folder = (this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]).split('/')
                         let nameDir = folder[folder.length - 1]
                         let pathDir = "/";
                         if (folder.length === 1) {
                             pathDir = this.props.path;
                         } else {
-                            for (var i = 0; i < folder.length - 1; i++) {
+                            for (let i = 0; i < folder.length - 1; i++) {
                                 pathDir += folder[i];
                                 if (i < folder.length - 2)
                                     pathDir += "/";
                             }
                         }
-                        file.map(file => {
-                            if (file.name === nameDir && pathDir === file.path) {
+                        for (let k = 0; k < file.length; k++) {
+                            if (file[k].name === nameDir && pathDir === file[k].path) {
                                 isFile = true
                             }
-                        })
+                        }
                         if (isFile === true) {
-                            var d = this.props.prompt + " " + this.state.title;
-                            this.props.addCommandPops(d)
                             this.setState({
                                 showAlet: true,
-                                overwrite: "mv: overwrite '" + `${this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}` + "'?",
+                                overwrite: "mv: overwrite '"+ this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1] + "'?",
                             })
                         } else {
                             this.props.addCommandPops(mv(this.props.prompt, this.state.title, this.props.path))
@@ -149,14 +147,14 @@ class Commands extends React.Component {
                             if (folder.length === 1) {
                                 pathDir = this.props.path;
                             } else {
-                                for (var i = 0; i < folder.length - 1; i++) {
+                                for (let i = 0; i < folder.length - 1; i++) {
                                     pathDir += folder[i];
                                     if (i < folder.length - 2)
                                         pathDir += "/";
                                 }
                             }
                             let isF = false;
-                            for (var i = 0; i < file.length; i++) {
+                            for (let i = 0; i < file.length; i++) {
                                 if (file[i].name === nameDir && pathDir === file[i].path) {
                                     tempYes.push(j)
                                     isF = true
@@ -168,7 +166,7 @@ class Commands extends React.Component {
                         }
                         let isFile = false;
                         let m = this.props.prompt + " " + this.state.title;
-                        for (var i = 0; i < tempYes.length; i++) {
+                        for (let i = 0; i < tempYes.length; i++) {
                             if (tempYes[i] === 2) {
                                 isFile = true
                             }
@@ -176,13 +174,13 @@ class Commands extends React.Component {
                         if (isFile === false) {
                             let n;
                             let tempRes = ""
-                            for (var i = 2; i < this.state.title.split(/\s+/).length; i++) {
+                            for (let i = 2; i < this.state.title.split(/\s+/).length; i++) {
                                 let isF = false
-                                for (var l = 0; l < tempNo.length; l++) {
+                                for (let l = 0; l < tempNo.length; l++) {
                                     if (tempNo[l] === i) {
                                         isF = true
                                         n = tempNo[l];
-                                        m += "\n" + "rm: cannot remove '" + `${this.state.title.split(/\s+/)[tempNo[l]]}` + "': No such file or directory" + "\n";
+                                        m += "\n rm: cannot remove '"+this.state.title.split(/\s+/)[tempNo[l]] + "': No such file or directory\n";
                                         break;
                                     }
                                 }
@@ -198,7 +196,7 @@ class Commands extends React.Component {
                                 response: tempRes,
                                 indexYes: tempYes,
                                 indexNo: tempNo,
-                                overwrite: "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?"
+                                overwrite: "rm: remove regular empty file '"+this.state.title.split(/\s+/)[this.state.indexStop] + "'?"
                             })
                         } else {
                             this.props.addCommandPops(m)
@@ -208,7 +206,7 @@ class Commands extends React.Component {
                                 indexStop: 2,
                                 indexYes: tempYes,
                                 indexNo: tempNo,
-                                overwrite: "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?"
+                                overwrite: "rm: remove regular empty file '"+ this.state.title.split(/\s+/)[this.state.indexStop] + "'?"
                             })
                         }
 
@@ -219,7 +217,7 @@ class Commands extends React.Component {
                             rm(this.props.prompt, this.state.title, this.props.path, this.state.indexStop)
                         }
                         if (this.state.indexStop + 1 < this.state.title.split(/\s+/).length) {
-                            for (var i = 0; i < this.state.indexYes.length; i++) {
+                            for (let i = 0; i < this.state.indexYes.length; i++) {
                                 if (this.state.indexYes[i] === this.state.indexStop + 1) {
                                     isFile = true
                                 }
@@ -230,17 +228,17 @@ class Commands extends React.Component {
                                     showAlet: true,
                                     indexStop: this.state.indexStop + 1,
                                     prompt: "",
-                                    overwrite: "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?"
+                                    overwrite: "rm: remove regular empty file '" +this.state.title.split(/\s+/)[this.state.indexStop] + "'?"
                                 })
                             } else {
                                 let n;
-                                for (var i = this.state.indexStop+1; i < this.state.title.split(/\s+/).length; i++) {
+                                for (let i = this.state.indexStop+1; i < this.state.title.split(/\s+/).length; i++) {
                                     let isF = false
-                                    for (var l = 0; l < this.state.indexNo.length; l++) {
+                                    for (let l = 0; l < this.state.indexNo.length; l++) {
                                         if (this.state.indexNo[l] === i) {
                                             isF = true
                                             n = this.state.indexNo[l];
-                                            m += "\n" + "rm: cannot remove '" + `${this.state.title.split(/\s+/)[this.state.indexNo[l]]}` + "': No such file or directory" + "\n";
+                                            m += "\nrm: cannot remove '" +this.state.title.split(/\s+/)[this.state.indexNo[l]] + "': No such file or directory\n";
                                         }
                                     }
                                     if (isF === false) {
@@ -253,7 +251,7 @@ class Commands extends React.Component {
                                         showAlet: true,
                                         indexStop: n + 1,
                                         prompt: "",
-                                        overwrite: "rm: remove regular empty file '" + `${this.state.title.split(/\s+/)[this.state.indexStop]}` + "'?"
+                                        overwrite: "rm: remove regular empty file '"+ this.state.title.split(/\s+/)[this.state.indexStop] + "'?"
                                     })
                                 } else {
                                     this.props.addCommandPops(m)
@@ -287,7 +285,7 @@ class Commands extends React.Component {
             } else if (this.state.title.split(/\s+/)[0] === "cp") {
                 if (this.state.title.includes('-i')) {
                     if (this.state.prompt === 'yes') {
-                        let d = cp(this.props.prompt, this.state.title, this.props.path);
+                        d += cp(this.props.prompt, this.state.title, this.props.path);
                         let m = this.state.overwrite + this.state.prompt;
                         this.props.addCommandPops(m)
                         this.setState({
@@ -308,30 +306,30 @@ class Commands extends React.Component {
                             overwrite:""
                         })
                     } else {
-                        var isFile = false;
+                        let isFile = false;
                         let folder = (this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]).split('/')
                         let nameDir = folder[folder.length - 1]
                         let pathDir = "/";
                         if (folder.length === 1) {
                             pathDir = this.props.path;
                         } else {
-                            for (var i = 0; i < folder.length - 1; i++) {
+                            for (let i = 0; i < folder.length - 1; i++) {
                                 pathDir += folder[i];
                                 if (i < folder.length - 2)
                                     pathDir += "/";
                             }
                         }
-                        file.map(file => {
-                            if (file.name === nameDir && pathDir === file.path) {
+                        for (let k = 0; k < file.length; k++) {
+                            if (file[k].name === nameDir && pathDir === file[k].path) {
                                 isFile = true
                             }
-                        })
+                        }
                         if (isFile === true) {
-                            var d = this.props.prompt + " " + this.state.title;
+                             d += this.props.prompt + " " + this.state.title;
                             this.props.addCommandPops(d)
                             this.setState({
                                 showAlet: true,
-                                overwrite: "cp: overwrite '" + `${this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1]}` + "'?" 
+                                overwrite: "cp: overwrite '"  +this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1] + "'?" 
                             })
                         } else {
                             this.props.addCommandPops(cp(this.props.prompt, this.state.title, this.props.path))
@@ -361,7 +359,7 @@ class Commands extends React.Component {
                 this.props.addCommandPops(date(this.props.prompt, this.state.title))
             } else if (this.state.title.split(/\s+/)[0] === "nano") {
                 this.props.addCommandPops(nano(this.props.prompt, this.state.title, this.props.path))
-                if(!this.state.title.split(/\s+/)[1]==="--help"){
+                if(!this.state.title.includes("--help")){
                     this.props.addTitlePops(this.state.title.split(/\s+/)[this.state.title.split(/\s+/).length - 1])
                     this.props.showModalProps()
                 }
@@ -372,13 +370,11 @@ class Commands extends React.Component {
                 this.props.addCommandPops(whoami(this.props.prompt, this.state.title))
             }
             else {
-                console.log(this.state.title)
                 d = this.props.prompt + " " + this.state.title + "\n";
                 d += this.state.title + ": nie znaleziono polecenia"
                 this.props.addCommandPops(d)
             }
             if ((!(this.state.title.split(/\s+/)[0] === "mv" && this.state.title.includes('-i'))) && (!(this.state.title.split(/\s+/)[0] === "rm" && this.state.title.includes('-i'))) && (!(this.state.title.split(/\s+/)[0] === "cp" && this.state.title.includes('-i')))) {
-                console.log(this.state.title)
                 this.setState({
                     command: this.state.title,
                     title: "",

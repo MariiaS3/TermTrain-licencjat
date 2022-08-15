@@ -14,16 +14,15 @@ class AnswerListItem extends React.Component {
     };
 
     async componentDidMount() {
-        const QUIZ_API_BASE_URL = 'http://localhost:8080/api/question/' + `${this.props.id}` + '/answer';
+        const QUIZ_API_BASE_URL = 'http://localhost:8080/api/question/' + this.props.id + '/answer';
         const response = await axios.get(QUIZ_API_BASE_URL);
         this.setState({ quest: response.data });
-        // console.log(response.data)
+
     }
     answerClick = (isCorect) => {
         this.setState({
             corect: isCorect
         })
-        console.log("answerClick" + isCorect)
     }
 
     handleRadioChange = (e, isCorect) => {

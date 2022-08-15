@@ -21,13 +21,13 @@ const cd = (prompt, title, prevPath, path) => {
         path = prevPath
     } else if (title.includes('--help')) {
         d+=`Tu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu.  \n\n`
-        command.map(cmd =>{
-            if(cmd.id ==="cd"){
-                d+= cmd.skladnia +" \n "
-                d+= cmd.info + " \n "
-                d+=cmd.flags
+        for (let k = 0; k < command.length; k++) {
+            if (command[k].id === "cd") {
+                d += command[k].skladnia + " \n "
+                d += command[k].info + " \n "
+                d += command[k].flags
             }
-        })
+        }
     }else if (title.split(/\s+/).length > 2){
         d+= "\ncd: zbyt wiele argumentów"
     } else {
@@ -36,21 +36,21 @@ const cd = (prompt, title, prevPath, path) => {
             if(title.split(/\s+/)[1].split(/[/]/)[0]!==""){
                 let tempPath =  title.split(/\s+/)[1].split(/[/]/)
                 let newPath = path
-                for(var i=0;i<tempPath.length;i++){
+                for(let i=0;i<tempPath.length;i++){
                     isDir = false
-                    directory.map(dir => {
-                    if (dir.name === tempPath[i] && dir.path === newPath) {
+                    for (let k = 0; k < directory.length; k++) {
+                    if (directory[k].name === tempPath[i] && directory[k].path === newPath) {
                         newPath +="/"+tempPath[i]
                         isDir = true
                     }
-                })
+                }
                 if(isDir===false){
                     let isFile = false
-                    file.map(file =>{
-                        if (file.name === tempPath[i] && file.path === newPath) {
+                    for (let k = 0; k < file.length; k++) {
+                        if (file[k].name === tempPath[i] && file[k].path === newPath) {
                             isFile = true
                         } 
-                    })
+                    }
                     if(isFile === true){
                         d+= "\ncd: "+tempPath[i]+ ": Nie jest katalogiem"
                     }else{
@@ -65,25 +65,25 @@ const cd = (prompt, title, prevPath, path) => {
             }else{
                 let tempPath =  title.split(/\s+/)[1].split(/[/]/)
                 let newPath = "/"
-                for(var i=0;i<tempPath.length;i++){
+                for(let i=0;i<tempPath.length;i++){
                     isDir = false
-                    directory.map(dir => {
-                    if (dir.name === tempPath[i] && dir.path === newPath) {
+                    for (let k = 0; k < directory.length; k++) {
+                    if (directory[k].name === tempPath[i] && directory[k].path === newPath) {
                         isDir = true
                         if(newPath ==="/"){
-                            newPath = newPath + dir.name;
+                            newPath = newPath + directory[k].name;
                         }else {
-                            newPath = newPath + "/" + dir.name;
+                            newPath = newPath + "/" + directory[k].name;
                         }
                     }
-                })
+                }
                 if(isDir===false){
                     let isFile = false
-                    file.map(file =>{
-                        if (file.name === tempPath[i] && file.path === newPath) {
+                    for (let k = 0; k < file.length; k++) {
+                        if (file[k].name === tempPath[i] && file[k].path === newPath) {
                             isFile = true
                         } 
-                    })
+                    }
                     if(isFile === true){
                         d+= "\ncd: "+tempPath[i]+ ": Nie jest katalogiem"
                     }else{
@@ -99,23 +99,23 @@ const cd = (prompt, title, prevPath, path) => {
             
         } else {
             let isDir = false;
-            directory.map(dir => {
-                if (dir.name === title.split(/\s+/)[1] && dir.path === path) {
+            for (let k = 0; k < directory.length; k++) {
+                if (directory[k].name === title.split(/\s+/)[1] && directory[k].path === path) {
                     if(path ==="/"){
-                        path = path + dir.name;
+                        path = path + directory[k].name;
                     }else {
-                        path = path + "/" + dir.name;
+                        path = path + "/" + directory[k].name;
                     }
                     isDir = true
                 }
-            })
+            }
             if(isDir===false){
                 let isFile = false
-                file.map(file =>{
-                    if (file.name === title.split(/\s+/)[1] && file.path === path) {
+                for (let k = 0; k < file.length; k++) {
+                    if (file[k].name === title.split(/\s+/)[1] && file[k].path === path) {
                         isFile = true
                     } 
-                })
+                }
                 if(isFile === true){
                     d+= "\ncd: "+title.split(/\s+/)[1]+ ": Nie jest katalogiem"
                 }else{
