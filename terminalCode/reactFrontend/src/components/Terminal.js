@@ -5,7 +5,6 @@ import Commands from "./Commands";
 import directory from "./directory";
 import file from "./file";
 import Man from "./Man";
-import command from "./manual";
 
 import Modal from "./Modal"
 
@@ -28,26 +27,26 @@ class Terminal extends React.Component {
             title: "",
             text: "",
         }
-        file.map(file => {
-            if (file.path === '/home/') {
-                file.path += userName;
-                file.user = userName;
-                file.group = userName;
+        for (let k = 0; k < file.length; k++) {
+            if (file[k].path === '/home/') {
+                file[k].path += userName;
+                file[k].user = userName;
+                file[k].group = userName;
             }
-        })
+        }
 
-        directory.map(dir => {
-            if (dir.path === '/home/') {
-                dir.path += userName;
-                dir.user = userName;
-                dir.group = userName;
+        for (let k = 0; k < directory.length; k++) {
+            if (directory[k].path === '/home/') {
+                directory[k].path += userName;
+                directory[k].user = userName;
+                directory[k].group = userName;
             }
-            if (dir.name === 'user') {
-                dir.name = userName
-                dir.user = userName;
-                dir.group = userName;
+            if (directory[k].name === 'user') {
+                directory[k].name = userName
+                directory[k].user = userName;
+                directory[k].group = userName;
             }
-        })
+        }
     }
 
     onChange = e => {
@@ -64,13 +63,11 @@ class Terminal extends React.Component {
 
     addTitle = (title) => {
         let t = ""
-        file.map(file => {
-            if (file.name === title && file.path === this.state.path) {
-                t += file.text
+        for (let k = 0; k < file.length; k++) {
+            if (file[k].name === title && file[k].path === this.state.path) {
+                t += file[k].text
             }
-        })
-
-        console.log(t)
+        }
         this.setState({
             title: title,
             text: t
@@ -87,12 +84,14 @@ class Terminal extends React.Component {
         })
     }
     deleteHistory = () => {
-        this.state.history.length = 0;
-        this.setState({ history: this.state.history })
+        let his = this.state.history;
+        his.length = 0;
+        this.setState({ history: his })
     }
     deleteCommand = () => {
-        this.state.command.length = 0;
-        this.setState({ command: this.state.command })
+        let cmd = this.state.command;
+        cmd.length = 0;
+        this.setState({ command: cmd })
     }
     addCommand = (text) => {
         var newCommand = []
@@ -128,12 +127,11 @@ class Terminal extends React.Component {
         });
     };
     saveText = (text) => {
-        console.log(text)
-        file.map(file => {
-            if (file.name === this.state.title && file.path === this.state.path) {
-                file.text = text
+        for (let k = 0; k < file.length; k++) {
+            if (file[k].name === this.state.title && file[k].path === this.state.path) {
+                file[k].text = text
             }
-        })
+        }
     };
 
  
@@ -176,7 +174,7 @@ class Terminal extends React.Component {
                         history={this.state.history}
                         prevPath={this.state.prevPath}
                     />
-                </div> : <div>{!this.showMan ? <Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text} /> : <Man onClose={this.showMan} cmd={this.state.text} />} </div>}
+                </div> : <div>{this.showMan ? <Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text} /> : <Man onClose={this.showMan} cmd={this.state.text} />} </div>}
             </div>
         )
     }

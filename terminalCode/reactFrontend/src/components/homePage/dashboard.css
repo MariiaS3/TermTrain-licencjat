@@ -10,6 +10,7 @@
     width: 100%;
     margin-top: 80px;
     display: flex;
+    justify-content: center;
 } 
 
 
@@ -25,6 +26,7 @@
     font-size: 25px;
     display:none;
     animation: fadein .8s; 
+    
 }
 
 .dash{
@@ -44,21 +46,14 @@
 
 
 .list{
-    height: 90%;
-    width: 100%;
     font-size: 20px;
     padding: 50px;
-    position: absolute;
     text-align: center;
     overflow:scroll; 
 }
 
 .array{
-    height: 90%;
-    width: 100%;
-    position: absolute;
     padding-top: 50px;
-    padding-left: 200px;
     overflow: scroll;
 }
 

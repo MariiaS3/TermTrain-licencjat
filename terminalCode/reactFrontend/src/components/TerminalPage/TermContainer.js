@@ -19,7 +19,6 @@ class TermContainer extends React.Component {
             textAlign: 'center',
             fontFamily: '\'Times New Roman\', Times, serif',
             color: '#0B1F64',
-            // backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #f2f8be 50%, #CAFFE3 100%)'
         }
 
         const termStyle = {

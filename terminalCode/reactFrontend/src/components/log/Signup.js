@@ -19,7 +19,6 @@ async function createUser(credentials) {
         else return response.json();
       })
       .catch((error) => {
-        console.log('error: ' + error);
         return "error"
       });
     
@@ -60,7 +59,6 @@ export default function Form(){
         }else if(emailValidator(email).messange !== "" || passwordValidator(password).messange !==""){
         } else{
             const token = await createUser({username: username,email:email, pass:password});
-            console.log(token)
             if(token !== "error"){
                 setMessage("Konto zostało  pomyślnie utworzone, teraz możesz się zalogować!");
             }else{

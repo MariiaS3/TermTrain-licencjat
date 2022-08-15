@@ -2,7 +2,7 @@
 import './App.css';
 import React, { useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {BrowserRouter as Router,Link,Route, Routes as Switch} from 'react-router-dom';
+import {BrowserRouter as Router,Route, Routes as Switch} from 'react-router-dom';
 
 import HomeContainer from "./components/homePage/HomeContainer"
 import Dashboard from "./components/homePage/Dashboard"

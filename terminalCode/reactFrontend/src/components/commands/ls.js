@@ -23,103 +23,99 @@ const ls = (prompt, title, path) => {
     }
     if (title.includes('-d')) {
         if (title.includes('*/')) {
-            var isDirectory = false
-            dir.map(dir => {
-                if (dir.path === path && dir.name.charAt(0) !== '.') {
-                    d += dir.name + "/     ";
-                    isDirectory = true
+            for (let k = 0; k < dir.length; k++) {
+                if (dir[k].path === path && dir[k].name.charAt(0) !== '.') {
+                    d += dir[k].name + "/     ";
                 }
-            })
+            }
         } else if (title.includes('/*')) {
-            var isDirectory = false
-            dir.map(dir => {
-                if (dir.path === '/' && dir.name.charAt(0) !== '.') {
-                    d += "/" + dir.name + "     ";
-                    isDirectory = true
+            for (let k = 0; k < dir.length; k++) {
+                if (dir[k].path === '/' && dir[k].name.charAt(0) !== '.') {
+                    d += "/" + dir[k].name + "     ";
                 }
-            })
+            }
         } else {
             d += ".";
         }
     } else if (title.includes('-l')) {
-        var isDirectory = false
+        let isDirectory = false
         if (title.includes('-a')) {
-            dir.map(dir => {
-                if (dir.path === path ) {
-                    d += dir.permissions + " " + dir.link + " " + dir.user + " " + dir.group + " " + dir.size + " " + dir.time + " " + dir.name + "\n";
+            for (let k = 0; k < dir.length; k++) {
+                if (dir[k].path === path ) {
+                    d += dir[k].permissions + " " + dir[k].link + " " + dir[k].user + " " + dir[k].group + " " + dir[k].size + " " + dir[k].time + " " + dir[k].name + "\n";
                     isDirectory = true
                 }
-            })
+            }
             if (isDirectory === true) {
                 d += "\n"
             }
-            fil.map(file => {
-                if (file.path === path ) {
-                    d += file.permissions + " " + file.link + " " + file.user + " " + file.group + " " + file.size + " " + file.time + " " + file.name + "\n";
+            for (let k = 0; k < fil.length; k++) {
+                if (fil[k].path === path ) {
+                    d += fil[k].permissions + " " + fil[k].link + " " + fil[k].user + " " + fil[k].group + " " + fil[k].size + " " + fil[k].time + " " + fil[k].name + "\n";
                 }
-            })
+            }
         } else {
-            var isDirectory = false
-            dir.map(dir => {
-                if (dir.path === path && dir.name.charAt(0) !== '.') {
-                    d += dir.permissions + " " + dir.link + " " + dir.user + " " + dir.group + " " + dir.size + " " + dir.time + " " + dir.name + "\n";
+            let isDirectory = false
+            for (let k = 0; k < dir.length; k++) {
+                if (dir[k].path === path && dir[k].name.charAt(0) !== '.') {
+                    d += dir[k].permissions + " " + dir[k].link + " " + dir[k].user + " " + dir[k].group + " " + dir[k].size + " " + dir[k].time + " " + dir[k].name + "\n";
                     isDirectory = true
                 }
-            })
+            }
             if (isDirectory === true) {
                 d += "\n"
             }
-            fil.map(file => {
-                if (file.path === path && file.name.charAt(0) !== '.') {
-                    d += file.permissions + " " + file.link + " " + file.user + " " + file.group + " " + file.size + " " + file.time + " " + file.name + "\n";
+             for (let k = 0; k < fil.length; k++) {
+                if (fil[k].path === path && fil[k].name.charAt(0) !== '.') {
+                    d += fil[k].permissions + " " + fil[k].link + " " + fil[k].user + " " + fil[k].group + " " + fil[k].size + " " + fil[k].time + " " + fil[k].name + "\n";
                 }
-            })
+            }
         }
     } else if (title.includes('-a')) {
-        var isDirectory = false
-        directory.map(dir => {
-            if (dir.path === path) {
-                d += dir.name + "     ";
+        let isDirectory = false
+        for (let k = 0; k < directory.length; k++) {
+            if (directory[k].path === path) {
+                d += directory[k].name + "     ";
                 isDirectory = true
             }
-        })
+        }
         if (isDirectory === true) {
             d += "\n"
         }
-        file.map(file => {
-            if (file.path === path) {
-                d += file.name + "      ";
+        for (let k = 0; k < file.length; k++) {
+            if (file[k].path === path) {
+                d += file[k].name + "      ";
             }
-        })
+        }
     }else if (title.includes('--help')) {
         d+=`Tu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu. \nŻeby poznać więcej informacji, które można wykorzystać w prawdziwym terminalu proszę ptrzejść do jednej ze stron:
         https://man7.org/linux/man-pages/man1/ls.1.html \n https://linux.die.net/man/1/ls \n\n`
-        command.map(cmd =>{
-            if(cmd.id ==="ls"){
-                d+= cmd.skladnia +" \n "
-                d+= cmd.info + " \n "
-                d+=cmd.flags
+        for (let k = 0; k < command.length; k++) {
+            if (command[k].id === "ls") {
+                d += command[k].skladnia + " \n "
+                d += command[k].info + " \n "
+                d += command[k].flags
             }
-        })
+        }
     } else if(title.split(/\s+/).length===1){
-        var isDirectory = false
-        dir.map(dir => {
-            if (dir.path === path && dir.name.charAt(0) !== '.') {
-                d += dir.name + "     ";
+        let isDirectory = false
+        for (let k = 0; k < dir.length; k++) {
+            if (dir[k].path === path && dir[k].name.charAt(0) !== '.') {
+                d += dir[k].name + "     ";
                 isDirectory = true
             }
-        })
+        }
         if (isDirectory === true) {
             d += "\n"
         }
-        fil.map(file => {
-            if (file.path === path && file.name.charAt(0) !== '.') {
-                d += file.name + "      ";
+        for (let k = 0; k < fil.length; k++) {
+            if (fil[k].path === path && fil[k].name.charAt(0) !== '.') {
+                d += fil[k].name + "      ";
             }
-        })
+        }
     }else{
-        d+= "ls:"+ " nieprawidłowa opcja -- \'"+  title.split(/\s+/)[title.split(/\s+/).length-1][1]+"\'\n"
-        d+= "Spróbuj \'ls --help\' po więcej informacji"
+        d+= "ls: nieprawidłowa opcja -- '" + title.split(/\s+/)[title.split(/\s+/).length-1][1]+"'\n"
+        d+= "Spróbuj 'ls --help' po więcej informacji"
     }
     return d
 }

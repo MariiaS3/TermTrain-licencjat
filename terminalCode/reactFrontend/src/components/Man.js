@@ -21,7 +21,8 @@ function NewlineText(props) {
        <li style={{ paddingBottom:"30px", paddingLeft:"50px" }}>{str.info}</li>
        <li style={{ paddingBottom:"30px", paddingLeft:"50px" }}><Newline flag={str.flags}/></li>
        </ul>
-      } });
+      }
+  });
   return newText;
 }
 
@@ -35,7 +36,6 @@ export default class Man extends React.Component {
       inClear: ""
     })
     if (charCode === 'q') {
-      console.log(charCode)
       this.props.onClose();
     }
   };

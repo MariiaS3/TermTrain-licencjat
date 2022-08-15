@@ -13,9 +13,7 @@ export default class Modal extends React.Component {
   }
   onClose = (event, text) => {
     let charCode = String.fromCharCode(event.which).toLowerCase();
-    console.log(this.props.children)
     if (event.ctrlKey &&  charCode === 'q' ) {
-      console.log('save')
       this.props.onSave(text);
     } else if (event.ctrlKey && charCode === 'x') {
       this.props.onClose();
@@ -28,8 +26,6 @@ export default class Modal extends React.Component {
     return (
       <div >
         <div className="text"  suppressContentEditableWarning contentEditable spellCheck={false} onKeyDown={e => {
-        
-          console.log(e.currentTarget.outerText)
           let text = e.currentTarget.outerText;
           this.onClose(e, text)
         }} > <NewlineText children={this.props.children}/></div>

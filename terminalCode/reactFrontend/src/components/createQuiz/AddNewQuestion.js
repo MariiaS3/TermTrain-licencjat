@@ -6,7 +6,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
 async function createQuestion(credentials, id ) {
-    return axios.post('http://localhost:8080/api/quiz/'+ `${id}`+'/question' , credentials)
+    return axios.post('http://localhost:8080/api/quiz/'+ id+'/question' , credentials)
 }
 
 export default class AddNewQuiz extends React.Component {
@@ -19,7 +19,7 @@ export default class AddNewQuiz extends React.Component {
     async componentDidMount() {
         const path =window.location.pathname;
         this.setState({idQuiz:path.split('/')[3] })
-        const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/" + `${path.split('/')[3]}` + "/question";
+        const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/" + path.split('/')[3] + "/question";
         const response = await axios.get(QUIZ_API_BASE_URL);
         this.setState({ questions: response.data });
     }
@@ -34,7 +34,7 @@ export default class AddNewQuiz extends React.Component {
                     text: this.state.name
                 }, this.state.idQuiz);
 
-                const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/" + `${this.state.idQuiz}` + "/question";
+                const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/" + this.state.idQuiz + "/question";
                 const response = await axios.get(QUIZ_API_BASE_URL);
                 this.setState({ questions: response.data });
             }
@@ -42,9 +42,9 @@ export default class AddNewQuiz extends React.Component {
         }
 
         const handleDelete = async (id) => {
-                const QUIZ_API_BASE_URL = "http://localhost:8080/api/question/"+`${id}`;
+                const QUIZ_API_BASE_URL = "http://localhost:8080/api/question/"+id;
                 await axios.delete(QUIZ_API_BASE_URL,id);
-                const QUIZ_URL = "http://localhost:8080/api/quiz/" + `${this.state.idQuiz}` + "/question";
+                const QUIZ_URL = "http://localhost:8080/api/quiz/" + this.state.idQuiz + "/question";
                 const res = await axios.get(QUIZ_URL);
                 this.setState({ questions: res.data });
         }

@@ -37,7 +37,7 @@ export default class AddNewQuiz extends React.Component {
         }
 
         const handleDelete = async (id) => {
-            const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/" + `${id}`;
+            const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/" + id;
             await axios.delete(QUIZ_API_BASE_URL, id);
             const QUIZ_URL = "http://localhost:8080/api/quiz/";
             const res = await axios.get(QUIZ_URL);
