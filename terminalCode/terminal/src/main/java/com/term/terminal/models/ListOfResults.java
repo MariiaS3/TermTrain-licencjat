@@ -46,11 +46,11 @@ public class ListOfResults {
     public ListOfResults() {
     }
 
-    public String getName_quiz() {
+    public String getNameQuiz() {
         return nameQuiz;
     }
 
-    public void setName_quiz(String id_quiz) {
+    public void setNameQuiz(String id_quiz) {
         this.nameQuiz = id_quiz;
     }
 

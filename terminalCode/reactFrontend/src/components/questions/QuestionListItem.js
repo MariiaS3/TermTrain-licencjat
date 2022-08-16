@@ -23,15 +23,16 @@ class QuestionListItem extends React.Component {
         const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/"+this.props.id+"/question";
         const response = await axios.get(QUIZ_API_BASE_URL);
         const res = await axios.post("http://localhost:8080/api/quiz/"+this.props.id)
-        this.setState({quizName:res.data.description})
-        this.setState({ quest: response.data });
+        this.setState({quizName:res.data.description, quest: response.data });
     }
 
     answerClick = async (isCorect) => {
+        let score =this.state.score;
         if (isCorect) {
             this.setState({
                 score: this.state.score + 1,
             })
+            score +=1;
         }
         const nextQuestion = this.state.currentQuestion + 1;
 
@@ -53,16 +54,18 @@ class QuestionListItem extends React.Component {
                 }
             }else{
                 if(current.getMonth()+1<10){
-                     date = `${0}${current.getDate()}-${0}${current.getMonth()+1}-${current.getFullYear()}`;
+                     date = `${current.getDate()}-${0}${current.getMonth()+1}-${current.getFullYear()}`;
                 }else{
-                     date = `${0}${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()}`;
+                     date = `${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()}`;
                 }
             }
+            console.log(score)
+            console.log((score*100)/this.state.quest.length)
             const id  = this.props.propsToken.split(':')[0];
             const result = await addResult({
                 data:date,
-                result: this.state.score+"/"+this.state.quest.length,
-                name_quiz: this.state.quizName,
+                result: (score*100)/this.state.quest.length,
+                nameQuiz: this.state.quizName,
                 user: id,
             })
         }

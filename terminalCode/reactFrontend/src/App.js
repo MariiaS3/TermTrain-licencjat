@@ -5,7 +5,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {BrowserRouter as Router,Route, Routes as Switch} from 'react-router-dom';
 
 import HomeContainer from "./components/homePage/HomeContainer"
-import Dashboard from "./components/homePage/Dashboard"
 import QuizContainer from "./components/QuizPage/QuizContainer"
 import TermContainer from "./components/TerminalPage/TermContainer"
 import "./App.css"
@@ -60,7 +59,6 @@ function App() {
                 <Router basename={process.env.PUBLIC_URL}>
                     <Switch>
                         <Route exact path='/' element={<HomeContainer    toggleDark={toggleDark} settoggleDark={settoggleDark}/>}>   </Route>
-                        <Route exact path='/dashboard' element={<Dashboard    toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
                         <Route exact path='/add/quiz' element={<AddNewQuiz    toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
                         <Route exact path='/add/question/:id' element={<AddNewQuestion   toggleDark={toggleDark} settoggleDark={settoggleDark}  propsToken={token}/>}>   </Route>
                         <Route exact path='/add/answer/:id' element={<AddNewAnswer  toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}  />} >   </Route>
