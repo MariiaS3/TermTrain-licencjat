@@ -1,6 +1,5 @@
 package com.term.terminal.service;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -19,7 +18,9 @@ public class ListOfResultsService {
     public Optional<ListOfResults> findById(Integer id){
         return listOfResultsRepository.findById(id);
     }
-
+    public ListOfResults findByNameQuiz(String nameQuiz){
+        return listOfResultsRepository.findByNameQuiz(nameQuiz);
+    }
     public ListOfResults save(ListOfResults listOfResults){
         return listOfResultsRepository.save(listOfResults);
     }

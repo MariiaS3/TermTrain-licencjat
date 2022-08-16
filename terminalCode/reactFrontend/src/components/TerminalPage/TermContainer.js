@@ -43,9 +43,6 @@ class TermContainer extends React.Component {
                         <li >
                             <Link to="/quiz"><Button type="submit" className="btnMenu" size="large" style={style}>Quiz</Button></Link>
                         </li>
-                        <li>
-                            <Link to="/dashboard"><Button className="btnMenu" size="large" style={style}>Dashboard</Button></Link>
-                        </li>
                         <li >
                             <Button type="submit" className="btnMenu" size="large" style={style}>Forum</Button>
                         </li>

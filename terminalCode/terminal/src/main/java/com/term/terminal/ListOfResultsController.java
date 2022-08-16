@@ -30,10 +30,16 @@ public class ListOfResultsController {
 
     @PostMapping("/user/add-results")
     public ResponseEntity<?>  addResult(@RequestBody ListOfResults newlistOfResults){
-        System.out.println(newlistOfResults.getResult());
-        System.out.println(newlistOfResults.getName_quiz());
-        ListOfResults listOfResults = listOfResultsService.save(newlistOfResults);
-        return new ResponseEntity<>(listOfResults, HttpStatus.CREATED);
+        ListOfResults listfindByNameQuiz = listOfResultsService.findByNameQuiz(newlistOfResults.getNameQuiz());
+        if(listfindByNameQuiz==null){
+             listfindByNameQuiz = listOfResultsService.save(newlistOfResults);
+            return new ResponseEntity<>(listfindByNameQuiz, HttpStatus.CREATED);
+        }else{
+            listfindByNameQuiz.setData(newlistOfResults.getData());
+            listfindByNameQuiz.setResult(newlistOfResults.getResult());
+            ListOfResults listOfResults =  listOfResultsService.save(listfindByNameQuiz);
+            return new ResponseEntity<>(listOfResults, HttpStatus.OK);
+         }
     }
 
     @PostMapping("/user/get-results/{accountId}")

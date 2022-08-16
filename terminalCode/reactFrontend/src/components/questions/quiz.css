@@ -8,12 +8,11 @@
 }
 
 .questDiv{
-    width: 35%;
+    width: 40%;
     height: 100%;
     display: flex;
-    overflow:scroll;
     flex-direction: column;
-     background-color: #eafaf3; 
+    background-color: #eafaf3; 
 }
 
 .questBtn{
@@ -43,6 +42,6 @@
 .questionItem{
     color: #253304;
     font-size: 25px;
-    margin-top: 150px;
-    margin-left: 60px;
+    margin-top: 80px;
+    margin-left: 40px;
 }

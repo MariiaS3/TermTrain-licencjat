@@ -21,7 +21,7 @@ class HomeContainer extends React.Component {
                 <div className="mainMenu">
                     <Link to="/term"><Button  className="btnMenu" size="large" style={style}>Terminal</Button></Link>
                     <Link to="/quiz"><Button   className="btnMenu" size="large" style={style}>Quiz</Button></Link>
-                    <Link to="/dashboard"><Button className="btnMenu" size="large"  style={style}>Dashboard</Button></Link>
+                    {/* <Link to="/dashboard"><Button className="btnMenu" size="large"  style={style}>Dashboard</Button></Link> */}
                     <Button  className="btnMenu" size="large" style={style} >Forum</Button>
                 </div>
             </div>

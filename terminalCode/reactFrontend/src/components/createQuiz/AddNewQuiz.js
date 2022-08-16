@@ -70,7 +70,6 @@ export default class AddNewQuiz extends React.Component {
                 <div className="mainMenu">
                     <Link to="/"><Button  className="btnMenu" size="large" style={styleBtn}>Główna</Button></Link>
                     <Link to="/term"><Button  className="btnMenu" size="large" style={styleBtn}>Terminal</Button></Link>
-                    <Link to="/dashboard"><Button  className="btnMenu" size="large"  style={styleBtn}>Dashboard</Button></Link>
                     <Link to="/quiz"><Button  className="btnMenu" size="large" style={styleBtn}>Quiz</Button></Link>
                     <Button  className="btnMenu" size="large" style={styleBtn} >Forum</Button>
                 </div>
