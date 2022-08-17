@@ -58,7 +58,7 @@ class TermContainer extends React.Component {
                         </ul>
                     </div>
                     <div >
-                        <Button size="large" style={logOut} >Wyloguj się</Button>
+                        <Button size="large" style={logOut} onClick={e => {this.props.setLogToken()}}>Wyloguj się</Button>
                     </div>
                 </div>
 
