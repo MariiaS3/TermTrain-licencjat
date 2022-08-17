@@ -26,7 +26,6 @@ function App() {
     }
 
     function  setLogToken (){
-        console.log("del")
         setToken("")
     }
     const termTheme = createTheme({
@@ -68,7 +67,7 @@ function App() {
                         <Route exact path='/add/answer/:id' element={<AddNewAnswer  toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}  />} >   </Route>
                         <Route exact path='/quiz' element={<QuizContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} setLogToken={setLogToken}  />}>   </Route>
                         <Route exact path='/term' element={<TermContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} setLogToken={setLogToken}   />}>   </Route>
-                        <Route exact path='/quiz/question/:id' element={<QuestionContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} setLogToken={setLogToken} />}>   </Route>
+                        <Route exact path='/quiz/question/:id' element={<QuestionContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} />}>   </Route>
                     </Switch>
                 </Router>
             </div>

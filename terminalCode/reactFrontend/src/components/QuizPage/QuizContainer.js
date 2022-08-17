@@ -74,7 +74,7 @@ class QuizContainer extends React.Component {
             <Button className="btnMenu" style={style}>Forum</Button>
           </div>
           <div >
-            <Button size="large" style={logOut} >Wyloguj się</Button>
+            <Button size="large" style={logOut} onClick={e => {this.props.setLogToken()}} >Wyloguj się</Button>
           </div>
         </div>
 
