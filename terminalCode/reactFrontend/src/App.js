@@ -25,6 +25,10 @@ function App() {
       return <LoginPage propsToken={token} setToken={setToken} />
     }
 
+    function  setLogToken (){
+        console.log("del")
+        setToken("")
+    }
     const termTheme = createTheme({
         palette: {
             mode: toggleDark ? "dark" : "light",
@@ -58,13 +62,13 @@ function App() {
             <div style={{ background: termTheme.palette.background.default }}>
                 <Router basename={process.env.PUBLIC_URL}>
                     <Switch>
-                        <Route exact path='/' element={<HomeContainer    toggleDark={toggleDark} settoggleDark={settoggleDark}/>}>   </Route>
+                        <Route exact path='/' element={<HomeContainer    toggleDark={toggleDark} settoggleDark={settoggleDark} setLogToken={setLogToken}/>}>   </Route>
                         <Route exact path='/add/quiz' element={<AddNewQuiz    toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
                         <Route exact path='/add/question/:id' element={<AddNewQuestion   toggleDark={toggleDark} settoggleDark={settoggleDark}  propsToken={token}/>}>   </Route>
                         <Route exact path='/add/answer/:id' element={<AddNewAnswer  toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}  />} >   </Route>
-                        <Route exact path='/quiz' element={<QuizContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} />}>   </Route>
-                        <Route exact path='/term' element={<TermContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}  />}>   </Route>
-                        <Route exact path='/quiz/question/:id' element={<QuestionContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
+                        <Route exact path='/quiz' element={<QuizContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} setLogToken={setLogToken}  />}>   </Route>
+                        <Route exact path='/term' element={<TermContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} setLogToken={setLogToken}   />}>   </Route>
+                        <Route exact path='/quiz/question/:id' element={<QuestionContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} setLogToken={setLogToken} />}>   </Route>
                     </Switch>
                 </Router>
             </div>

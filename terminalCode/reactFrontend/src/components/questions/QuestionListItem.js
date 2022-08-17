@@ -59,12 +59,10 @@ class QuestionListItem extends React.Component {
                      date = `${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()}`;
                 }
             }
-            console.log(score)
-            console.log((score*100)/this.state.quest.length)
             const id  = this.props.propsToken.split(':')[0];
             const result = await addResult({
                 data:date,
-                result: (score*100)/this.state.quest.length,
+                result:  Math.round((score*100)/this.state.quest.length),
                 nameQuiz: this.state.quizName,
                 user: id,
             })
@@ -76,8 +74,8 @@ class QuestionListItem extends React.Component {
 
             <ul>
                 {this.state.showScore ? (
-                    <div style={{color:'#780d8b', fontSize:'30px', marginTop:'100px'}}>
-                        You scored {this.state.score} out of {this.state.quest.length}
+                    <div style={{color:'#780d8b', fontSize:'30px', marginTop:'50px',textAlign:"center"}}>
+                        Twój wynik to {this.state.score} / {this.state.quest.length}
                     </div>
                 ) : (
                     this.state.quest.map(question => (

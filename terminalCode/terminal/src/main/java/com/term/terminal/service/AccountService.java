@@ -21,7 +21,9 @@ public class AccountService {
     public Account findByEmail(String email) {
         return accountRepository.findByEmail(email);
     }
-
+    public Account findById(Integer accountId) {
+        return accountRepository.findById(accountId).get();
+    }
     public Account save(Account user) {
         return accountRepository.save(user);
     }

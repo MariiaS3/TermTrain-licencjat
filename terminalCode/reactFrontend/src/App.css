@@ -63,7 +63,7 @@ body{
     min-height: 130px;
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     margin: 20px 0px 30px 0px;
     border-radius: 5px;
     background-color: #eafaf3;
@@ -80,7 +80,7 @@ body{
     display:inline-grid;
     margin:5px;
     place-content:center;
-    font-size:15px;
+    font-size:25px;
   }
   .pie:before {
     content:"";

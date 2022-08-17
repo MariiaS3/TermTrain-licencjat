@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { Button } from "@mui/material";
-import { orange } from "@mui/material/colors";
 
 const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz";
 
@@ -14,17 +13,20 @@ class QuizContainer extends React.Component {
     results: [],
     isLoading: true,
     isDone: false,
+    isAdmin: false,
   };
 
   async componentDidMount() {
     const response = await axios.get(QUIZ_API_BASE_URL);
-    this.setState({ quiz: response.data, isLoading: false });
 
     const id = (this.props.propsToken).split(':')
     const LIST_RESULTS_URL = "http://localhost:8080/api/user/get-results/" + id[0];
-    const res = await axios.post(LIST_RESULTS_URL, id[0])
-    this.setState({ results: res.data })
-    console.log(res.data)
+    const res = await axios.post(LIST_RESULTS_URL, id[0]);
+
+    const ADMIN_URL = "http://localhost:8080/api/user/admin/" + id[0];
+    const admin = await axios.post(ADMIN_URL, id[0]);
+    console.log(admin.data)
+    this.setState({ quiz: response.data, isLoading: false, results: res.data, isAdmin: admin.data })
   }
 
   render() {
@@ -38,7 +40,14 @@ class QuizContainer extends React.Component {
       fontFamily: '\'Times New Roman\', Times, serif',
       color: '#0B1F64',
     }
-
+    const logOut = {
+      height: '20px',
+      width: '150px',
+      margin: '30px',
+      fontSize: '12px',
+      textAlign: 'center',
+      color: '#0B1F64',
+    }
     const styleList = {
       height: '35px',
       width: '180px',
@@ -56,13 +65,19 @@ class QuizContainer extends React.Component {
     //   return <p>Loading...</p>;
     // }
     return (
-      <div className="quizContainer">
-        <div className="mainMenu">
-          <Link to="/"><Button className="btnMenu" style={style} >Główna</Button></Link>
-          <Link to="/term"><Button className="btnMenu" style={style}>Terminal</Button></Link>
-          <Link to='/add/quiz'><Button className="btnMenu" style={style}>Edytuj</Button></Link>
-          <Button className="btnMenu" style={style}>Forum</Button>
+      <div className="quizContainer"  >
+        <div className="mainMenu"  style={{justifyContent: "right"}}>
+          <div className="mainMenu">
+            <Link to="/"><Button className="btnMenu" style={style} >Główna</Button></Link>
+            <Link to="/term"><Button className="btnMenu" style={style}>Terminal</Button></Link>
+            {this.state.isAdmin ? <Link to='/add/quiz'><Button className="btnMenu" style={style}>Edytuj</Button></Link> : <></>}
+            <Button className="btnMenu" style={style}>Forum</Button>
+          </div>
+          <div >
+            <Button size="large" style={logOut} >Wyloguj się</Button>
+          </div>
         </div>
+
         <div className="quizList">
           {this.state.quiz.map(quiz => (
             <li key={quiz.id} className="qizItem">
@@ -74,18 +89,16 @@ class QuizContainer extends React.Component {
                 </div>
                 <div>
                   {this.state.results.map(res => {
-                    console.log(quiz.description)
                     if (quiz.description === res.nameQuiz) {
-                      console.log(res.result)
-                      let color ="";
-                      if(res.result<40){
+                      let color = "";
+                      if (res.result < 40) {
                         color = "red"
-                      }else if(res.result<70){
+                      } else if (res.result < 70) {
                         color = "orange"
-                      }else{
+                      } else {
                         color = "lightgreen"
                       }
-                      return <div key={uuidv4()} className="pie animate" style={{ "--p": res.result, "--c": color}}>{res.result+"%"}</div>
+                      return <div key={uuidv4()} className="pie animate" style={{ "--p": res.result, "--c": color }}>{res.result + "%"}</div>
                     }
                   })}
                 </div>
