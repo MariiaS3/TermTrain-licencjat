@@ -1,10 +1,10 @@
 
-import directory from "../directory"
-import command from "../manual"
+import directory from "../Terminal/directory"
+import command from "../Terminal/manual"
 
 const mkdir = (prompt, title, path) => {
     var d = prompt + " " + title
-    if (title.split(/\s+/).length<2) {
+    if (title.split(/\s+/).length < 2) {
         d += "\nmkdir: brakuje operand \nSpróbuj 'mkdir --help' po więcej informacji"
     } else if (title.includes('--help')) {
         d += `\nTu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu. \nŻeby poznać więcej informacji, które można wykorzystać w prawdziwym terminalu proszę ptrzejść do jednej ze stron:
@@ -17,12 +17,12 @@ const mkdir = (prompt, title, path) => {
             }
         }
     }
-    else  if(!title.includes('-')) {
+    else if (!title.includes('-')) {
         var addDir = true
         for (let k = 0; k < directory.length; k++) {
             if (path === directory[k].path && title.split(/\s+/)[1] === directory[k].name) {
                 addDir = false
-                d += "\nmkdir: nie można utworzyć katalogu "+ title.split(/\s+/)[1] + ": Plik istnieje"
+                d += "\nmkdir: nie można utworzyć katalogu " + title.split(/\s+/)[1] + ": Plik istnieje"
             }
         }
         if (title.split(/\s+/)[1] !== "" && addDir === true) {
@@ -49,9 +49,9 @@ const mkdir = (prompt, title, path) => {
             }
             directory.push(newDir)
         }
-    }else{
-        d+= "mkdir: nieprawidłowa opcja -- '"+  title.split(/\s+/)[title.split(/\s+/).length-1][1]+"'\n"
-        d+= "Spróbuj 'mhdir --help' po więcej informacji"
+    } else {
+        d += "mkdir: nieprawidłowa opcja -- '" + title.split(/\s+/)[title.split(/\s+/).length - 1][1] + "'\n"
+        d += "Spróbuj 'mhdir --help' po więcej informacji"
     }
     return d
 }

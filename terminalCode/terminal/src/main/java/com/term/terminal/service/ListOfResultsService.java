@@ -18,8 +18,8 @@ public class ListOfResultsService {
     public Optional<ListOfResults> findById(Integer id){
         return listOfResultsRepository.findById(id);
     }
-    public ListOfResults findByNameQuiz(String nameQuiz){
-        return listOfResultsRepository.findByNameQuiz(nameQuiz);
+    public ListOfResults findByIdQuizAndUser(Integer idQuiz, Integer idUser){
+        return listOfResultsRepository.findByIdQuizAndUser(idQuiz, idUser);
     }
     public ListOfResults save(ListOfResults listOfResults){
         return listOfResultsRepository.save(listOfResults);

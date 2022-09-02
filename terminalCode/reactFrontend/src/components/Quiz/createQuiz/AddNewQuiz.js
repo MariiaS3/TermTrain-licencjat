@@ -14,7 +14,7 @@ export default class AddNewQuiz extends React.Component {
         quiz: [],
         name: "",
     };
-  
+
     async componentDidMount() {
         const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz/";
         const response = await axios.get(QUIZ_API_BASE_URL);
@@ -59,19 +59,19 @@ export default class AddNewQuiz extends React.Component {
         const styleBtn = {
             height: '20px',
             width: '150px',
-            margin: '30px',  
+            margin: '30px',
             fontSize: '18px',
             textAlign: 'center',
-            fontFamily:'\'Times New Roman\', Times, serif', 
-            color:'#0B1F64',
+            fontFamily: '\'Times New Roman\', Times, serif',
+            color: '#0B1F64',
         }
         return (
             <div className="addQuiz">
                 <div className="mainMenu">
-                    <Link to="/"><Button  className="btnMenu" size="large" style={styleBtn}>Główna</Button></Link>
-                    <Link to="/term"><Button  className="btnMenu" size="large" style={styleBtn}>Terminal</Button></Link>
-                    <Link to="/quiz"><Button  className="btnMenu" size="large" style={styleBtn}>Quiz</Button></Link>
-                    <Button  className="btnMenu" size="large" style={styleBtn} >Forum</Button>
+                    <Link to="/"><Button className="btnMenu" size="large" style={styleBtn}>Główna</Button></Link>
+                    <Link to="/term"><Button className="btnMenu" size="large" style={styleBtn}>Terminal</Button></Link>
+                    <Link to="/quiz"><Button className="btnMenu" size="large" style={styleBtn}>Quiz</Button></Link>
+                    <Button className="btnMenu" size="large" style={styleBtn} >Forum</Button>
                 </div>
                 <form className="formAdd" onSubmit={handleSubmit}>
                     <input style={{ width: '80%', maxHeight: '25px', minHeight: '25px' }} type="text" onChange={e => this.setState({ name: e.target.value })} placeholder="Add new quiz..." />
@@ -82,8 +82,8 @@ export default class AddNewQuiz extends React.Component {
                         {this.state.quiz.map(quiz => (
                             <tr key={uuidv4()}>
                                 <td >{quiz.description}</td>
-                                <td style={{ width: '80px', textAlign:'center' }}> <button id='del' type="submit" onClick={() => handleDelete(quiz.id)}>Delete</button></td>
-                                <td style={{ width: '160px', textAlign:'center' }}><Link to={`/add/question/${quiz.id}`} ><button id='addNew' >Add Question</button></Link></td>
+                                <td style={{ width: '80px', textAlign: 'center' }}> <button id='del' type="submit" onClick={() => handleDelete(quiz.id)}>Delete</button></td>
+                                <td style={{ width: '160px', textAlign: 'center' }}><Link to={`/add/question/${quiz.id}`} ><button id='addNew' >Add Question</button></Link></td>
                             </tr>
                         ))}
                     </thead>

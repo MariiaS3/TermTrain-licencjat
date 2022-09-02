@@ -1,10 +1,10 @@
-import directory from "../directory"
-import file from "../file"
-import command from "../manual"
+import directory from "../Terminal/directory"
+import file from "../Terminal/file"
+import command from "../Terminal/manual"
 
 const rm = (prompt, title, path, index) => {
     var d = prompt + " " + title
-  
+
     if (!title.includes('-') && title.split(/\s+/).length < 2) {
         d += "\nrm: brakuje operand\n Spróbuj 'rm --help' po więcej informacji"
     } else if (title.includes('-') && title.split(/\s+/).length < 3) {

@@ -1,7 +1,7 @@
 
-import directory from "../directory"
-import file from "../file"
-import command from "../manual";
+import directory from "../Terminal/directory"
+import file from "../Terminal/file"
+import command from "../Terminal/manual";
 
 const ls = (prompt, title, path) => {
     var d = prompt + " " + title + "\n"
@@ -41,7 +41,7 @@ const ls = (prompt, title, path) => {
         let isDirectory = false
         if (title.includes('-a')) {
             for (let k = 0; k < dir.length; k++) {
-                if (dir[k].path === path ) {
+                if (dir[k].path === path) {
                     d += dir[k].permissions + " " + dir[k].link + " " + dir[k].user + " " + dir[k].group + " " + dir[k].size + " " + dir[k].time + " " + dir[k].name + "\n";
                     isDirectory = true
                 }
@@ -50,7 +50,7 @@ const ls = (prompt, title, path) => {
                 d += "\n"
             }
             for (let k = 0; k < fil.length; k++) {
-                if (fil[k].path === path ) {
+                if (fil[k].path === path) {
                     d += fil[k].permissions + " " + fil[k].link + " " + fil[k].user + " " + fil[k].group + " " + fil[k].size + " " + fil[k].time + " " + fil[k].name + "\n";
                 }
             }
@@ -65,7 +65,7 @@ const ls = (prompt, title, path) => {
             if (isDirectory === true) {
                 d += "\n"
             }
-             for (let k = 0; k < fil.length; k++) {
+            for (let k = 0; k < fil.length; k++) {
                 if (fil[k].path === path && fil[k].name.charAt(0) !== '.') {
                     d += fil[k].permissions + " " + fil[k].link + " " + fil[k].user + " " + fil[k].group + " " + fil[k].size + " " + fil[k].time + " " + fil[k].name + "\n";
                 }
@@ -87,8 +87,8 @@ const ls = (prompt, title, path) => {
                 d += file[k].name + "      ";
             }
         }
-    }else if (title.includes('--help')) {
-        d+=`Tu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu. \nŻeby poznać więcej informacji, które można wykorzystać w prawdziwym terminalu proszę ptrzejść do jednej ze stron:
+    } else if (title.includes('--help')) {
+        d += `Tu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu. \nŻeby poznać więcej informacji, które można wykorzystać w prawdziwym terminalu proszę ptrzejść do jednej ze stron:
         https://man7.org/linux/man-pages/man1/ls.1.html \n https://linux.die.net/man/1/ls \n\n`
         for (let k = 0; k < command.length; k++) {
             if (command[k].id === "ls") {
@@ -97,7 +97,7 @@ const ls = (prompt, title, path) => {
                 d += command[k].flags
             }
         }
-    } else if(title.split(/\s+/).length===1){
+    } else if (title.split(/\s+/).length === 1) {
         let isDirectory = false
         for (let k = 0; k < dir.length; k++) {
             if (dir[k].path === path && dir[k].name.charAt(0) !== '.') {
@@ -113,9 +113,9 @@ const ls = (prompt, title, path) => {
                 d += fil[k].name + "      ";
             }
         }
-    }else{
-        d+= "ls: nieprawidłowa opcja -- '" + title.split(/\s+/)[title.split(/\s+/).length-1][1]+"'\n"
-        d+= "Spróbuj 'ls --help' po więcej informacji"
+    } else {
+        d += "ls: nieprawidłowa opcja -- '" + title.split(/\s+/)[title.split(/\s+/).length - 1][1] + "'\n"
+        d += "Spróbuj 'ls --help' po więcej informacji"
     }
     return d
 }

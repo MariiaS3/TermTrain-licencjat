@@ -1,34 +1,34 @@
-.containerQuest{
+.containerQuest {
     width: 100%;
     height: 100%;
     position: absolute;
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
-.questDiv{
+.questDiv {
     width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #eafaf3; 
+    background-color: #eafaf3;
 }
 
-.questBtn{
+.questBtn {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.lineCmd{
+.lineCmd {
     display: flex;
     flex-direction: row;
-    margin-left: 20px ;
+    margin-left: 20px;
     color: #53D632;
 }
 
-.inputCmd{
+.inputCmd {
     font-size: 18px;
     margin-left: 10px;
     hyphens: auto;
@@ -39,7 +39,7 @@
     width: 1000;
 }
 
-.questionItem{
+.questionItem {
     color: #253304;
     font-size: 25px;
     margin-top: 80px;

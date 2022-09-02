@@ -3,7 +3,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 
 import QuestionListItem from "./QuestionListItem"
-import Terminal from "../Terminal"
+import Terminal from "../Terminal/Terminal"
 
 import Button from '@mui/material/Button';
 import "./quiz.css"
@@ -36,7 +36,8 @@ function QuestionContainer(props) {
 
         <div className="containerQuest">
             <div>
-                <Terminal termStyle={termStyle} propsToken={props.propsToken}/>
+                {console.log(props.propsToken)}
+                <Terminal termStyle={termStyle} propsToken={props.propsToken} />
             </div>
             <div className="questDiv">
                 <div >

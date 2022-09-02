@@ -1,0 +1,55 @@
+package com.term.terminal.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table(name="Forum")
+public class Forum {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="forum_id", updatable = false)
+    private int id;
+
+    @Size(min = 10, max=300, message = "The question should be between 10 and 300 characters" )
+    @Column(name="name")
+    private String name;
+
+    @Size(min = 10, max=1000, message = "The question should be between 10 and 1000 characters" )
+    @Column(name="describe")
+    private String describe;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
+
+}

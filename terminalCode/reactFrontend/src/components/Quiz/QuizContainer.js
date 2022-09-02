@@ -25,7 +25,7 @@ class QuizContainer extends React.Component {
 
     const ADMIN_URL = "http://localhost:8080/api/user/admin/" + id[0];
     const admin = await axios.post(ADMIN_URL, id[0]);
-    console.log(admin.data)
+    console.log(response.data)
     this.setState({ quiz: response.data, isLoading: false, results: res.data, isAdmin: admin.data })
   }
 
@@ -66,7 +66,7 @@ class QuizContainer extends React.Component {
     // }
     return (
       <div className="quizContainer"  >
-        <div className="mainMenu"  style={{justifyContent: "right"}}>
+        <div className="mainMenu" style={{ justifyContent: "right" }}>
           <div className="mainMenu">
             <Link to="/"><Button className="btnMenu" style={style} >Główna</Button></Link>
             <Link to="/term"><Button className="btnMenu" style={style}>Terminal</Button></Link>
@@ -74,7 +74,7 @@ class QuizContainer extends React.Component {
             <Button className="btnMenu" style={style}>Forum</Button>
           </div>
           <div >
-            <Button size="large" style={logOut} onClick={e => {this.props.setLogToken()}} >Wyloguj się</Button>
+            <Button size="large" style={logOut} onClick={e => { this.props.setLogToken() }} >Wyloguj się</Button>
           </div>
         </div>
 
@@ -84,12 +84,19 @@ class QuizContainer extends React.Component {
               <span style={{ "marginLeft": "50px", "fontSize": "23px" }}>{quiz.description}</span>
               <div className="qiuzDiv">
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <Button variant="contained" className="btnMenu" style={styleList}>Teoria</Button>
+                  <Button href="#teoria-modal" variant="contained" className="btnMenu" style={styleList}>Teoria</Button>
                   <Link to={`/quiz/question/${quiz.id}`}  ><Button variant="contained" className="btnMenu" style={styleList} >Rozwiąż Quiz</Button></Link>
+                </div>
+                <div className="modal" id="teoria-modal">
+                  <div className="modal-content" >
+                      <a href="#" className="modal-close" onClick={e => this.setState({ name: "", describ: "" })}>&times;</a>
+                      <p id="id_tytul">Bądź konkretny i wyobraź sobie, że zadajesz pytanie innej osobie </p>
+                  </div>
+
                 </div>
                 <div>
                   {this.state.results.map(res => {
-                    if (quiz.description === res.nameQuiz) {
+                    if (quiz.id === res.idQuiz) {
                       let color = "";
                       if (res.result < 40) {
                         color = "red"

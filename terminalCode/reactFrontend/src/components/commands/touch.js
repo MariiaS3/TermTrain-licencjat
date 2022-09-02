@@ -1,8 +1,8 @@
 
-import file from "../file"
-import command from "../manual"
+import file from "../Terminal/file"
+import command from "../Terminal/manual"
 
-const  touch = (prompt,title,path) => {
+const touch = (prompt, title, path) => {
     var d = prompt + " " + title
 
 
@@ -23,47 +23,47 @@ const  touch = (prompt,title,path) => {
             d += "\ntouch: brakuje operand  \nSpróbuj 'touch --help' po więcej informacji"
         }
     } else {
-    var addFile = true
-    if (title.split(/\s+/)[1] === "-a") {
-        for (let k = 0; k < file.length; k++) {
-            if (path === file[k].path && title.split(/\s+/)[2] === file[k].name) {
-                file[k].time = "";
-                addFile = false;
+        var addFile = true
+        if (title.split(/\s+/)[1] === "-a") {
+            for (let k = 0; k < file.length; k++) {
+                if (path === file[k].path && title.split(/\s+/)[2] === file[k].name) {
+                    file[k].time = "";
+                    addFile = false;
+                }
             }
         }
-    }
-    else if (title.split(/\s+/)[1] === "-c") {
-        
-    }else if (title.split(/\s+/)[1] === "-m") {
-        for (let k = 0; k < file.length; k++) {
-            if (path === file[k].path && title.split(/\s+/)[2] === file[k].name) {
-                file[k].time = "";
-                addFile = false;
-            }
-        }
-    } else {
-        for (let k = 0; k < file.length; k++) {
-            if (path === file[k].path && title.split(/\s+/)[1] === file[k].name) {
-                file[k].time = "";
-                addFile = false
-                d += "\ntouch: nie można utworzyć plik "+ title.split(/\s+/)[1] + ": Plik istnieje"
-            }
-        }
-        if (title.split(/\s+/)[1] !== "" && addFile === true) {
-            const newFile = {
-                name: title.split(/\s+/)[1],
-                permissions: "-rw-r--r--",
-                user:prompt.split(/[@]/)[0],
-                group:prompt.split(/[@]/)[0],
-                path: path,
-                link:1,
-                size:0,
-                text: "",
-            }
+        else if (title.split(/\s+/)[1] === "-c") {
 
-            file.push(newFile)
+        } else if (title.split(/\s+/)[1] === "-m") {
+            for (let k = 0; k < file.length; k++) {
+                if (path === file[k].path && title.split(/\s+/)[2] === file[k].name) {
+                    file[k].time = "";
+                    addFile = false;
+                }
+            }
+        } else {
+            for (let k = 0; k < file.length; k++) {
+                if (path === file[k].path && title.split(/\s+/)[1] === file[k].name) {
+                    file[k].time = "";
+                    addFile = false
+                    d += "\ntouch: nie można utworzyć plik " + title.split(/\s+/)[1] + ": Plik istnieje"
+                }
+            }
+            if (title.split(/\s+/)[1] !== "" && addFile === true) {
+                const newFile = {
+                    name: title.split(/\s+/)[1],
+                    permissions: "-rw-r--r--",
+                    user: prompt.split(/[@]/)[0],
+                    group: prompt.split(/[@]/)[0],
+                    path: path,
+                    link: 1,
+                    size: 0,
+                    text: "",
+                }
+
+                file.push(newFile)
+            }
         }
-    }
     }
     return d
 }

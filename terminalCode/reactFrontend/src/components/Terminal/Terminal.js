@@ -1,12 +1,12 @@
 import React from "react";
 
 import { v4 as uuidv4 } from "uuid"
-import Commands from "./Commands";
-import directory from "./directory";
-import file from "./file";
-import Man from "./Man";
+import Commands from "../Terminal/Commands";
+import directory from "../Terminal/directory";
+import file from "../Terminal/file";
+import Man from "../Terminal/Man";
 
-import Modal from "./Modal"
+import Nano from "../Terminal/Nano"
 
 
 class Terminal extends React.Component {
@@ -14,7 +14,7 @@ class Terminal extends React.Component {
     constructor(props) {
         super(props);
 
-        const userName = props.propsToken.split(/\s+/)[this.props.propsToken.split(/\s+/).length - 1]
+        const userName = props.propsToken.split(/\s+/)[props.propsToken.split(/\s+/).length - 1]
 
         this.state = {
             prompt: userName + "@localhost:~$",
@@ -123,7 +123,6 @@ class Terminal extends React.Component {
         this.setState({
             showModal: !this.state.showModal,
             showMan: !this.state.showMan,
-
         });
     };
     saveText = (text) => {
@@ -134,12 +133,12 @@ class Terminal extends React.Component {
         }
     };
 
- 
+
     render() {
 
         return (
             <div className="termContainer" style={this.props.termStyle}>
-                {!this.state.showModal ? <div>
+                {!this.state.showModal ? <div style={{width: "100%"}}>
                     <div style={{ marginLeft: '20px', marginTop: '20px' }}>
                         <ul>
                             {this.state.command.map(cmd =>
@@ -151,7 +150,7 @@ class Terminal extends React.Component {
                                                 {cmd.text.includes(":~#") ? cmd.text.split(":~#")[1] : cmd.text.split(":~$")[1]}
                                             </span>
                                         </span> :
-                                        <span style={{ color: "#D7DEDE", paddingLeft:"10px" }}>{cmd.text}</span>}
+                                        <span style={{ color: "#D7DEDE", paddingLeft: "10px" }}>{cmd.text}</span>}
                                 </li>
                             )}
                         </ul>
@@ -174,7 +173,7 @@ class Terminal extends React.Component {
                         history={this.state.history}
                         prevPath={this.state.prevPath}
                     />
-                </div> : <div>{this.showMan ? <Modal onClose={this.showModal} onSave={this.saveText} children={this.state.text} /> : <Man onClose={this.showMan} cmd={this.state.text} />} </div>}
+                </div> : <div>{!this.state.showMan ? <Nano onClose={this.showModal} onSave={this.saveText} children={this.state.text} /> : <Man onClose={this.showMan} cmd={this.state.text} />} </div>}
             </div>
         )
     }

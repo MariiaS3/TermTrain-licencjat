@@ -1,6 +1,6 @@
-import directory from "../directory"
-import file from "../file"
-import command from "../manual"
+import directory from "../Terminal/directory"
+import file from "../Terminal/file"
+import command from "../Terminal/manual"
 
 const rmdir = (prompt, title, path) => {
     var d = prompt + " " + title
@@ -22,14 +22,14 @@ const rmdir = (prompt, title, path) => {
             d += "\nrmdir: brakuje operand  \nSpróbuj 'rmdir --help' po więcej informacji"
         }
     } else {
-        for(var j=1;j<title.split(/\s+/).length;j++){
+        for (var j = 1; j < title.split(/\s+/).length; j++) {
             let deleteDir = false
             for (let k = 0; k < directory.length; k++) {
                 if (path === directory[k].path && title.split(/\s+/)[j] === directory[k].name) {
                     deleteDir = true
                 }
             }
-    
+
             if (title.split(/\s+/)[j] !== "" && deleteDir === true) {
                 if (path !== '/') {
                     let tempPath = path.split(/[/]/)
@@ -49,21 +49,21 @@ const rmdir = (prompt, title, path) => {
                         break;
                     }
                 }
-            }else{
-                let isF =false
+            } else {
+                let isF = false
                 for (let k = 0; k < file.length; k++) {
-                    if(file[k].name === title.split(/\s+/)[j] && path === file[k].path){
+                    if (file[k].name === title.split(/\s+/)[j] && path === file[k].path) {
                         isF = true
                     }
                 }
-                if(isF === true){
-                    d += "\n rmdir: nie można usunąć ' "`${title.split(/\s+/)[j]}`+"': Jest plikiem"
-                }else{
+                if (isF === true) {
+                    d += "\n rmdir: nie można usunąć ' "`${title.split(/\s+/)[j]}` + "': Jest plikiem"
+                } else {
                     d += "\n rmdir: nie można usunąć '"`${title.split(/\s+/)[j]}` + "': Nie ma takiego pliku lub katalogu"
                 }
             }
         }
-       
+
     }
     return d
 }

@@ -1,7 +1,7 @@
 
-import directory from "../directory"
-import file from "../file";
-import command from "../manual"
+import directory from "../Terminal/directory"
+import file from "../Terminal/file";
+import command from "../Terminal/manual"
 
 const cd = (prompt, title, prevPath, path) => {
     var d = prompt + " " + title;
@@ -20,7 +20,7 @@ const cd = (prompt, title, prevPath, path) => {
     } else if (title.includes('-')) {
         path = prevPath
     } else if (title.includes('--help')) {
-        d+=`Tu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu.  \n\n`
+        d += `Tu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu.  \n\n`
         for (let k = 0; k < command.length; k++) {
             if (command[k].id === "cd") {
                 d += command[k].skladnia + " \n "
@@ -28,103 +28,103 @@ const cd = (prompt, title, prevPath, path) => {
                 d += command[k].flags
             }
         }
-    }else if (title.split(/\s+/).length > 2){
-        d+= "\ncd: zbyt wiele argumentów"
+    } else if (title.split(/\s+/).length > 2) {
+        d += "\ncd: zbyt wiele argumentów"
     } else {
         if (title.split(/\s+/)[1].split(/[/]/).length > 1) {
-            let isDir=false
-            if(title.split(/\s+/)[1].split(/[/]/)[0]!==""){
-                let tempPath =  title.split(/\s+/)[1].split(/[/]/)
+            let isDir = false
+            if (title.split(/\s+/)[1].split(/[/]/)[0] !== "") {
+                let tempPath = title.split(/\s+/)[1].split(/[/]/)
                 let newPath = path
-                for(let i=0;i<tempPath.length;i++){
+                for (let i = 0; i < tempPath.length; i++) {
                     isDir = false
                     for (let k = 0; k < directory.length; k++) {
-                    if (directory[k].name === tempPath[i] && directory[k].path === newPath) {
-                        newPath +="/"+tempPath[i]
-                        isDir = true
-                    }
-                }
-                if(isDir===false){
-                    let isFile = false
-                    for (let k = 0; k < file.length; k++) {
-                        if (file[k].name === tempPath[i] && file[k].path === newPath) {
-                            isFile = true
-                        } 
-                    }
-                    if(isFile === true){
-                        d+= "\ncd: "+tempPath[i]+ ": Nie jest katalogiem"
-                    }else{
-                        d+= "\ncd: "+tempPath[i]+ ": Nie ma takiego pliku lub katalogu"
-                    }
-                    break;
-                }
-                }
-                if(isDir===true){
-                    path = newPath
-                }
-            }else{
-                let tempPath =  title.split(/\s+/)[1].split(/[/]/)
-                let newPath = "/"
-                for(let i=0;i<tempPath.length;i++){
-                    isDir = false
-                    for (let k = 0; k < directory.length; k++) {
-                    if (directory[k].name === tempPath[i] && directory[k].path === newPath) {
-                        isDir = true
-                        if(newPath ==="/"){
-                            newPath = newPath + directory[k].name;
-                        }else {
-                            newPath = newPath + "/" + directory[k].name;
+                        if (directory[k].name === tempPath[i] && directory[k].path === newPath) {
+                            newPath += "/" + tempPath[i]
+                            isDir = true
                         }
                     }
-                }
-                if(isDir===false){
-                    let isFile = false
-                    for (let k = 0; k < file.length; k++) {
-                        if (file[k].name === tempPath[i] && file[k].path === newPath) {
-                            isFile = true
-                        } 
+                    if (isDir === false) {
+                        let isFile = false
+                        for (let k = 0; k < file.length; k++) {
+                            if (file[k].name === tempPath[i] && file[k].path === newPath) {
+                                isFile = true
+                            }
+                        }
+                        if (isFile === true) {
+                            d += "\ncd: " + tempPath[i] + ": Nie jest katalogiem"
+                        } else {
+                            d += "\ncd: " + tempPath[i] + ": Nie ma takiego pliku lub katalogu"
+                        }
+                        break;
                     }
-                    if(isFile === true){
-                        d+= "\ncd: "+tempPath[i]+ ": Nie jest katalogiem"
-                    }else{
-                        d+= "\ncd: "+tempPath[i]+ ": Nie ma takiego pliku lub katalogu"
+                }
+                if (isDir === true) {
+                    path = newPath
+                }
+            } else {
+                let tempPath = title.split(/\s+/)[1].split(/[/]/)
+                let newPath = "/"
+                for (let i = 0; i < tempPath.length; i++) {
+                    isDir = false
+                    for (let k = 0; k < directory.length; k++) {
+                        if (directory[k].name === tempPath[i] && directory[k].path === newPath) {
+                            isDir = true
+                            if (newPath === "/") {
+                                newPath = newPath + directory[k].name;
+                            } else {
+                                newPath = newPath + "/" + directory[k].name;
+                            }
+                        }
                     }
-                    break;
+                    if (isDir === false) {
+                        let isFile = false
+                        for (let k = 0; k < file.length; k++) {
+                            if (file[k].name === tempPath[i] && file[k].path === newPath) {
+                                isFile = true
+                            }
+                        }
+                        if (isFile === true) {
+                            d += "\ncd: " + tempPath[i] + ": Nie jest katalogiem"
+                        } else {
+                            d += "\ncd: " + tempPath[i] + ": Nie ma takiego pliku lub katalogu"
+                        }
+                        break;
+                    }
                 }
-                }
-                if(isDir===true){
+                if (isDir === true) {
                     path = newPath
                 }
             }
-            
+
         } else {
             let isDir = false;
             for (let k = 0; k < directory.length; k++) {
                 if (directory[k].name === title.split(/\s+/)[1] && directory[k].path === path) {
-                    if(path ==="/"){
+                    if (path === "/") {
                         path = path + directory[k].name;
-                    }else {
+                    } else {
                         path = path + "/" + directory[k].name;
                     }
                     isDir = true
                 }
             }
-            if(isDir===false){
+            if (isDir === false) {
                 let isFile = false
                 for (let k = 0; k < file.length; k++) {
                     if (file[k].name === title.split(/\s+/)[1] && file[k].path === path) {
                         isFile = true
-                    } 
+                    }
                 }
-                if(isFile === true){
-                    d+= "\ncd: "+title.split(/\s+/)[1]+ ": Nie jest katalogiem"
-                }else{
-                    d+= "\ncd: "+title.split(/\s+/)[1]+ ": Nie ma takiego pliku lub katalogu"
+                if (isFile === true) {
+                    d += "\ncd: " + title.split(/\s+/)[1] + ": Nie jest katalogiem"
+                } else {
+                    d += "\ncd: " + title.split(/\s+/)[1] + ": Nie ma takiego pliku lub katalogu"
                 }
             }
         }
     }
-    return [path,d]
+    return [path, d]
 }
 
 export default cd

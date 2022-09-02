@@ -37,10 +37,6 @@ public class Account {
     @Column(name = "is_admin")
     private boolean is_admin;
 
-    @ElementCollection // 1
-    @CollectionTable(name = "my_list") // 2
-    @Column(name = "list") // 3
-    private List<Integer> list;
 
     public Account(){
         

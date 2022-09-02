@@ -1,0 +1,244 @@
+.forumContainer {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  position: absolute;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.questionList {
+  width: 1000px;
+  min-width: 1000px;
+  margin-top: 100px;
+}
+
+.questItem {
+  width: 1000px;
+  max-height: 100px;
+  min-height: 100px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px 30px 0px;
+  border-radius: 10px;
+  background-color:  #e1f5f7;
+  box-shadow: 0 0 0.2rem #f2f8be;
+}
+
+.input-submit {
+  background: transparent;
+  text-transform: capitalize;
+  cursor: pointer;
+  height: 30px;
+  outline: none;
+  border: none;
+}
+
+
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 77, 77, .7);
+  transition: all .4s;
+}
+
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  border-radius: 4px;
+  position: relative;
+  width: 50%;
+  max-width: 50%;
+  height: 600px;
+  min-height: 300px;
+  background: #eafaf3;
+  align-items: center;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 2em;
+}
+
+#text {
+  padding-bottom: 15px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #585858;
+  text-decoration: none;
+}
+
+.text-input {
+  width: 100%;
+  height: 50%;
+  overflow: scroll;
+  background-color: #fff;
+  font-size: 20px;
+  text-align: left;
+  border-radius: 3px;
+  border: 2px groove #f2f7ca
+}
+
+#text-input{
+  width: 100%;
+  height: 35px;
+  background-color: #fff;
+  font-size: 18px;
+  text-align: left;
+  border-radius: 3px;
+  border: 2px groove #f2f7ca;
+  outline: 0px groove transparent;
+}
+#tytul {
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  justify-content: flex-start;
+}
+
+#id_tytul {
+  width: 100%;
+  font-size: 15px;
+  margin-top: 0x;
+  padding-top: 10px;
+  color: #656f9b;
+  display: flex;
+  justify-content: flex-start;
+}
+
+[contenteditable] {
+  outline: 0px groove transparent;
+}
+
+#question{
+  max-height: 200px;
+  min-height: 200px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-bottom:15px;
+  background-color: #e2f8fa;
+}
+
+#quest-name{
+  display: flex;
+  margin: 10px;
+  font-size: 25px;
+  justify-content: flex-start;
+}
+
+#quest-describ{
+  margin-left: 30px;
+  font-size: 22px;
+}
+
+.comment{
+  width: 100%;
+  height: 350px;
+  padding: 15px;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: #e1f5f7;
+  box-shadow: 5px 0px 15px #f4fac466;
+}
+
+.comment-input{
+  width: 100%;
+  min-height: 100px;
+  max-height: 100px;
+  background-color: #fff;
+  font-size: 16px;
+  padding: 5px;
+  text-align: left;
+  overflow: scroll;
+  border-radius: 5px;
+  border: 2px groove #edf0d5;
+  outline: 0px groove transparent;
+}
+#dodaj{
+  display: flex;
+  justify-content: right;
+}
+
+#comment{
+  min-height: 150px;
+  max-height: 150px;
+  display: flex;
+  overflow: scroll;
+  flex-direction: column;
+}
+
+#com{
+  width: 950px;
+  list-style: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color:#eafaf3;
+}
+#under{
+  display: flex;
+  flex-direction: column;
+  background-color: #e1f5f7;
+  justify-content: space-between;
+}
+#undcom{
+  width: 900px;
+  margin-top: 10px;
+  margin-left: 60px;
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #eafaf3;
+}
+
+.like-button{
+  width: 100px;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 5px 10px;
+  color:  #585858;
+}
+
+.liked{
+  font-weight: bold;
+  color: #37b9b9;
+}
+
+.dislike-button{
+  width: 100px;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 5px 10px;
+  color:  #585858;
+}
+
+.disliked{
+  font-weight: bold;
+  color: #8d4e31;
+}

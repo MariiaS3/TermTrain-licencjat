@@ -8,6 +8,10 @@
     justify-content: space-between;
 }
 
+.termContainer {
+    font-family: Consolas, monospace;
+}
+
 .termDiv {
     width: 150px;
     min-height: 100%;
@@ -15,7 +19,6 @@
     overflow: auto;
     flex-direction: column;
     background-color: #eafaf3;
-
 }
 
 .lineCmd {
@@ -26,14 +29,16 @@
 }
 
 .inputCmd {
-    font-size: 18px;
+    font-size: 20px !important;
+    font-family: Consolas, monospace;
     margin-left: 10px;
+    min-width: 50%;
+    margin-right: auto;
     hyphens: auto;
     color: #fff;
     background-color: transparent;
     border: none;
     outline: none;
-    width: 1000;
 }
 
 

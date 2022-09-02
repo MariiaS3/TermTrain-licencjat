@@ -1,6 +1,6 @@
 
-import file from "../file"
-import command from "../manual"
+import file from "../Terminal/file"
+import command from "../Terminal/manual"
 
 const wc = (prompt, title, path) => {
     let d = prompt + " " + title + "\n"
@@ -34,7 +34,7 @@ const wc = (prompt, title, path) => {
                         isFile = true
                         let text = file[k].text.split(/[.,!,?,\s]/)
                         let w = 0;
-                        for (let j= 0; j < text.length; j++) {
+                        for (let j = 0; j < text.length; j++) {
                             if (text[j] !== "") {
                                 w += 1;
                             }
@@ -44,7 +44,7 @@ const wc = (prompt, title, path) => {
                             word += w
                         }
                     }
-            }
+                }
                 if (isFile === false) {
                     d += "\nwc: " + arr[i] + ": Nie ma takiego pliku lub katalogu"
                 }
@@ -68,7 +68,7 @@ const wc = (prompt, title, path) => {
                             bajt += c;
                         }
                     }
-            }
+                }
                 if (isFile === false) {
                     d += "\nwc: " + arr[i] + ": Nie ma takiego pliku lub katalogu"
                 }

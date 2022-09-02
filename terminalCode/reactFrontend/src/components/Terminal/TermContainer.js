@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 
 
-import Terminal from "../Terminal"
+import Terminal from "./Terminal"
 import "./terminal.css"
 
 class TermContainer extends React.Component {
@@ -43,7 +43,7 @@ class TermContainer extends React.Component {
                 <div>
                     <Terminal termStyle={termStyle} propsToken={this.props.propsToken} />
                 </div>
-                <div className="termDiv" style={{justifyContent: "end"}}>
+                <div className="termDiv" style={{ justifyContent: "end" }}>
                     <div className="termDiv">
                         <ul style={{ paddingTop: '150px', paddingLeft: '30px', listStyle: "none" }}>
                             <li >
@@ -58,7 +58,7 @@ class TermContainer extends React.Component {
                         </ul>
                     </div>
                     <div >
-                        <Button size="large" style={logOut} onClick={e => {this.props.setLogToken()}}>Wyloguj się</Button>
+                        <Button size="large" style={logOut} onClick={e => { this.props.setLogToken() }}>Wyloguj się</Button>
                     </div>
                 </div>
 
