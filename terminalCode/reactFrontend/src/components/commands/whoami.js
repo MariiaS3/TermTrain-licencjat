@@ -1,8 +1,8 @@
 
 const whoami = (prompt, title) => {
     var d = prompt + " " + title + "\n"
-    
-    d+=prompt.split(/[@]/)[0]
+
+    d += prompt.split(/[@]/)[0]
 
     return d;
 }

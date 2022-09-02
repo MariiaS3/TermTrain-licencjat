@@ -1,10 +1,10 @@
 
 
-const date =(prompt,title)=>{
-    var d = prompt + " "+ title + "\n"
+const date = (prompt, title) => {
+    var d = prompt + " " + title + "\n"
 
     d += Date().toLocaleString()
-    
+
     return d
 }
 

@@ -29,7 +29,7 @@ export default class AddNewQuiz extends React.Component {
     render() {
         const handleSubmit = async e => {
             e.preventDefault();
-            
+
             if (this.state.name !== "") {
                 const newAnswer = await createAnswer({
                     text: this.state.name,
@@ -66,11 +66,11 @@ export default class AddNewQuiz extends React.Component {
         const styleBtn = {
             height: '20px',
             width: '150px',
-            margin: '30px',  
+            margin: '30px',
             fontSize: '18px',
             textAlign: 'center',
-            fontFamily:'\'Times New Roman\', Times, serif', 
-            color:'#0B1F64',
+            fontFamily: '\'Times New Roman\', Times, serif',
+            color: '#0B1F64',
         }
         return (
             <div className="addQuiz">
@@ -82,8 +82,8 @@ export default class AddNewQuiz extends React.Component {
                 </div>
                 <form className="formAdd" onSubmit={handleSubmit}>
                     <input style={{ width: '70%', maxHeight: '25px', minHeight: '25px' }} type="text" onChange={e => this.setState({ name: e.target.value })} placeholder="Add new answer..." />
-                    <span style={{margin:'10px'}}>is corect</span>
-                    <input style={{ width: '15px', height: '15px' }} type="checkbox" onChange={e => this.setState({ corect: e.target.checked })}  />
+                    <span style={{ margin: '10px' }}>is corect</span>
+                    <input style={{ width: '15px', height: '15px' }} type="checkbox" onChange={e => this.setState({ corect: e.target.checked })} />
                     <Button className="btnMenu" type="submit" style={style}>Add</Button>
                 </form>
                 <table>
@@ -91,8 +91,8 @@ export default class AddNewQuiz extends React.Component {
                         {this.state.answers.map(answer => (
                             <tr key={uuidv4()}>
                                 <td >{answer.text}</td>
-                                <td style={{ width: '80px', textAlign:'center' }}>{answer.corect ? "true": "false"}</td>
-                                <td style={{  width: '160px', textAlign:'center' }}> <button id='del' type="submit" onClick={() => handleDelete(answer.id)}>Delete</button></td>
+                                <td style={{ width: '80px', textAlign: 'center' }}>{answer.corect ? "true" : "false"}</td>
+                                <td style={{ width: '160px', textAlign: 'center' }}> <button id='del' type="submit" onClick={() => handleDelete(answer.id)}>Delete</button></td>
                             </tr>
                         ))}
                     </thead>

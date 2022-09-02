@@ -47,16 +47,96 @@ values ('11','3','question 3 answer 3',true);
 insert into answer   ( answer_id ,question_id ,text, corect      )
 values ('12','3','question 3 answer 4',false);
 
-insert into list_of_results( list_id, data, name_quiz,result, user_id   )
-values ('1','28.07.2022', 'quiz for terminal application','80/100', '1');
-
-insert into list_of_results( list_id, data, name_quiz,result, user_id   )
-values ('2','28.07.2022', 'quiz for terminal application','80/100', '1');
-
-insert into list_of_results( list_id, data, name_quiz,result, user_id   )
-values ('3','28.07.2022', 'quiz for terminal application','80/100', '1');
+insert into quiz ( quiz_id, description   )
+values ('2','quiz for terminal application');
 
 
+insert into question  ( question_id , quiz_id, text     )
+values ('4','2','question 1');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('5','2','question 2');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('6','2','question 3');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('13','4','question 1 answer 1',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('14','4','question 1 answer 2',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('15','4','question 1 answer 3',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('16','4','question 1 answer 4',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('17','5','question 2 answer 1',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('18','5','question 2 answer 2',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('19','5','question 2 answer 3',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('20','5','question 2 answer 4',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('21','6','question 3 answer 1',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('22','6','question 3 answer 2',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('23','6','question 3 answer 3',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('24','6','question 3 answer 4',false);
+
+INSERT INTO Account 
+VALUES(1, 'user@gmail.com', false, 'user1234', 'user');
+
+INSERT INTO Account 
+VALUES(2, 'admin@gmail.com', false, 'admin1234', 'admin');
+
+
+INSERT INTO Forum
+VALUES(1, 'forum question 1','question 1');
+
+INSERT INTO Forum
+VALUES(2, 'forum question 2','question 2');
+
+INSERT INTO Forum
+VALUES(3, 'forum question 3','question 3');
+
+INSERT INTO Forum
+VALUES(4, 'forum question 4','question 4');
+
+INSERT INTO Forum
+VALUES(5, 'forum question 5','question 5');
+
+INSERT INTO Comment
+VALUES(1, 'comment question 1','1');
+
+
+INSERT INTO Comment
+VALUES(2, 'comment question 1','1');
+
+INSERT INTO Comment
+VALUES(3, 'comment question 2','2');
+Update count: 1
+(0 ms)
+
+
+INSERT INTO Comment
+VALUES(4, 'comment question 2','2');
+
+
+INSERT INTO Comment
+VALUES(5, 'comment question 3','3');
 
 // mvn spring-boot:run
 // npm start

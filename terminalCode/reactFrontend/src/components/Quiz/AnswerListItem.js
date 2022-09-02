@@ -1,7 +1,7 @@
 import React from "react";
 
 import axios from "axios";
- 
+
 import { Button, FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
 
@@ -44,13 +44,13 @@ class AnswerListItem extends React.Component {
         }
 
         return (
-            <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <FormControl >
                     <RadioGroup>
                         {this.state.quest.map(quiz => (
                             <div key={quiz.id} style={{ marginLeft: '15px', marginTop: '10px' }}>
-                                <FormControlLabel  value={quiz.text}  control={ <Radio  color='success' />}  onChange={(e) => this.handleRadioChange(e, quiz.corect)}/>
-                                <label  style={{color:"#0B1F64" , fontSize:"21px"}}  >{quiz.text}</label>
+                                <FormControlLabel value={quiz.text} control={<Radio color='success' />} onChange={(e) => this.handleRadioChange(e, quiz.corect)} />
+                                <label style={{ color: "#0B1F64", fontSize: "21px" }}  >{quiz.text}</label>
                             </div>
                         ))}
                     </RadioGroup>

@@ -1,5 +1,5 @@
-import file from "../file";
-import command from "../manual";
+import file from "../Terminal/file";
+import command from "../Terminal/manual";
 
 const tail = (prompt, title, path) => {
     var d = prompt + " " + title + "\n"

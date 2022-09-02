@@ -1,6 +1,6 @@
-import directory from "../directory"
-import file from "../file"
-import command from "../manual"
+import directory from "../Terminal/directory"
+import file from "../Terminal/file"
+import command from "../Terminal/manual"
 
 const mv = (prompt, title, path) => {
     var d = prompt + " " + title
@@ -134,7 +134,7 @@ const mv = (prompt, title, path) => {
                         if (isF === false) {
                             d += "\nmv: " + title.split(/\s+/)[2] + ": Nie ma takiego pliku lub katalogu"
                         }
-                    }else{
+                    } else {
                         let isF = false
                         for (let j = 0; j < file.length; j++) {
                             if (file[j].name === title.split(/\s+/)[1]) {

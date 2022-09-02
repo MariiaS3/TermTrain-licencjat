@@ -1,4 +1,4 @@
-import command from "../manual"
+import command from "../Terminal/manual"
 
 const pwd = (prompt, title, path) => {
     var d = prompt + " " + title + "\n"

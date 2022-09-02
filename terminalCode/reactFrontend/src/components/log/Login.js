@@ -19,27 +19,27 @@ export default function Login({ setToken }) {
       email: email,
       pass: password
     });
-    if(token.data === "password"){
+    if (token.data === "password") {
       setMessage("Wprowadzone hasło jest nieprawidłowe.")
-    }else if(token.data === "dane"){
+    } else if (token.data === "dane") {
       setMessage("Nie mogliśmy znaleźć konta pasującego do wprowadzonych danych logowania")
     }
-    else{
-    setToken(token.data);
-    window.location.reload(false);
+    else {
+      setToken(token.data);
+      window.location.reload(false);
+    }
   }
-}
 
-const someMesange = () =>{
-       
-  return(
-      <div  style={{
-          display: message !== "" ? '':'none', textAlign:'center'
+  const someMesange = () => {
+
+    return (
+      <div style={{
+        display: message !== "" ? '' : 'none', textAlign: 'center'
       }}>
-          <p >{message}</p>
+        <p >{message}</p>
       </div>
-  )
-}
+    )
+  }
   return (
     <div className="login-wrapper">
       <h1>Please Log In</h1>
@@ -57,8 +57,8 @@ const someMesange = () =>{
         </div>
       </form>
       <div className="error">
-                {someMesange()}
-            </div>
+        {someMesange()}
+      </div>
     </div>
   )
 }

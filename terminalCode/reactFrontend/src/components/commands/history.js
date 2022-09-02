@@ -1,4 +1,4 @@
-import command from "../manual";
+import command from "../Terminal/manual";
 
 
 const history = (prompt, title, history) => {
@@ -29,7 +29,7 @@ const history = (prompt, title, history) => {
         }
     } else {
         for (let k = 0; k < history.length; k++) {
-                d += "\n" + history[k].title
+            d += "\n" + history[k].title
         }
     }
     return d

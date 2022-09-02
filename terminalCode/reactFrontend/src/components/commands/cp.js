@@ -1,7 +1,7 @@
 
-import directory from "../directory";
-import file from "../file";
-import command from "../manual";
+import directory from "../Terminal/directory";
+import file from "../Terminal/file";
+import command from "../Terminal/manual";
 
 const cp = (prompt, title, path) => {
     var d = prompt + " " + title
@@ -9,8 +9,8 @@ const cp = (prompt, title, path) => {
     if (!title.includes('-') && title.split(/\s+/).length < 3) {
         d += "\ncp: brakuje operand pliku \n Spróbuj 'cp --help' po więcej informacji"
     } else if (title.includes('-') && title.split(/\s+/).length < 4) {
-        if(title.includes('--help')){
-            d+=`Tu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu. \nŻeby poznać więcej informacji, które można wykorzystać w prawdziwym terminalu proszę ptrzejść do jednej ze stron:
+        if (title.includes('--help')) {
+            d += `Tu wyświetlane są tylko informacje, które można wykorzystać w tym terminalu. \nŻeby poznać więcej informacji, które można wykorzystać w prawdziwym terminalu proszę ptrzejść do jednej ze stron:
             https://man7.org/linux/man-pages/man1/cp.1.html \n https://linux.die.net/man/1/cp \n\n`
             for (let k = 0; k < command.length; k++) {
                 if (command[k].id === "cp") {
@@ -19,13 +19,13 @@ const cp = (prompt, title, path) => {
                     d += command[k].flags
                 }
             }
-        }else{
-        d += "\ncp: brakuje operand pliku \n Spróbuj 'cp --help' po więcej informacji"
+        } else {
+            d += "\ncp: brakuje operand pliku \n Spróbuj 'cp --help' po więcej informacji"
         }
     } else {
         var isFile = false;
         var isDirectory = false;
-    
+
         let folder = (title.split(/\s+/)[title.split(/\s+/).length - 1]).split('/')
         let nameDir = folder[folder.length - 1]
         let pathDir = "/";
@@ -46,9 +46,9 @@ const cp = (prompt, title, path) => {
         var tempFile;
 
         if (isDirectory === false && !title.includes('-') && title.split(/\s+/).length > 3) {
-            d+="\ncp: cel"+ title.split(/\s+/)[title.split(/\s+/).length-1] + " nie jest katalogiem"
+            d += "\ncp: cel" + title.split(/\s+/)[title.split(/\s+/).length - 1] + " nie jest katalogiem"
         } else if (isDirectory === false && title.includes('-') && title.split(/\s+/).length > 4) {
-            d+="\ncp: cel"+ title.split(/\s+/)[title.split(/\s+/).length-1] + " nie jest katalogiem"
+            d += "\ncp: cel" + title.split(/\s+/)[title.split(/\s+/).length - 1] + " nie jest katalogiem"
         } else {
             if (isDirectory === false) {
                 for (let k = 0; k < file.length; k++) {

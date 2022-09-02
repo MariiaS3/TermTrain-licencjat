@@ -2,7 +2,6 @@ package com.term.terminal.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,8 +21,8 @@ public class ListOfResults {
     @Column(name="list_id",updatable=false)
     private Integer id;
 
-    @Column(name="name_quiz")
-    private String nameQuiz;
+    @Column(name="id_quiz")
+    private Integer idQuiz;
 
     @Column(name="data")
     private String data;
@@ -46,16 +45,18 @@ public class ListOfResults {
     public ListOfResults() {
     }
 
-    public String getNameQuiz() {
-        return nameQuiz;
-    }
-
-    public void setNameQuiz(String id_quiz) {
-        this.nameQuiz = id_quiz;
-    }
-
+  
     public String getData() {
         return data;
+    }
+  
+
+    public Integer getIdQuiz() {
+        return idQuiz;
+    }
+
+    public void setIdQuiz(Integer idQuiz) {
+        this.idQuiz = idQuiz;
     }
 
     public void setData(String data) {
@@ -68,6 +69,10 @@ public class ListOfResults {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     

@@ -10,18 +10,18 @@ function Newline(props) {
 }
 
 function NewlineText(props) {
-  const newText = command.map(str => { 
+  const newText = command.map(str => {
     if (props.cmd === str.id) {
-       return <ul style={{ listStyleType: "none", paddingTop:"50px" }} key={uuidv4()}>
-       <li style={{ paddingBottom:"10px" }}>NAZWA</li>
-       <li style={{ paddingBottom:"30px", paddingLeft:"50px" }}>{str.name}</li>
-       <li style={{ paddingBottom:"10px" }}>SKŁADNIA</li>
-       <li style={{ paddingBottom:"30px", paddingLeft:"50px" }} >{str.skladnia}</li>
-       <li style={{ paddingBottom:"10px" }}>OPIS</li>
-       <li style={{ paddingBottom:"30px", paddingLeft:"50px" }}>{str.info}</li>
-       <li style={{ paddingBottom:"30px", paddingLeft:"50px" }}><Newline flag={str.flags}/></li>
-       </ul>
-      }
+      return <ul style={{ listStyleType: "none", paddingTop: "50px" }} key={uuidv4()}>
+        <li style={{ paddingBottom: "10px" }}>NAZWA</li>
+        <li style={{ paddingBottom: "30px", paddingLeft: "50px" }}>{str.name}</li>
+        <li style={{ paddingBottom: "10px" }}>SKŁADNIA</li>
+        <li style={{ paddingBottom: "30px", paddingLeft: "50px" }} >{str.skladnia}</li>
+        <li style={{ paddingBottom: "10px" }}>OPIS</li>
+        <li style={{ paddingBottom: "30px", paddingLeft: "50px" }}>{str.info}</li>
+        <li style={{ paddingBottom: "30px", paddingLeft: "50px" }}><Newline flag={str.flags} /></li>
+      </ul>
+    }
   });
   return newText;
 }
@@ -56,7 +56,7 @@ export default class Man extends React.Component {
         this.onClose(e)
       }} >
         <div className="manual"  >
-          <NewlineText cmd={this.props.cmd}/>
+          <NewlineText cmd={this.props.cmd} />
         </div>
         <input type="text" className="manExit" value={this.state.inClear} autoFocus placeholder="strona manualu naciśnij q aby wyjść" onChange={this.onChange} />
       </div>
