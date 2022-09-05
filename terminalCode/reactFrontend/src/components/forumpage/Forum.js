@@ -13,26 +13,25 @@ async function createQuest(credentials) {
 
 
 class Forum extends React.Component {
-   
+
     constructor(props) {
         super(props);
         this.state = {
             name: "",
             describ: "",
-            quest:[],
+            quest: [],
         }
     }
 
     async componentDidMount() {
-        
+
         const FORUM_API_BASE_URL = "http://localhost:8080/api/forum";
         const response = await axios.get(FORUM_API_BASE_URL);
-        console.log(response.data)
         this.setState({ quest: response.data, isLoading: false })
-      }
+    }
 
     render() {
-        const handleSubmit = async e =>{
+        const handleSubmit = async e => {
             e.preventDefault();
             if (this.state.name !== "") {
                 const newQuest = await createQuest({
@@ -41,11 +40,11 @@ class Forum extends React.Component {
                 });
                 const QUIZ_API_BASE_URL = "http://localhost:8080/api/forum/";
                 const response = await axios.get(QUIZ_API_BASE_URL);
-                this.setState({ quest: response.data , name:"", describ:""});
+                this.setState({ quest: response.data, name: "", describ: "" });
             }
-        
+
         }
-        
+
         const style = {
             height: '20px',
             width: '150px',
@@ -56,8 +55,8 @@ class Forum extends React.Component {
             color: '#0B1F64',
         }
         const styleAdd = {
-            height: '30px',
-            width: '130px',
+            height: '25px',
+            width: '160px',
             marginBottom: '5px',
             margin: '10px',
             fontSize: '18px',
@@ -65,7 +64,7 @@ class Forum extends React.Component {
             textAlign: 'center',
             fontFamily: '\'Times New Roman\', Times, serif',
             color: '#0B1F64',
-            backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #f2f8be 50%, #CAFFE3 100%)'
+            backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #CAFFE3 10%, #97a7eb 100%)'
         }
         const logOut = {
             height: '20px',
@@ -77,11 +76,14 @@ class Forum extends React.Component {
         }
         return (
             <div className="forumContainer" >
-                <div className="mainMenu" style={{ justifyContent: "right" }}>
+                <div className="container">
+                    <div>
+                        <img alt='' src='img/logo.png' width={'100px'}></img>
+                    </div>
                     <div className="mainMenu">
                         <Link to="/"><Button className="btnMenu" style={style} >Główna</Button></Link>
                         <Link to="/term"><Button className="btnMenu" style={style}>Terminal</Button></Link>
-                        <Button className="btnMenu" style={style}>Forum</Button>
+                        <Link to="/quiz"><Button className="btnMenu" style={style}>Quiz</Button></Link>
                     </div>
                     <div >
                         <Button size="large" style={logOut} onClick={e => { this.props.setLogToken() }} >Wyloguj się</Button>
@@ -90,22 +92,20 @@ class Forum extends React.Component {
                 <div className="questionList">
                     <div style={{ display: "flex", justifyContent: "flex-end" }}>
                         <Tooltip placement="top" title='Dodaj nowe pytanie'>
-                            <IconButton href="#forum-modal"
-                                style={{ color: '#a8edf3', fontSize: "35px" }}
-                            ><FaPlusCircle /></IconButton>
+                            <IconButton href="#forum-modal" id="icon-forum"><FaPlusCircle /></IconButton>
                         </Tooltip>
 
                     </div>
                     <div className="modal" id="forum-modal">
                         <div className="modal-content" >
-                                <a href="#" className="modal-close" onClick={e=> this.setState({name:"", describ:""})}>&times;</a>
-                                <h1 id="text">Zadaj pytanie</h1>
-                                <p id="tytul"  >Tytuł </p>
-                                <p id="id_tytul">Bądź konkretny i wyobraź sobie, że zadajesz pytanie innej osobie </p>
-                                <input id="text-input" type="text" value={this.state.name} onChange={e=> this.setState({name:e.target.value})} ></input>
-                                <p id="id_tytul">Opisz dokładniej swój problem. </p>
-                                <div className="text-input"  suppressContentEditableWarning contentEditable spellCheck={false} onInput={(e) => this.setState({describ:e.currentTarget.outerText})} >{""}</div>
-                                <Button type="submit"  style={styleAdd}  onClick={handleSubmit}>Dodaj</Button>
+                            <a href="#" className="modal-close" onClick={e => this.setState({ name: "", describ: "" })}>&times;</a>
+                            <h1 id="text">Zadaj pytanie</h1>
+                            <p id="tytul"  >Tytuł </p>
+                            <p id="id_tytul">Bądź konkretny i wyobraź sobie, że zadajesz pytanie innej osobie </p>
+                            <input id="text-input" type="text" value={this.state.name} onChange={e => this.setState({ name: e.target.value })} ></input>
+                            <p id="id_tytul">Opisz dokładniej swój problem. </p>
+                            <div className="text-input" suppressContentEditableWarning contentEditable spellCheck={false} onInput={(e) => this.setState({ describ: e.currentTarget.outerText })} >{""}</div>
+                            <Button variant="contained" className="btnMenu" style={styleAdd} onClick={e => handleSubmit(e)}>Dodaj</Button>
                         </div>
 
                     </div>

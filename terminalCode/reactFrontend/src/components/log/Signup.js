@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import "./Login.css"
+import { Button } from "@mui/material";
 
 import {
     emailValidator,
@@ -78,27 +79,40 @@ export default function Form() {
         )
     }
 
+    const style = {
+        height: '35px',
+        width: '180px',
+        marginBottom: '10px',
+        marginTop: '10px',
+        marginRight: '10px',
+        fontSize: '16px',
+        borderRadius: '10px',
+        textAlign: 'center',
+        fontFamily: '\'Times New Roman\', Times, serif',
+        color: '#0B1F64',
+        backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #CAFFE3 10%, #97a7eb 100%)'
+      }
 
     return (
         <div className="signup">
-            <h1 style={{ textAlign: 'center' }}>User Registration</h1>
+            <h1 style={{ textAlign: 'center' }}>Rejestracja</h1>
             <form id="list" onSubmit={handleSubmit}>
                 <label>
-                    <p>Username</p>
+                    <p style={{fontSize:"16px"}}>Nazwa użytkownika</p>
                     <input id="add" type="text" onChange={handleName} value={username}></input>
                 </label>
                 <label>
-                    <p>Email</p>
+                    <p style={{fontSize:"16px"}}>Email</p>
                     <input id="add" type="text" placeholder="name@example.com" onChange={handleEmail} value={email}></input>
                     {messEmail === "" ? <div></div> : <div style={{ color: "red" }}>{messEmail}</div>}
                 </label>
                 <label>
-                    <p>Password</p>
-                    <input id="add" type="text" onChange={handlePassword} value={password}></input>
+                    <p style={{fontSize:"16px"}}>Hasło</p>
+                    <input id="add" type="password" onChange={handlePassword} value={password}></input>
                     {messPass === "" ? <div></div> : <div style={{ color: "red" }}>{messPass}</div>}
                 </label>
                 <div style={{ textAlign: 'center', padding: '20px', fontSize: '16px' }}>
-                    <button id="go" type="submit" >Submit</button>
+                <Button  variant="contained" className="btnMenu" style={style} type="submit" >Zarejestruj się</Button>
                 </div>
             </form>
             <div className="error">

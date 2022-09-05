@@ -12,7 +12,7 @@ class TermContainer extends React.Component {
     render() {
         const style = {
             width: '100px',
-            marginTop: '30px',
+            marginTop: '50px',
             marginBottom: '30px',
             fontSize: '18px',
             borderRadius: '10px',
@@ -32,7 +32,6 @@ class TermContainer extends React.Component {
         const logOut = {
             height: '20px',
             width: '120px',
-            marginLeft: '20px',
             marginBottom: '50px',
             fontSize: '12px',
             textAlign: 'center',
@@ -43,17 +42,18 @@ class TermContainer extends React.Component {
                 <div>
                     <Terminal termStyle={termStyle} propsToken={this.props.propsToken} />
                 </div>
-                <div className="termDiv" style={{ justifyContent: "end" }}>
-                    <div className="termDiv">
-                        <ul style={{ paddingTop: '150px', paddingLeft: '30px', listStyle: "none" }}>
+                <div className="termDiv">
+
+                    <div>
+                        <ul style={{ listStyle: "none", marginTop:"50px" }}>
                             <li >
-                                <Link to="/"><Button type="submit" className="btnMenu" size="large" style={style}>Główna</Button></Link>
+                                <Link to="/"><Button type="submit"  size="large" style={style}>Główna</Button></Link>
                             </li>
                             <li >
-                                <Link to="/quiz"><Button type="submit" className="btnMenu" size="large" style={style}>Quiz</Button></Link>
+                                <Link to="/quiz"><Button type="submit"  size="large" style={style}>Quiz</Button></Link>
                             </li>
                             <li >
-                                <Button type="submit" className="btnMenu" size="large" style={style}>Forum</Button>
+                                <Link to="/forum"><Button type="submit" size="large" style={style}>Forum</Button></Link>
                             </li>
                         </ul>
                     </div>

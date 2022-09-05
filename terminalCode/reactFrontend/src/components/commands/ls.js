@@ -113,6 +113,30 @@ const ls = (prompt, title, path) => {
                 d += fil[k].name + "      ";
             }
         }
+    } else if (title.split(/\s+/).length === 2) {
+        let isDirectory = false
+        console.log(path)
+        let tempPath = path
+        if(title.split(/\s+/)[1]==="/"){
+            tempPath = "/"
+        } else{
+            tempPath+= "/" + title.split(/\s+/)[1]
+        }
+        for (let k = 0; k < dir.length; k++) {
+            if (dir[k].path === tempPath && dir[k].name.charAt(0) !== '.' ) {
+                d += dir[k].name + "/   ";
+                isDirectory = true
+            }
+        }
+        if (isDirectory === true) {
+            d += "\n"
+        }
+            for (let k = 0; k < fil.length; k++) {
+                if (fil[k].path === tempPath && fil[k].name.charAt(0) !== '.') {
+                    d += fil[k].name + "      ";
+                }
+            }
+
     } else {
         d += "ls: nieprawidłowa opcja -- '" + title.split(/\s+/)[title.split(/\s+/).length - 1][1] + "'\n"
         d += "Spróbuj 'ls --help' po więcej informacji"

@@ -33,14 +33,14 @@ function App() {
         palette: {
             mode: toggleDark ? "dark" : "light",
             primary: {
-                light: '#ddf8ea',
+                light: '#eafaf3',
                 main: '#CAFFE3',
                 dark: '#68ce98',
             },
             secondary: {
-                light: '#f2f7ca',
-                main: '#f2f8be',
-                dark: '#cbd47b',
+                light: '#97a7eb',
+				main: '#7d91e7',
+				dark: '#5765a1',
             },
         },
     });

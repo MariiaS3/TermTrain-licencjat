@@ -43,6 +43,13 @@ public class Comment {
     @JsonIgnore
     private Forum forum;
     
+    @Column(name = "id_user")
+    private Integer idUser;
+
+    @Column(name = "forum_number")
+    private Integer forumNumber;
+
+ 
     public Integer getLike() {
         return like;
     }
@@ -81,6 +88,22 @@ public class Comment {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
+    public Integer getForumNumber() {
+        return forumNumber;
+    }
+
+    public void setForumNumber(Integer forumNumber) {
+        this.forumNumber = forumNumber;
     }
 
 }

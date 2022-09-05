@@ -1,10 +1,30 @@
 const command = [
     {
-        id: "",
-        name: "",
-        skladnia: "",
-        info: "W manualu wyświetlane są tylko komendy i flagi z których można korzystać w tym terminalu (które zostale zaprogramowane)\n",
-        flags: ""
+        id: "man",
+        name: "man (ang. manual) – instrukcja obsługi",
+        skladnia: "man nazwa_strony",
+        info: "Polecenie służące do wyświetlania stron pomocy man.\n",
+        flags: `Aplikacja nie jest prawdziwym terminalem i należy wykorzystywać tylko te polecnia i ich flagi, które są w manualu.
+        ls - lista zawatości katalogu
+        cd - zmienia katalog roboczy
+        pwd - wypisz nazwę bieżącego/roboczego katalogu
+        cat - łączyć pliki i drukuje na standardowym wyjściu
+        cp - kopiuje pliki i katalogi
+        mv - przenosi lub zmienia nazwy plików
+        mkdir - tworzy katalogi
+        rmdir - usuwa puste katalogi
+        rm - usuwa pliki lub katalogi
+        touch - zmienia znaczniki czasu plików i tworzy pliki jak nieistnieją
+        history -  wyświetla historię wiersza poleceń
+        clear -  czyści ekran terminala
+        tail -  wyświetla ostatnią część plików
+        head -  wyświetla pierwszą część plików
+        date -  wydrukuj datę i godzinę systemową
+        nano - edytor
+        echo - wyświetla linię tekstu
+        wc - wypisuje liczbę nowych linii, słów i bajtów dla każdego pliku
+        whoami - drukuje identyfikator użytkownika`
+
     },
     {
         id: "ls",
@@ -72,7 +92,7 @@ const command = [
     {
         id: "rmdir",
         name: "rmdir - usuwa puste katalogi\n",
-        skladnia: "mkdir [OPTION]... DIRECTORY...\n",
+        skladnia: "rmdir [OPTION]... DIRECTORY...\n",
         info: "Usuwa KATALOG(-i), jeśli są puste.\n",
         flags: ` --help`
     },
@@ -90,7 +110,7 @@ const command = [
         id: "touch",
         name: "touch - zmienia znaczniki czasu plików\n",
         skladnia: "touch [OPTION]... FILE...\n",
-        info: `Aktualizuje czasy dostępu i modyfikacji każdego PLIKU do Obecny czas. Argument FILE, który nie istnieje, jest tworzony jako pusty.\n`,
+        info: `Aktualizuje czasy dostępu i modyfikacji każdego PLIKU na aktualny czas. Argument FILE, który nie istnieje, jest tworzony jako pusty.\n`,
         flags: ` -a  zmienia tylko czas dostępu..
                 -c  nie tworzy żadnych plików.
                 -m  zmienia tylko czas modyfikacji. 

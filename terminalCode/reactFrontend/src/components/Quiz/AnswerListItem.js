@@ -40,7 +40,7 @@ class AnswerListItem extends React.Component {
             textAlign: 'center',
             fontFamily: '\'Times New Roman\', Times, serif',
             color: '#0B1F64',
-            backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #f2f8be 50%, #CAFFE3 100%)'
+            backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #CAFFE3 10%, #97a7eb 100%)'
         }
 
         return (
@@ -49,8 +49,8 @@ class AnswerListItem extends React.Component {
                     <RadioGroup>
                         {this.state.quest.map(quiz => (
                             <div key={quiz.id} style={{ marginLeft: '15px', marginTop: '10px' }}>
-                                <FormControlLabel value={quiz.text} control={<Radio color='success' />} onChange={(e) => this.handleRadioChange(e, quiz.corect)} />
-                                <label style={{ color: "#0B1F64", fontSize: "21px" }}  >{quiz.text}</label>
+                                <FormControlLabel value={quiz.text} control={<Radio color='success' size="small" />} onChange={(e) => this.handleRadioChange(e, quiz.corect)} />
+                                <label style={{ color: "#0B1F64", fontSize: "25px" }}  >{quiz.text}</label>
                             </div>
                         ))}
                     </RadioGroup>

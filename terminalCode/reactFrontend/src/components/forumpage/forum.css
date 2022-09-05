@@ -22,11 +22,15 @@
   display: flex;
   justify-content: space-between;
   margin: 20px 0px 30px 0px;
-  border-radius: 10px;
-  background-color:  #e1f5f7;
-  box-shadow: 0 0 0.2rem #f2f8be;
+  border-radius: 20px;
+  background-color: #eafaf3;
+  box-shadow: 0 0 5px 1px #97a7eb;
 }
 
+#icon-forum{
+  color: #a8b6f3;
+  font-size: 35px;
+}
 .input-submit {
   background: transparent;
   text-transform: capitalize;
@@ -49,6 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: scroll;
   background: rgba(77, 77, 77, .7);
   transition: all .4s;
 }
@@ -61,8 +66,8 @@
 .modal-content {
   border-radius: 4px;
   position: relative;
-  width: 50%;
-  max-width: 50%;
+  width: 900px;
+  max-width: 900;
   height: 600px;
   min-height: 300px;
   background: #eafaf3;
@@ -93,7 +98,7 @@
   font-size: 20px;
   text-align: left;
   border-radius: 3px;
-  border: 2px groove #f2f7ca
+  border: 2px groove #7d91e7
 }
 
 #text-input{
@@ -103,7 +108,7 @@
   font-size: 18px;
   text-align: left;
   border-radius: 3px;
-  border: 2px groove #f2f7ca;
+  border: 2px groove #7d91e7;
   outline: 0px groove transparent;
 }
 #tytul {
@@ -130,14 +135,15 @@
 }
 
 #question{
-  max-height: 200px;
-  min-height: 200px;
+  max-height: 300px;
+  min-height: 300px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: left;
   margin-bottom:15px;
-  background-color: #e2f8fa;
+  background-color: #eafaf3;
+  box-shadow: 0 0 5px 1px #97a7eb;
 }
 
 #quest-name{
@@ -159,8 +165,8 @@
   display: flex;
   border-radius: 10px;
   flex-direction: column;
-  background-color: #e1f5f7;
-  box-shadow: 5px 0px 15px #f4fac466;
+  background-color: #eafaf3;
+  box-shadow: 0 0 5px 1px #97a7eb;
 }
 
 .comment-input{
@@ -173,7 +179,7 @@
   text-align: left;
   overflow: scroll;
   border-radius: 5px;
-  border: 2px groove #edf0d5;
+  border: 1px groove #7d91e7;
   outline: 0px groove transparent;
 }
 #dodaj{
@@ -197,7 +203,8 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  background-color:#eafaf3;
+  background-color:#e3fcf1;
+  box-shadow: 0 0 5px 0px #7d91e7;
 }
 #under{
   display: flex;
