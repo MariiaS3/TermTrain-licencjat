@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { Button } from "@mui/material";
+import teoria from "../Terminal/teoria";
 
 const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz";
 
 class QuizContainer extends React.Component {
   state = {
+    value: false,
     quiz: [],
     results: [],
     isLoading: true,
     isDone: false,
-    isAdmin: false,
+    isAdmin: false
   };
 
   async componentDidMount() {
@@ -25,8 +27,28 @@ class QuizContainer extends React.Component {
 
     const ADMIN_URL = "http://localhost:8080/api/user/admin/" + id[0];
     const admin = await axios.post(ADMIN_URL, id[0]);
-    console.log(response.data)
     this.setState({ quiz: response.data, isLoading: false, results: res.data, isAdmin: admin.data })
+  }
+
+  handleTeoria = (teoria) => {
+    let t = teoria.split("\n")
+    let temp = []
+    for (let i = 0; i < t.length; i++) {
+      temp.push(t[i].trim())
+    }
+
+    return <div style={{ fontFamily: '\'Roboto\', sans-serif' }}>{temp.map(t => {
+      return <><li key={uuidv4()} style={{ listStyle: "none" }}>{t === temp[0] ? <h1 style={{ color: "Indigo ", fontSize: "20px" }}>{t + "\n"}</h1> : <a ></a>}</li>
+        <li key={uuidv4()} style={{ listStyle: "none" }}>{t === temp[1] ? <p style={{ color: "red", marginLeft: "30px" }}>{t + "\n"}<br /></p> : <a ></a>}</li>
+        <li key={uuidv4()} style={{ listStyle: "none" }}>{t === temp[2] ? <p ><i>{t}</i></p> : <a ></a>}</li>
+        <li key={uuidv4()} style={{ listStyle: "none" }}>{t.includes("Flagi") ? <a style={{ color: "MidnightBlue" }} >{t}</a> : <a ></a>}</li>
+        <li key={uuidv4()} style={{ listStyle: "none" }}>{t[0] === '-' || t[0] === '.' ? <a style={{ color: "Indigo", marginLeft: "10px" }}>{t}</a> : <a ></a>}</li>
+        <li key={uuidv4()} style={{ listStyle: "none" }}>{t.includes("Przykłady") ? <a style={{ color: "MidnightBlue" }} ><br />{t}</a> : <a ></a>}</li>
+        <li key={uuidv4()} style={{ listStyle: "none" }}>{t[0] === "#" ? <a style={{ color: "blue" }} >{t}</a> : <a ></a>}</li>
+        <li key={uuidv4()} style={{ listStyle: "none" }}>{t[0] === "$" ? <a style={{ color: "FireBrick" }} >{t}</a> : <a ></a>}</li>
+        <li key={uuidv4()} style={{ listStyle: "none" }}>{!t.includes("Flagi") && !t.includes("Przykład") && t !== temp[2] && t[0] !== "$" && t[0] !== "#" && t[0] !== '.' && t[0] !== '-' && t !== temp[0] && t !== temp[1] ? <a >{t} <br /></a> : <a ></a>}</li>
+      </>
+    })}</div>
   }
 
   render() {
@@ -59,57 +81,75 @@ class QuizContainer extends React.Component {
       textAlign: 'center',
       fontFamily: '\'Times New Roman\', Times, serif',
       color: '#0B1F64',
-      backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #f2f8be 50%, #CAFFE3 100%)'
+      backgroundImage: 'linear-gradient(to right, #CAFFE3 0%, #CAFFE3 10%, #97a7eb 100%)'
     }
     // if (this.state.isLoading) {
     //   return <p>Loading...</p>;
     // }
     return (
       <div className="quizContainer"  >
-        <div className="mainMenu" style={{ justifyContent: "right" }}>
+        <div className="container">
+          <div>
+            <img alt='' src='img/logo.png' width={'100px'}></img>
+          </div>
           <div className="mainMenu">
-            <Link to="/"><Button className="btnMenu" style={style} >Główna</Button></Link>
-            <Link to="/term"><Button className="btnMenu" style={style}>Terminal</Button></Link>
-            {this.state.isAdmin ? <Link to='/add/quiz'><Button className="btnMenu" style={style}>Edytuj</Button></Link> : <></>}
-            <Button className="btnMenu" style={style}>Forum</Button>
+            <Link to="/"><Button style={style} >Główna</Button></Link>
+            <Link to="/term"><Button style={style}>Terminal</Button></Link>
+            {this.state.isAdmin ? <Link to='/add/quiz'><Button style={style}>Edytuj</Button></Link> : <></>}
+            <Link to="/forum"><Button style={style}>Forum</Button></Link>
           </div>
           <div >
             <Button size="large" style={logOut} onClick={e => { this.props.setLogToken() }} >Wyloguj się</Button>
           </div>
         </div>
-
         <div className="quizList">
           {this.state.quiz.map(quiz => (
             <li key={quiz.id} className="qizItem">
               <span style={{ "marginLeft": "50px", "fontSize": "23px" }}>{quiz.description}</span>
-              <div className="qiuzDiv">
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <Button href="#teoria-modal" variant="contained" className="btnMenu" style={styleList}>Teoria</Button>
-                  <Link to={`/quiz/question/${quiz.id}`}  ><Button variant="contained" className="btnMenu" style={styleList} >Rozwiąż Quiz</Button></Link>
-                </div>
-                <div className="modal" id="teoria-modal">
-                  <div className="modal-content" >
-                      <a href="#" className="modal-close" onClick={e => this.setState({ name: "", describ: "" })}>&times;</a>
-                      <p id="id_tytul">Bądź konkretny i wyobraź sobie, że zadajesz pytanie innej osobie </p>
+              <div >
+                <div style={{ display: 'flex', flexDirection: 'row' }} >
+                  <div style={{ display: 'flex', flexDirection: 'column' }} >
+                    <Button href={`#${quiz.id}-modal`} variant="contained" className="btnMenu" onClick={e => this.setState({ value: true })} style={styleList} disabled={this.state.value}>Teoria</Button>
+                    <Link to={`/quiz/question/${quiz.id}`}  ><Button variant="contained" className="btnMenu" style={styleList} disabled={this.state.value} >Rozwiąż Quiz</Button></Link>
                   </div>
-
-                </div>
-                <div>
-                  {this.state.results.map(res => {
-                    if (quiz.id === res.idQuiz) {
-                      let color = "";
-                      if (res.result < 40) {
-                        color = "red"
-                      } else if (res.result < 70) {
-                        color = "orange"
-                      } else {
-                        color = "lightgreen"
+                  <div>
+                    {this.state.results.map(res => {
+                      if (quiz.id === res.idQuiz) {
+                        let color = "";
+                        if (res.result < 40) {
+                          color = "red"
+                        } else if (res.result < 70) {
+                          color = "orange"
+                        } else {
+                          color = "lightgreen"
+                        }
+                        return <div key={uuidv4()} className="pie animate" style={{ "--p": res.result, "--c": color }}>{res.result + "%"}</div>
                       }
-                      return <div key={uuidv4()} className="pie animate" style={{ "--p": res.result, "--c": color }}>{res.result + "%"}</div>
-                    }
-                  })}
+                    })}
+                  </div>
                 </div>
+                <div className="modal-quiz" id={`${quiz.id}-modal`}>
+                  <div className="modal-content-quiz" >
+                    <a href="#" className="modal-quiz-close" onClick={e => this.setState({ value: false })}>&times;</a>
+                    {teoria.map(teoria => {
+                      if (teoria.id === quiz.id || teoria.name === quiz.description) {
+                        return <div key={uuidv4()}><h1 >{teoria.name}</h1>
+                          <ul style={{ listStyle: "none" }}>
+                            <li key={uuidv4()}>{this.handleTeoria(teoria.polecemie1)}</li>
+                            <li key={uuidv4()}>{this.handleTeoria(teoria.polecemie2)}</li>
+                            <li key={uuidv4()}>{this.handleTeoria(teoria.polecemie3)}</li>
+                            <li key={uuidv4()}>{this.handleTeoria(teoria.polecemie4)}</li>
+                            <li key={uuidv4()}>{this.handleTeoria(teoria.polecemie5)}</li>
+                          </ul>
+                        </div>
+                      }
+                    })
+                    }
+                  </div>
+                </div>
+
               </div>
+
             </li>
           ))}
         </div>

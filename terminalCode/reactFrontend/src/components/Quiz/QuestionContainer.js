@@ -23,7 +23,7 @@ function QuestionContainer(props) {
     }
 
     const termStyle = {
-        width: '60%',
+        width: '61%',
         height: '100%',
         position: 'absolute',
         overflow: 'scroll',
@@ -36,7 +36,6 @@ function QuestionContainer(props) {
 
         <div className="containerQuest">
             <div>
-                {console.log(props.propsToken)}
                 <Terminal termStyle={termStyle} propsToken={props.propsToken} />
             </div>
             <div className="questDiv">
@@ -49,7 +48,7 @@ function QuestionContainer(props) {
                             <Link to="/quiz"><Button type="submit" className="btnMenu" size="large" style={style}>Quiz</Button></Link>
                         </li>
                         <li >
-                            <Button type="submit" className="btnMenu" size="large" style={style}>Forum</Button>
+                        <Link to="/forum"><Button type="submit" className="btnMenu" size="large" style={style}>Forum</Button></Link>
                         </li>
                     </ul>
                 </div>

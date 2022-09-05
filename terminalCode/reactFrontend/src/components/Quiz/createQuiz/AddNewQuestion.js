@@ -70,13 +70,32 @@ export default class AddNewQuiz extends React.Component {
             fontFamily: '\'Times New Roman\', Times, serif',
             color: '#0B1F64',
         }
+        const logOut = {
+            height: '20px',
+            width: '150px',
+            margin: '30px',
+            fontSize: '12px',
+            textAlign: 'center',
+            color: '#0B1F64',
+        }
+
         return (
             <div className="addQuiz">
-                <div className="mainMenu">
-                    <Link to="/"><Button className="btnMenu" size="large" style={styleBtn}>Główna</Button></Link>
-                    <Link to="/term"><Button className="btnMenu" size="large" style={styleBtn}>Terminal</Button></Link>
-                    <Link to="/quiz"><Button className="btnMenu" size="large" style={styleBtn}>Quiz</Button></Link>
-                    <Button className="btnMenu" size="large" style={styleBtn} >Forum</Button>
+                <div className="container" >
+                    <div>
+                        <img alt='' src='img/logo.png' width={'100px'}></img>
+                    </div>
+                    <div className="mainMenu">
+                        <Link to="/"><Button className="btnMenu" size="large" style={styleBtn}>Główna</Button></Link>
+                        <Link to="/term"><Button className="btnMenu" size="large" style={styleBtn}>Terminal</Button></Link>
+                        <Link to="/quiz"><Button className="btnMenu" size="large" style={styleBtn}>Quiz</Button></Link>
+                        <Link to="/forum"><Button className="btnMenu" size="large" style={styleBtn} >Forum</Button></Link>
+                    </div>
+
+                    <div >
+                        <Button size="large" style={logOut} onClick={e => { this.props.setLogToken() }} >Wyloguj się</Button>
+                    </div>
+
                 </div>
                 <form className="formAdd" onSubmit={handleSubmit}>
                     <input style={{ width: '80%', maxHeight: '25px', minHeight: '25px' }} type="text" onChange={e => this.setState({ name: e.target.value })} placeholder="Add new question..." />

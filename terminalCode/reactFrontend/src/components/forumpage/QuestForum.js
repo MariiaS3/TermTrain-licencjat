@@ -35,6 +35,7 @@ class QuestForum extends React.Component {
             fontFamily: '\'Times New Roman\', Times, serif',
             color: '#0B1F64',
         }
+
         const logOut = {
             height: '20px',
             width: '150px',
@@ -45,11 +46,15 @@ class QuestForum extends React.Component {
         }
         return (
             <div className="forumContainer">
-                <div className="mainMenu" style={{ justifyContent: "right" }}>
+                <div className="container" >
+                    <div>
+                        <img alt='' src='../img/logo.png' width={'100px'}></img>
+                    </div>
                     <div className="mainMenu">
                         <Link to="/"><Button className="btnMenu" style={style} >Główna</Button></Link>
                         <Link to="/term"><Button className="btnMenu" style={style}>Terminal</Button></Link>
-                        <Button className="btnMenu" style={style}>Forum</Button>
+                        <Link to="/quiz"><Button className="btnMenu" size="large" style={style}>Quiz</Button></Link>
+                        <Link to="/forum"><Button className="btnMenu" size="large" style={style} >Forum</Button></Link>
                     </div>
                     <div >
                         <Button size="large" style={logOut} onClick={e => { this.props.setLogToken() }} >Wyloguj się</Button>
@@ -58,9 +63,11 @@ class QuestForum extends React.Component {
                 <div className="questionList">
                     <div id="question">
                         <h1 id='quest-name'>{this.state.forumName}</h1>
-                        <a id="quest-describ">{this.state.forumDescribe}</a>
+                        <a id="quest-describ">{this.state.forumDescribe.split("\n").map(d =>{
+                            return <li style={{listStyle:"none"}}>{d}</li>
+                        })}</a>
                     </div>
-                    <Comments propsToken={this.props.propsToken}  />
+                    <Comments propsToken={this.props.propsToken} />
                 </div>
 
             </div>

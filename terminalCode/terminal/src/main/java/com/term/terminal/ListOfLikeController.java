@@ -34,8 +34,6 @@ public class ListOfLikeController {
     @PostMapping("/user/add-like")
     public ResponseEntity<?> addLike(@RequestBody ListOfLike newlistOfLike) {
         ListOfLike listfindByIdComment = listOfLikeService.findByIdCommentAndUser(newlistOfLike.getIdComment(),newlistOfLike.getUser());
-        System.out.println(newlistOfLike.getUser());
-        System.out.println(listfindByIdComment);
 
         if (listfindByIdComment != null) {
             Comment com = commentRepository.findById(newlistOfLike.getIdComment()).get();
@@ -63,11 +61,11 @@ public class ListOfLikeController {
             listfindByIdComment = listOfLikeService.save(newlistOfLike);
             Comment com = commentRepository.findById(newlistOfLike.getIdComment()).get();
         
-            if(newlistOfLike.getLikes()==true){
-                com.setLike(com.getLike()+1);
-            }else{
-                com.setDisLike(com.getDisLike()+1);
-            }
+            // if(newlistOfLike.getLikes()==true){
+            //     com.setLike(com.getLike()+1);
+            // }else{
+            //     com.setDisLike(com.getDisLike()+1);
+            // }
             Comment saveCom = commentRepository.save(com);
             return new ResponseEntity<>(listfindByIdComment, HttpStatus.CREATED);
         }

@@ -17,7 +17,7 @@ public class ListOfLike {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="list_id",updatable=false)
+    @Column(name="id",updatable=false)
     private Integer id;
 
 
@@ -29,11 +29,11 @@ public class ListOfLike {
 
  
     @Column(name = "likes") 
-    private Boolean likes;
+    private Boolean likes = false;
 
 
     @Column(name = "dislikes") 
-    private Boolean dislikes;
+    private Boolean dislikes = false;
 
     public Integer getId() {
         return id;

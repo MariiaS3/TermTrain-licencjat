@@ -8,7 +8,7 @@
 }
 
 .questDiv {
-    width: 40%;
+    width: 39%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -45,3 +45,44 @@
     margin-top: 80px;
     margin-left: 40px;
 }
+
+
+.modal-quiz {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+    transition: all .4s;
+  }
+  
+  .modal-quiz:target {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .modal-content-quiz {
+    border-radius: 4px;
+    position: relative;
+    width: 900px;
+    max-width: 900;
+    height: 600px;
+    min-height: 300px;
+    background: #eafaf3;
+    align-items: center;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 2em;
+  }
+  
+  .modal-quiz-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #585858;
+    text-decoration: none;
+  }

@@ -44,9 +44,13 @@ const touch = (prompt, title, path) => {
         } else {
             for (let k = 0; k < file.length; k++) {
                 if (path === file[k].path && title.split(/\s+/)[1] === file[k].name) {
-                    file[k].time = "";
+                    let date = Date().toLocaleString().split(" ")[1]+ " "
+                    date +=Date().toLocaleString().split(" ")[2] + " "
+                    date +=Date().toLocaleString().split(" ")[3] + " "
+                    date +=Date().toLocaleString().split(" ")[4]
+
+                    file[k].time = date;
                     addFile = false
-                    d += "\ntouch: nie można utworzyć plik " + title.split(/\s+/)[1] + ": Plik istnieje"
                 }
             }
             if (title.split(/\s+/)[1] !== "" && addFile === true) {
@@ -56,6 +60,7 @@ const touch = (prompt, title, path) => {
                     user: prompt.split(/[@]/)[0],
                     group: prompt.split(/[@]/)[0],
                     path: path,
+                    time: Date().toLocaleString(),
                     link: 1,
                     size: 0,
                     text: "",

@@ -21,11 +21,11 @@ public class Forum {
     private int id;
 
     @Size(min = 10, max=300, message = "The question should be between 10 and 300 characters" )
-    @Column(name="name")
+    @Column(name="name",columnDefinition="TEXT")
     private String name;
 
-    @Size(min = 10, max=1000, message = "The question should be between 10 and 1000 characters" )
-    @Column(name="describe")
+    @Size(min = 10, max=10000, message = "The question should be between 10 and 10000 characters" )
+    @Column(name="describe", columnDefinition="TEXT")
     private String describe;
 
     public int getId() {

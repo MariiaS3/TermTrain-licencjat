@@ -8,17 +8,17 @@ class LoginPage extends React.Component {
     render() {
         const styleLog = {
             backgroundColor: '#F2FBF7',
-            boxShadow: '0 0.1rem 0.4rem #68ce98',
+            boxShadow: '0 0.1rem 0.4rem #97a7eb',
             width: '100%',
-            minHeight: '70%',
+            minHeight: '350px',
             borderRadius: '5px',
             padding: '20px'
         }
         const styleSignup = {
             backgroundColor: '#F2FBF7',
-            boxShadow: '0 0.1rem 0.4rem #68ce98',
+            boxShadow: '0 0.1rem 0.4rem #97a7eb',
             width: '100%',
-            minHeight: '95%',
+            minHeight: '450px',
             borderRadius: '5px',
             padding: '20px'
         }
@@ -27,8 +27,8 @@ class LoginPage extends React.Component {
                 <input className="radio" id="signup" name="group" type="radio"></input>
                 <input className="radio" id="login" name="group" type="radio" defaultChecked></input>
                 <div className="tabs">
-                    <label className="tab" id="login-tab" htmlFor="login">Login</label>
-                    <label className="tab" id="signup-tab" htmlFor="signup">Sign up</label>
+                    <label className="tab" id="login-tab" htmlFor="login">Logowanie</label>
+                    <label className="tab" id="signup-tab" htmlFor="signup">Rejestracja</label>
                 </div>
                 <div className="panels">
                     <div className="panel" style={styleLog} id="login-panel">

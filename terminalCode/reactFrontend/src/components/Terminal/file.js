@@ -66,7 +66,7 @@ const file = [
         user: "",
         group: "",
         size: 0,
-        time: "",
+        time: "Jun 20 16:27",
     },
     {
 
@@ -78,7 +78,7 @@ const file = [
         user: "",
         group: "",
         size: 0,
-        time: "",
+        time: "Jun 25 16:27",
     }
 ]
 

@@ -80,7 +80,6 @@ class QuestionListItem extends React.Component {
                 ) : (
                     this.state.quest.map(question => (
                         <div key={uuidv4()}>
-                            {console.log(question)}
                             {this.state.quest[this.state.currentQuestion].text === question.text ?
                                 <div className="questionItem">
                                     <p> {question.text}</p>
