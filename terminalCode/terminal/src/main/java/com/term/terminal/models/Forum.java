@@ -28,11 +28,22 @@ public class Forum {
     @Column(name="describe", columnDefinition="TEXT")
     private String describe;
 
+    @Column(name = "id_user")
+    private Integer idUser;
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+  public Integer getIdUser() {
+    return idUser;
+}
+
+public void setIdUser(Integer idUser) {
+    this.idUser = idUser;
+}
+
+  public void setId(int id) {
         this.id = id;
     }
 

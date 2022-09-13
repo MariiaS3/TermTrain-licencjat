@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { Button } from "@mui/material";
-import teoria from "../Terminal/teoria";
+import teoria from "../Terminal/tool/teoria";
 
 const QUIZ_API_BASE_URL = "http://localhost:8080/api/quiz";
 

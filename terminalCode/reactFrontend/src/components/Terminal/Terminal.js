@@ -2,10 +2,9 @@ import React from "react";
 
 import { v4 as uuidv4 } from "uuid"
 import Commands from "../Terminal/Commands";
-import directory from "../Terminal/directory";
-import file from "../Terminal/file";
+import directory from "./tool/directory";
+import file from "./tool/file";
 import Man from "../Terminal/Man";
-
 import Nano from "../Terminal/Nano"
 
 
@@ -135,27 +134,24 @@ class Terminal extends React.Component {
 
 
     render() {
-
         return (
             <div className="termContainer" style={this.props.termStyle}>
-                {!this.state.showModal ? <div style={{width: "100%"}}>
+                {!this.state.showModal ? <div style={{ width: "100%" }}>
                     <div style={{ marginLeft: '20px', marginTop: '20px' }}>
-                        <ul>
+                        <ul> 
                             {this.state.command.map(cmd =>
-                                <li style={{ listStyleType: "none" }} key={cmd.id}>{
-                                    cmd.text.includes(":~#") || cmd.text.includes(":~$") ?
-                                        <span style={{ color: "#53D632" }}>
-                                            {cmd.text.includes(":~#") ? cmd.text.split(":~#")[0] + ":~# " : cmd.text.split(":~$")[0] + ":~$ "}
-                                            <span style={{ color: "#D7DEDE" }}>
-                                                {cmd.text.includes(":~#") ? cmd.text.split(":~#")[1] : cmd.text.split(":~$")[1]}
-                                            </span>
-                                        </span> :
-                                        <span style={{ color: "#D7DEDE", paddingLeft: "10px" }}>{cmd.text}</span>}
-                                </li>
-                            )}
+                            <li style={{ listStyleType: "none" }} key={cmd.id}>{cmd.text.includes(":~#") || cmd.text.includes(":~$") ?
+                                <span style={{ color: "#53D632" }}>
+                                    {cmd.text.includes(":~#") ? cmd.text.split(":~#")[0] + ":~# " : cmd.text.split(":~$")[0] + ":~$ "}
+                                    <span style={{ color: "#D7DEDE" }}>
+                                        {cmd.text.includes(":~#") ? cmd.text.split(":~#")[1] : cmd.text.split(":~$")[1]}
+                                    </span>
+                                </span> : 
+                                <span style={{ color: "#D7DEDE", paddingLeft: "10px" }}>{cmd.text}</span>}
+                            </li>
+                        )} 
                         </ul>
                     </div>
-
                     <Commands
                         command={this.state.command}
                         addHistoryProps={this.addToHistory}
@@ -171,15 +167,12 @@ class Terminal extends React.Component {
                         path={this.state.path}
                         sleep={this.sleep}
                         history={this.state.history}
-                        prevPath={this.state.prevPath}
-                    />
-                </div> : <div>{!this.state.showMan ? <Nano onClose={this.showModal} onSave={this.saveText} children={this.state.text} /> : <Man onClose={this.showMan} cmd={this.state.text} />} </div>}
+                        prevPath={this.state.prevPath} />
+                </div> : <div>{!this.state.showMan ?
+                    <Nano onClose={this.showModal} onSave={this.saveText} children={this.state.text} /> :
+                    <Man onClose={this.showMan} cmd={this.state.text} />} </div>}
             </div>
-        )
-    }
-}
-
-
+        )}}
 export default Terminal
 
 

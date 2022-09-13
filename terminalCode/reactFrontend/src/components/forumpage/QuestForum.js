@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@mui/material";
-
+import { v4 as uuidv4 } from "uuid";
 import "./forum.css"
 import axios from "axios";
 import Comments from "./Comments";
@@ -64,7 +64,7 @@ class QuestForum extends React.Component {
                     <div id="question">
                         <h1 id='quest-name'>{this.state.forumName}</h1>
                         <a id="quest-describ">{this.state.forumDescribe.split("\n").map(d =>{
-                            return <li style={{listStyle:"none"}}>{d}</li>
+                            return <li key={uuidv4()} style={{listStyle:"none"}}>{d}</li>
                         })}</a>
                     </div>
                     <Comments propsToken={this.props.propsToken} />
