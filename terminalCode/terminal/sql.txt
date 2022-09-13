@@ -1,0 +1,669 @@
+insert into quiz ( quiz_id, description   )
+values ('1','Polecenia: man, pwd, ls, cd, clear');
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('1','1','Jakiego polecenia użyjesz aby wyświetlić listę plików i katalogów w bieżącym katalogu');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('2','1','Jakiego polecenia użyjesz aby wyczyścić ekran terminala');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('3','1','Jaką flagę, z poleceniem ls, użyjesz aby wyświetlić więcej informacji o plikach');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('4','1','Jakiego polecenia użyjesz aby wyświetlić zawartość danego katalogu');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('5','1','Jakie polecenie użyjesz aby wyświetlić tylko katalogi');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('6','1','Jakiej flagi użyjesz w poleceniu ls, aby odwrócić kolejność podczas sortowania ');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('7','1','Jaką flagę użyjesz z poleceniem ls, w aby zobaczyć ukryte pliki');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('8','1','Jakiego polecenia użyjesz aby wrócić do poprzedniego katalogu');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('9','1','Jakie polecenie użyjesz żeby wyświetlić stronę manuala');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('10','1','Jakiego polecenia użyjesz do wyświetlenia nazwy bieżącego katalogu');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('1','1','cd',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('2','1','ls',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('3','1','pwd',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('4','1','rm',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('5','2','ls',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('6','2','clear',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('7','2','history',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('8','2','pwd',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('9','3','ls -a',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('10','3','ls -l',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('11','3','ls -d',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('12','3','ls -S',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('13','4','mkdir dirname',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('14','4','ls dirname',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('15','4','cd dirname',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('16','4','rmdir dirname',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('17','5','ls -d',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('18','5','ls -d */',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('19','5','ls -l',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('20','5','ls -a',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('21','6','-r',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('22','6','-a',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('23','6','-S',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('24','6','-l',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('25','7','-r',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('26','7','-a',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('27','7','-S',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('28','7','-l',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('29','8','cd',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('30','8','cd -',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('31','8','cd dirname',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('32','8','cd ..',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('33','9','ls',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('34','9','man [polecenie]',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('35','9','pwd',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('36','9','echo',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('33','10','ls',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('34','10','rm',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('35','10','pwd',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('36','10','cat',false);
+
+
+insert into quiz ( quiz_id, description   )
+values ('2','Polecenia: touch, nano, mkdir, rmdir, rm');
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('11','2','Które polecenie użyjesz, aby wyświetlić edytor tekstowy');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('12','2','Jakiego polecenia użyjesz aby usunąć pliki');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('13','2','Jakiej flagi użyjesz z poleceniem rm, aby być pytanym przed każdym usunięciem');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('14','2','Jakiej flagi użyjesz z poleceniem rm aby usunąć katalog i jego zawartość');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('15','2','Jakiej flagi użyjesz  z poleceniem rm aby ignorować nieistniejące pliki, nigdy nie pytaj');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('16','2','Jakiego polecenia użyjesz aby usunąć pusty katalog');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('17','2','Jakiego polecenia użyjesz aby utworzyć katalog');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('18','2','Tworzy pusty plik lub modyfikuje istniejący plik');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('19','2','Jakiej flagi użyjesz z poleceniem touch, aby zmienić tylko czas dostępu');
+
+insert into question  ( question_id , quiz_id, text     )
+values ('20','2','Jakiej flagi użyjesz z poleceniem touch, aby zmienić tylko czas modyfikacji');
+
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('37','11','cat',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('38','11','echo',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('39','11','nano',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('40','11','wc',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('41','12','rm',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('42','12','touch',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('43','12','rmdir',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('44','12','rm',true);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('45','13','-f',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('46','13','-i',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('47','13','-r',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('48','13','-v',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('49','14','-i',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('50','14','-v',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('51','14','-r',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('52','14','-f',false);    sdfddfdsfdsfdsfds
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('53','15','-r',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('54','15','-f',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('55','15','-i',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('56','15','-v',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('57','16','rm',false);
+      
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('58','16','mkdir',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('59','16','touch',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('60','16','rmdir',true);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('61','17','mkdir',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('62','17','rm',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('63','17','touch',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('64','17','rmdir',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('65','18','nano',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('66','18','touch',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('67','18','mkdir',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('68','18','rm',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('69','19','-m',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('70','19','-t',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('71','19','-a',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('72','19','-c',false);
+
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('73','20','-c',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('74','20','-t',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('75','20','-a',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('76','20','-m',true);
+
+
+insert into quiz ( quiz_id, description   )
+values ('3','Polecenia: history, tail, head, whoami, date');
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('21','3','Jakie polecenie służy do wyświetlania daty i czasu systemowego');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('77','21','ls',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('78','21','date',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('79','21','man',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('80','21','wc',false);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('22','3','Jakiego polecenia użyjesz aby wyświetlić listę poleceń użytych od początku sesji');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('81','22','ls',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('82','22','cat',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('83','22','history',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('84','22','tail',true);
+
+ 
+insert into question  ( question_id , quiz_id, text     )
+values ('23','3','Jakiej flagi użyjesz  z poleceniem history, aby usunąć całą historię');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('85','23','-d',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('86','23','-c',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('87','23','NUM',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('88','23','-a',false);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('24','3','Jakiego polecenia użyjesz aby wyświetlić n ostatnich poleceń użytych od początku sesji');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('89','24','tail -n',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('90','24','head -n',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('91','24','ls',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('92','24','history num',true);    
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('25','3','Jakiego polecenia użyjesz aby wyświetlić 10 ostatnich wierszy pliku');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('93','25','head',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('94','25','tail',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('95','25','history',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('96','25','cat',false);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('26','3','Jakiej flagi użyjesz  z poleceniem tail, aby wyświetlić n ostatnich wierszy');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('97','26','-f',false);
+      
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('98','26','-c',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('99','26','-v',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('100','26','-n',true);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('27','3','Jakiego polecenia użyjesz aby wyświetlić 10 pierwszych wierszy pliku');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('101','27','head',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('102','27','tail',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('103','27','cat',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('104','27','ls',false);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('28','3','Jakiej flagi użyjesz z poleceniem head, aby wyświetlić n pierwszych wierszy ');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('105','28','-f',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('106','28','-n',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('107','28','-s',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('108','28','-v',false);
+
+insert into question  ( question_id , quiz_id, text     )
+values ('29','3','Jakiego polecenia użyjesz aby wyświetlić nazwę użytkownika');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('109','29','whoami',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('110','29','ls',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('111','29','pwd',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('112','29','cat',false);
+
+
+
+
+insert into quiz ( quiz_id, description   )
+values ('4','Polecenia: cat, echo, wc, cp, mv');
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('30','4','Które polecenie użyjesz, aby wyświetlić wprowadzony tekst na standardowym wyjściu');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('113','30','cat',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('114','30','echo',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('115','30','ls',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('116','30','pwd',false);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('31','4','Jakiego polecenia użyjesz aby wyświetlić liczbę  linii,  słów i  bajtów dla każdego pliku');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('117','31','cat',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('118','31','head',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('119','31','wc',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('120','31','tail',true);
+
+ 
+insert into question  ( question_id , quiz_id, text     )
+values ('32','4','Jakiej flagi użyjesz z poleceniem wc, aby wyświetlić liczbę słów');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('121','32','-l',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('122','32','-c',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('123','32','-m',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('124','32','-w',true);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('33','4','Jakiej flagi użyjesz z poleceniem wc, aby wyświetlić liczbę znaków');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('125','33','-l',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('126','33','-c',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('127','33','-w',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('128','33','-m',true);    
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('34','4','Jakiej flagi użyjesz z poleceniem wc, aby wyświetlić liczbę wierszy');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('129','34','-l',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('130','34','-m',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('131','34','-w',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('132','34','-c',false);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('35','4','Jakie polecenie uzyjesz, aby zmienić nazwę lub przenieść plik/katalog');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('133','35','cat',false);
+      
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('134','35','touch',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('135','35','cp',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('136','35','mv',true);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('36','4','Jakiej flagi użyjesz z poleceniem mv, aby  być informowanym  przed nadpisaniem istniejącego pliku');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('137','36','-i',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('138','36','-f',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('139','36','--help',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('140','36','-n',false);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('37','4','Jakiego pleceniau użyjesz, aby wyświetlić zawartość podanych plików. Również służy do ich łączenia');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('141','37','cat',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('142','37','tail',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('143','37','head',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('144','37','echo',false);
+
+insert into question  ( question_id , quiz_id, text     )
+values ('38','4','Jakiej flagi  z poleceniem cat aby przenumerować wszystkie wiersze');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('145','38','-n',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('146','38','-s',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('147','38','-E',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('148','38','-b',false);
+
+insert into question  ( question_id , quiz_id, text     )
+values ('39','4','Jakiego polecenia uzyjesz, aby wykonać kopię pliku');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('149','39','mv',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('150','39','cat',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('151','39','cp',true);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('152','39','head',false);
+
+
+insert into question  ( question_id , quiz_id, text     )
+values ('40','4','Jakiej flagi użyjesz z poleceniem cp, aby połączyć pliki zamiast kopiować');
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('153','40','-i',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('154','40','-f',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('155','40','-n',false);
+
+insert into answer   ( answer_id ,question_id ,text, corect      )
+values ('156','40','-l',true);
+
+
+
+INSERT INTO Account 
+VALUES(1, 'user@gmail.com', false, 'user1234', 'user');
+
+INSERT INTO Account 
+VALUES(2, 'admin@gmail.com', true, 'admin1234', 'admin');
+
+
+
+
+
+// mvn spring-boot:run
+// npm start

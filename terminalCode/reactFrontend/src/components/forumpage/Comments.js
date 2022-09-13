@@ -33,15 +33,23 @@ class Comments extends React.Component {
         const id = (this.props.propsToken).split(':')
 
         const LIST_LIKE_URL = "http://localhost:8080/api/user/get-like/" + id[0];
-        const res = await axios.post(LIST_LIKE_URL, id[0]);
+        let res = await axios.post(LIST_LIKE_URL, id[0]);
 
+           for(let i=0;i<response.data.length;i++){ 
+            const result = await addLike({
+                idComment: response.data[i].id,
+                user: id[0],
+                likes: false,
+                dislikes: false
+            })
+        }
+
+        res = await axios.post(LIST_LIKE_URL, id[0]);
         this.setState({ listLikes: res.data, comment: response.data, id: id_com.split("/")[id_com.split("/").length - 1] })
     }
 
     onLikeButtonClick = async (id_com, i) => {
-
         const id = this.props.propsToken.split(':')[0];
-        console.log(i )
 
         const result = await addLike({
             idComment: id_com,
@@ -74,11 +82,7 @@ class Comments extends React.Component {
         const res = await axios.post(LIST_LIKE_URL, id[0]);
         const FORUM_API_BASE_URL = "http://localhost:8080/api/forum/" + this.state.id + "/comment";
         const response = await axios.get(FORUM_API_BASE_URL);
-        this.state.comment.map(com => {
-            if (com.forumNumber.toString() === this.state.id) {
-
-            }
-        })
+       
         this.setState({ listLikes: res.data, comment: response.data })
     };
 
@@ -102,7 +106,6 @@ class Comments extends React.Component {
                 const res = await axios.post(LIST_LIKE_URL, id[0]);
 
                 this.setState({ comment: response.data, listLikes: res.data });
-                console.log(response.data)
             }
         }
         const styleAdd = {
@@ -127,8 +130,8 @@ class Comments extends React.Component {
                 <div id="comment">
                     {this.state.comment.map(com => {
                         if (com.forumNumber.toString() === this.state.id) {
-                              let res =   this.state.listLikes.map(like => {
-                                    if (com.id == like.idComment) {
+                            let res =   this.state.listLikes.map(like => {
+                                if (com.id === like.idComment) {
                                         return <div key={uuidv4()}>
                                             <li id="com"  >
                                                 <span >{com.describe.split("\n").map(d =>{

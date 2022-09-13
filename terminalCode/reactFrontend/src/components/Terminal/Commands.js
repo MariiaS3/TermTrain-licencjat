@@ -1,26 +1,26 @@
 import React from "react";
 
-import file from "../Terminal/file";
+import file from "./tool/file";
 
 
-import history from "../commands/history"
-import pwd from "../commands/pwd"
-import cd from "../commands/cd"
-import ls from "../commands/ls"
-import touch from "../commands/touch"
-import cp from "../commands/cp"
-import mkdir from "../commands/mkdir"
-import rmdir from "../commands/rmdir"
-import rm from "../commands/rm"
-import mv from "../commands/mv"
-import cat from "../commands/cat"
-import tail from "../commands/tail";
-import head from "../commands/head";
-import echo from "../commands/echo";
-import wc from "../commands/wc";
-import nano from "../commands/nano";
-import date from "../commands/date";
-import whoami from "../commands/whoami";
+import history from "./commands/history"
+import pwd from "./commands/pwd"
+import cd from "./commands/cd"
+import ls from "./commands/ls"
+import touch from "./commands/touch"
+import cp from "./commands/cp"
+import mkdir from "./commands/mkdir"
+import rmdir from "./commands/rmdir"
+import rm from "./commands/rm"
+import mv from "./commands/mv"
+import cat from "./commands/cat"
+import tail from "./commands/tail";
+import head from "./commands/head";
+import echo from "./commands/echo";
+import wc from "./commands/wc";
+import nano from "./commands/nano";
+import date from "./commands/date";
+import whoami from "./commands/whoami";
 
 
 
@@ -413,7 +413,6 @@ class Commands extends React.Component {
         }
     }
     render() {
-
         return (
             <div className="lineCmd">
                 {!this.state.showAlet ? <div style={{width: "100%"}}><span>
@@ -436,10 +435,7 @@ class Commands extends React.Component {
                                 this.scrollHistoryDown()
                             }
                         }}>
-                    </input> </div> : <div>
-                    <span style={{ color: 'white' }}>
-                        {this.state.overwrite}
-                    </span>
+                    </input> </div> : <div> <span style={{ color: 'white' }}> {this.state.overwrite} </span>
                     <input type="text" className="inputCmd"
                         value={this.state.prompt}
                         name="prompt"
@@ -449,15 +445,7 @@ class Commands extends React.Component {
                                 this.listenCmd("Enter")
                                 this.props.addHistoryProps(this.state.title)
                             }
-                        }}>
-                    </input></div>
-                }
-            </div>
-        )
-    }
-}
-
-
+                        }}> </input></div>}</div>  ) }}
 export default Commands
 
 

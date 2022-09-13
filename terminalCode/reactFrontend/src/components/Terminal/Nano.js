@@ -1,4 +1,3 @@
-
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -7,7 +6,7 @@ function NewlineText(props) {
   return newText;
 }
 
-export default class Modal extends React.Component {
+export default class Nano extends React.Component {
   state = {
     text: this.props.children,
   }
@@ -20,12 +19,12 @@ export default class Modal extends React.Component {
     }
   };
 
-
   render() {
 
     return (
       <div >
-        <div className="text" suppressContentEditableWarning contentEditable spellCheck={false} onKeyDown={e => {
+        <div className="text" suppressContentEditableWarning contentEditable spellCheck={false} 
+          onKeyDown={e => {
           let text = e.currentTarget.outerText;
           this.onClose(e, text)
         }} > <NewlineText children={this.props.children} /></div>

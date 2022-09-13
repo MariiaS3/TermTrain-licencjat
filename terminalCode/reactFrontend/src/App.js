@@ -19,19 +19,19 @@ import Forum from "./components/forumpage/Forum"
 import QuestForum from "./components/forumpage/QuestForum"
 
 function App() {
-    const [toggleDark, settoggleDark] = useState(false);
     const { token, setToken } = useToken();
-
     if(!token) {
       return <LoginPage propsToken={token} setToken={setToken} />
     }
-
     function  setLogToken (){
         setToken("")
     }
     const termTheme = createTheme({
         palette: {
-            mode: toggleDark ? "dark" : "light",
+            background: {
+                default: "#fff",
+                paper: "#eafaf3",
+            },
             primary: {
                 light: '#eafaf3',
                 main: '#CAFFE3',
@@ -44,33 +44,20 @@ function App() {
             },
         },
     });
-
-    if (termTheme.palette.mode === "light") {
-        termTheme.palette.background = {
-            default: "#fff",
-            paper: "#eafaf3",
-        };
-    } else {
-        termTheme.palette.background = {
-            default: "#272525",
-            paper: "#312f2f",
-        };
-    }
-
     return (
         <ThemeProvider theme={termTheme}>
             <div style={{ background: termTheme.palette.background.default }}>
                 <Router basename={process.env.PUBLIC_URL}>
                     <Switch>
-                        <Route exact path='/' element={<HomeContainer    toggleDark={toggleDark} settoggleDark={settoggleDark} setLogToken={setLogToken}/>}>   </Route>
-                        <Route exact path='/forum' element={<Forum    toggleDark={toggleDark} settoggleDark={settoggleDark} setLogToken={setLogToken}/>} propsToken={token}>   </Route>
-                        <Route exact path='/forum/:id' element={<QuestForum    toggleDark={toggleDark} settoggleDark={settoggleDark} setLogToken={setLogToken} propsToken={token}/>}>   </Route>
-                        <Route exact path='/add/quiz' element={<AddNewQuiz    toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}/>}>   </Route>
-                        <Route exact path='/add/question/:id' element={<AddNewQuestion   toggleDark={toggleDark} settoggleDark={settoggleDark}  propsToken={token}/>}>   </Route>
-                        <Route exact path='/add/answer/:id' element={<AddNewAnswer  toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token}  />} >   </Route>
-                        <Route exact path='/quiz' element={<QuizContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} setLogToken={setLogToken}  />}>   </Route>
-                        <Route exact path='/term' element={<TermContainer   toggleDark={toggleDark} settoggleDark={settoggleDark} propsToken={token} setLogToken={setLogToken}   />}>   </Route>
-                        <Route exact path='/quiz/question/:id' element={<QuestionContainer   toggleDark={toggleDark} propsToken={token} settoggleDark={settoggleDark} />}>   </Route>
+                        <Route exact path='/' element={<HomeContainer setLogToken={setLogToken}/>}>   </Route>
+                        <Route exact path='/forum' element={<Forum setLogToken={setLogToken}/>} propsToken={token}>   </Route>
+                        <Route exact path='/forum/:id' element={<QuestForum setLogToken={setLogToken} propsToken={token}/>}>   </Route>
+                        <Route exact path='/add/quiz' element={<AddNewQuiz propsToken={token}/>}>   </Route>
+                        <Route exact path='/add/question/:id' element={<AddNewQuestion propsToken={token}/>}>   </Route>
+                        <Route exact path='/add/answer/:id' element={<AddNewAnswer propsToken={token}  />} >   </Route>
+                        <Route exact path='/quiz' element={<QuizContainer propsToken={token} setLogToken={setLogToken}  />}>   </Route>
+                        <Route exact path='/term' element={<TermContainer propsToken={token} setLogToken={setLogToken}   />}>   </Route>
+                        <Route exact path='/quiz/question/:id' element={<QuestionContainer  propsToken={token}/>}>   </Route>
                     </Switch>
                 </Router>
             </div>

@@ -1,7 +1,7 @@
 
 import React from "react";
 
-import command from "./manual"
+import command from "./tool/manual"
 import { v4 as uuidv4 } from "uuid";
 
 function Newline(props) {

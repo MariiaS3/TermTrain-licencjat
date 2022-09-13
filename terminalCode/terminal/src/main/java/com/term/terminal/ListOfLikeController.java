@@ -34,7 +34,7 @@ public class ListOfLikeController {
     @PostMapping("/user/add-like")
     public ResponseEntity<?> addLike(@RequestBody ListOfLike newlistOfLike) {
         ListOfLike listfindByIdComment = listOfLikeService.findByIdCommentAndUser(newlistOfLike.getIdComment(),newlistOfLike.getUser());
-
+        System.out.println(listfindByIdComment);
         if (listfindByIdComment != null) {
             Comment com = commentRepository.findById(newlistOfLike.getIdComment()).get();
             if(listfindByIdComment.getLikes() != newlistOfLike.getLikes()){
