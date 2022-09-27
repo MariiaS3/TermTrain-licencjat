@@ -6,6 +6,7 @@ TermTrain is a web application designed and written for my BA thesis.
   <img src="Licencjat/project/logowanie.png" alt="logowanie" style="width: 400px"> 
 <img src="Licencjat/project/rejestracja.png" alt="rejestracja" style="width: 330px">
   </div>
+  
 <img src="Licencjat/project/term1.png" alt="terminal">
 <img src="Licencjat/project/term2.png" alt="terminal">
 <img src="Licencjat/project/quiz1.png" alt="quiz" >
