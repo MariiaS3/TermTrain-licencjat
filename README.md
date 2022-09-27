@@ -1,5 +1,6 @@
-#TermTrain is a web application designed and written for my BA thesis.
-<br>
+TermTrain is a web application designed and written for my BA thesis.
+
+
 <img src="Licencjat/project/main_page.png" alt="home page">
 <div>
   <img src="Licencjat/project/logowanie.png" alt="logowanie" style="width: 400px"> 
