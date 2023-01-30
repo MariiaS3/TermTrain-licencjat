@@ -1,6 +1,6 @@
 
-
-<font>
+<html>
+<body>
         
 <h1 style="color: yellow;">TermTrain</h1>  
 TermTrain is a web application designed and written for my BA thesis.
@@ -68,7 +68,8 @@ they could also leave their comments under selected questions.
 <img src="Licencjat/project/quiz1.png" alt="quiz" >
 <img src="Licencjat/project/list_quiz2.png" alt="list quiz">
 <img src="Licencjat/project/forum.png" alt="forum" >
-</font>
+</body>
+</html>
 
 
   
