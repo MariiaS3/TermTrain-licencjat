@@ -39,25 +39,18 @@ they could also leave their comments under selected questions.
 <h2>Technologies<h2>
   
 <p>Backend</p>
-  
-```html
   <ul>
   <li>Java: 17</li>
   <li>Spring Boot</li>
   <li>JPA</li>
   <li>Hibernate</li>
   </ul>
-```
   
   <p>Frontend</p>
-  
-```html
   <ul>
   <li>JavaScript</li>
   <li>React</li>
   </ul>
-```
-
   <p>Database</p>
   
 ```
