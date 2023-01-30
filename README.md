@@ -40,7 +40,7 @@ they could also leave their comments under selected questions.
   
 <p>Backend</p>
   
-```
+```html
   <ul>
   <li>Java: 17</li>
   <li>Spring Boot</li>
@@ -51,7 +51,7 @@ they could also leave their comments under selected questions.
   
   <p>Frontend</p>
   
-```
+```html
   <ul>
   <li>JavaScript</li>
   <li>React</li>
