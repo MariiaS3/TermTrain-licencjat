@@ -39,18 +39,21 @@ they could also leave their comments under selected questions.
 <h2>Technologies<h2>
   
 <p>Backend</p>
-  <ul>
-  <li>Java: 17</li>
-  <li>Spring Boot</li>
-  <li>JPA</li>
-  <li>Hibernate</li>
-  </ul>
+  
+```
+  -- Java: 17
+  -- Spring Boot
+  -- JPA
+  -- Hibernate
+```
   
   <p>Frontend</p>
-  <ul>
-  <li>JavaScript</li>
-  <li>React</li>
-  </ul>
+  
+```
+  - JavaScript
+  - React
+```
+  
   <p>Database</p>
   
 ```
@@ -94,11 +97,4 @@ they could also leave their comments under selected questions.
 <img src="Licencjat/project/forum.png" alt="forum" >
 </body>
 </html>
-
-
-  
-
-
-
-
 
