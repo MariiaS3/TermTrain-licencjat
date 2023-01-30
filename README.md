@@ -27,6 +27,7 @@ While taking the quiz, users will be able to test their own
 answer by typing the appropriate commands in the terminal.
   </li>
 </ul>
+
 <h2>TODOs:</h2>
 <ul>
   <li>
@@ -36,6 +37,7 @@ they could also leave their comments under selected questions.
 </ul>
 
 <h2>Technology<h2>
+  
 <p>Backend</p>
   
 ```
