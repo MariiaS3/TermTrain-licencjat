@@ -41,17 +41,21 @@ they could also leave their comments under selected questions.
 <p>Backend</p>
   
 ```
-  - Java: 17
-  - Spring Boot
-  - JPA
-  - Hibernate
+  <ul>
+  <li>Java: 17</li>
+  <li>Spring Boot</li>
+  <li>JPA</li>
+  <li>Hibernate</li>
+  </ul>
 ```
   
   <p>Frontend</p>
   
 ```
-  - JavaScript
-  - React
+  <ul>
+  <li>JavaScript</li>
+  <li>React</li>
+  </ul>
 ```
 
   <p>Database</p>
