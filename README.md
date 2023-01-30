@@ -58,7 +58,7 @@ they could also leave their comments under selected questions.
   
   <p>First start backend, go to this folder: </p>
   
-  /TermTrain-licencjat/terminalCode/terminal
+  <i>/TermTrain-licencjat/terminalCode/terminal</i>
   
   <p>After navigating to the folder, start the application with this command:</p>
       
