@@ -1,4 +1,4 @@
-<body style="font-size: 18px">
+<body style="font-size: 10px">
 <h1>TermTrain</h1>  
 TermTrain is a web application designed and written for my BA thesis.
 
