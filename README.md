@@ -38,7 +38,7 @@ they could also leave their comments under selected questions.
 
 <h2>Technology<h2>
   
-<p>Backend</p>
+<!-- <p>Backend</p> -->
   
 ```
   - Java: 17
@@ -47,14 +47,14 @@ they could also leave their comments under selected questions.
   - Hibernate
 ```
   
-  <p>Frontend</p>
+<!--   <p>Frontend</p> -->
   
 ```
   - JavaScript
   - React
 ```
   
-  <p>Database</p>
+<!--   <p>Database</p> -->
   
 ```
   H2
