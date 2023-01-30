@@ -36,8 +36,7 @@ they could also leave their comments under selected questions.
   </li>
 </ul>
 
-<p>Technologies</p>
-  
+<h2>Technologies</h2>
 <h4>Backend</h4>
   
 ```
