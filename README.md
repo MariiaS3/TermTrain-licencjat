@@ -56,7 +56,10 @@ they could also leave their comments under selected questions.
   
   <h2>Running the application locally</h2>
   
-  <p>First start backend, go to this folder:  /TermTrain-licencjat/terminalCode/terminal</p>
+  <p>First start backend, go to this folder: </p>
+  
+  /TermTrain-licencjat/terminalCode/terminal
+  
   <p>After navigating to the folder, start the application with this command:</p>
       
       mvn spring-boot:run
