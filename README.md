@@ -59,7 +59,7 @@ they could also leave their comments under selected questions.
   <p>First start backend, go to this folder:  /TermTrain-licencjat/terminalCode/terminal</p>
   <p>After navigating to the folder, start the application with this command:</p>
       
-      <i>mvn spring-boot:run</i>
+      mvn spring-boot:run
   
   
   /TermTrain-licencjat/terminalCode/reactFrontend
