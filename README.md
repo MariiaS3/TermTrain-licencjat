@@ -1,4 +1,4 @@
-<body style="font-size: 10px">
+<body>
 <h1>TermTrain</h1>  
 TermTrain is a web application designed and written for my BA thesis.
 
@@ -53,7 +53,7 @@ they could also leave their comments under selected questions.
      <ul>
      <li>H2</li>
     </ul>
-
+  <h2>Running the application locally</h2>
 <img src="Licencjat/project/main_page.png" alt="home page">
 <div>
   <img src="Licencjat/project/logowanie.png" alt="logowanie" style="width: 400px"> 
