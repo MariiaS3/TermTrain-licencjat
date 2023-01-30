@@ -40,13 +40,13 @@ Import the `github-markdown.css` file and add a `markdown-body` class to the con
 	<p>All the things</p>
 </article>
 ```
-
+<!-- 
 If you want code syntax highlighted, use GitHub Flavored Markdown rendered from [GitHub's `/markdown` API](https://developer.github.com/v3/markdown/).
-
+ -->
 ## How
 
-See [`generate-github-markdown-css`](ttps://github.com/MariiaS3/TermTrain-licencjat/github-markdown-css) for how it's generated and ability to generate your own.
-
+<!-- See [`generate-github-markdown-css`](ttps://github.com/MariiaS3/TermTrain-licencjat/github-markdown-css) for how it's generated and ability to generate your own.
+ -->
 ## Dev
 
 Run `npm run make` to update the CSS.
