@@ -2,7 +2,7 @@
 
 <body>
         
-<h1>TermTrain</h1>  
+<h1 style="color: yellow;">TermTrain</h1>  
 TermTrain is a web application designed and written for my BA thesis.
 
 <h1>General info</h1>
