@@ -36,7 +36,7 @@ they could also leave their comments under selected questions.
 </ul>
 
 <h2>Technology<h2>
-    <p>Backend</p>
+    <p style="font-size:10px">Backend</p>
     <ul>
      <li>Java: 17</li>
     <li>Spring Boot</li>
