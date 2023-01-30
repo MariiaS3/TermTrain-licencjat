@@ -1,14 +1,4 @@
 
-<html>
-<style>
-red { color: red }
-yellow { color: yellow }
-</style>
-
-<red> red color markdown text</red>
-<yellow> red color markdown text</yellow>
-
-        
 <h1 >TermTrain</h1>  
 TermTrain is a web application designed and written for my BA thesis.
 
@@ -46,9 +36,11 @@ they could also leave their comments under selected questions.
 </ul>
 
 <h2>Technology<h2>
-    <p style="font-size:10px">Backend</p>
-    <ul>
-     <li>Java: 17</li>
+<!--     <p></p> -->
+* Backend
+        - Java: 17
+<!--    <ul>
+     <li></li>
     <li>Spring Boot</li>
     <li>JPA</li>
     <li>Hibernate</li>
@@ -62,7 +54,7 @@ they could also leave their comments under selected questions.
     <p>Database</p>
      <ul>
      <li>H2</li>
-    </ul>
+    </ul> -->
   <h2>Running the application locally</h2>
 <img src="Licencjat/project/main_page.png" alt="home page">
 <div>
