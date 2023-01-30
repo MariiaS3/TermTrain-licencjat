@@ -35,25 +35,23 @@ they could also leave their comments under selected questions.
 </ul>
 
 <h2>Technology<h2>
-  <ul>
-    <li>Backend</li>
+    <p>Backend</p>
     <ul>
      <li>Java: 17</li>
     <li>Spring Boot</li>
     <li>JPA</li>
     <li>Hibernate</li>
     </ul>
-    <li>Frontend</li>
+    <p>Frontend</p>
      <ul>
      <li>JavaScript</li>
     <li>React</li>
     <li>Docker</li>
     </ul>
-    <li>Database</li>
+    <p>Database</p>
      <ul>
      <li>H2</li>
     </ul>
-  </ul>
 
 <img src="Licencjat/project/main_page.png" alt="home page">
 <div>
