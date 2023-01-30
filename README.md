@@ -1,31 +1,38 @@
-= TermTrain 
+<h1>TermTrain</h1>  
 TermTrain is a web application designed and written for my BA thesis.
 
 <h1>General info</h1>
 The main goal of the work was to create a didactic application imitating the behavior of the command line. This app will help new users learn how to use Linux terminal commands.01
 
+<h2>Features:</h2>
+<ul>
+  <li>
+    A web application that allows you to use the bash terminal in a web browser without having to install Linux or control it on a virtual machine.
+  </li>
+  <li>
+  The web application allows you to learn bash terminal commands through hands-on exercises.
+  </li>
+  <li>
+   Aplikacja zawiera podstawowe polecenia terminala systemu Linux, takie jak: ls, cd, cp, mv, cat, rm, mkdir, rmdir, touch, nano, man. 
+  </li>
+  <li>
+   Users will be able to consolidate their knowledge by taking a quiz.
+    </li>
+      <li>
+  Before starting the quiz, the user will be able to read this short description of the commands.
+      </li>
+  <li>
+While taking the quiz, users will be able to test their own
+answer by typing the appropriate commands in the terminal.
+  </li>
+</ul>
 <h2>TODOs:</h2>
-<li>
-  <lu>
-  Napisanie aplikacji webowej, która będzie umożliwiała naukę terminala
-Linux przez ćwiczenia praktyczne. Użytkownicy będą mogli wpisać w
-terminalu dowolne dozwolone polecenie i zobaczyć jego działanie w swojej
-przeglądarce bez konieczności instalowania Linuxa lub uruchamiania go na
-wirtualnej maszynie.
-  </lu>
-</li>
-* W aplikacji będą zawarte podstawowe polecenia terminala Linux, takie jak:
-ls, cd, cp, mv, cat, rm, mkdir, rmdir, touch, nano, man. Wprowadzając
-polecenie ‘man’ w imitacji terminala, zostaną wyświetlone polecenia, które
-można używać w danym terminalu.
-* Użytkownicy będą mogli utrwalać swoją wiedzę rozwiązując quiz.
-* Przed przejściem do rozwiązania wybranego quizu użytkownik będzie mógł
-przeczytać krótki opis poleceń zawartych w danym quizie.
-* Podczas rozwiązywania quizu użytkownicy będą mogli sprawdzać swoje
-odpowiedzi wpisując odpowiednie polecenia w terminalu.
-* Dodatkową funkcjonalnością aplikacji będzie możliwość pozostawiania przez
-użytkowników pytań związanych z terminalem Linux. Użytkownicy będą
-mogli również zostawiać swoje komentarze pod wybranymi pytaniami.
+<ul>
+  <li>
+An additional functionality of the application will be the possibility for users to leave questions related to the Linux system or the bash terminal. Users will
+they could also leave their comments under selected questions.
+  </li>
+</ul>
 
 
 <img src="Licencjat/project/main_page.png" alt="home page">
