@@ -37,22 +37,15 @@ they could also leave their comments under selected questions.
 
 <h2>Technology<h2>
 <p>Backend</p>
-   <ul>
-     <li>Java: 17</li>
-    <li>Spring Boot</li>
-    <li>JPA</li>
-    <li>Hibernate</li>
-    </ul>
+     `Java: 17`
+      `Spring Boot`
+      `JPA`
+      `Hibernate`
     <p>Frontend</p>
-     <ul>
-     <li>JavaScript</li>
-    <li>React</li>
-    <li>Docker</li>
-    </ul>
+     `JavaScript`
+      `React`
     <p>Database</p>
-     <ul>
-     <li>H2</li>
-    </ul>
+     `H2`
   
   <h2>Running the application locally</h2>
   
