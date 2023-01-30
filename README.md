@@ -5,11 +5,15 @@ TermTrain is a web application designed and written for my BA thesis.
 The main goal of the work was to create a didactic application imitating the behavior of the command line. This app will help new users learn how to use Linux terminal commands.01
 
 <h2>TODOs:</h2>
-*Napisanie aplikacji webowej, która będzie umożliwiała naukę terminala
+<li>
+  <lu>
+  Napisanie aplikacji webowej, która będzie umożliwiała naukę terminala
 Linux przez ćwiczenia praktyczne. Użytkownicy będą mogli wpisać w
 terminalu dowolne dozwolone polecenie i zobaczyć jego działanie w swojej
 przeglądarce bez konieczności instalowania Linuxa lub uruchamiania go na
 wirtualnej maszynie.
+  </lu>
+</li>
 * W aplikacji będą zawarte podstawowe polecenia terminala Linux, takie jak:
 ls, cd, cp, mv, cat, rm, mkdir, rmdir, touch, nano, man. Wprowadzając
 polecenie ‘man’ w imitacji terminala, zostaną wyświetlone polecenia, które
