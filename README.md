@@ -1,10 +1,16 @@
-<body>
-        <style>
+<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+
+      <style>
          p {
           font-size:10px; 
           color: white;
         }
       </style>
+
+<body>
+        
 <h1>TermTrain</h1>  
 TermTrain is a web application designed and written for my BA thesis.
 
@@ -72,3 +78,13 @@ they could also leave their comments under selected questions.
 <img src="Licencjat/project/list_quiz2.png" alt="list quiz">
 <img src="Licencjat/project/forum.png" alt="forum" >
 </body>
+
+
+    </div>
+  </foreignObject>
+</svg>
+
+
+
+
+
