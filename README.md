@@ -1,35 +1,47 @@
-<svg fill="none" viewBox="0 0 120 120" width="120" height="120" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <style>
-@keyframes bounce {
-  0%   { transform: scale(1,    1)   translateY(0)     skew(0deg,  0deg); }
-  3%   { transform: scale(1,    1)   translateY(0)     skew(0deg,  0deg); }
-  5%   { transform: scale(1.1,  .9)  translateY(5px)   skew(0deg,  0deg); }
-  12%  { transform: scale(.9,   1.1) translateY(-70px) skew(25deg, 5deg); }
-  13%  { transform: scale(.9,   1.1) translateY(-70px) skew(25deg, 5deg); }
-  20%  { transform: scale(1.05, .95) translateY(0)     skew(0deg,  0deg); }
-  22%  { transform: scale(1,    1)   translateY(-7px)  skew(0deg,  0deg); }
-  27%  { transform: scale(1,    1)   translateY(0)     skew(0deg,  0deg); }
-  100% { transform: scale(1,    1)   translateY(0)     skew(0deg,  0deg); }
-}
-h1 {
-  width: 120px;
-  line-height: 20px;
-  padding-top: 70px;
-  text-align: center;
-  font: 400 16px/1.5 Helvetica ,Arial ,sans-serif;
-  color: rgb(52, 73, 94);
-  transform-origin: bottom;
-  animation: 4s cubic-bezier(.5, 0, .5, 1.2) 1s infinite bounce;
-}
-      </style>
-      <h1>Hello, world</h1>
-    </div>
-  </foreignObject>
+<svg fill="none" viewBox="0 0 300 120" width="300" height="120" xmlns="http://www.w3.org/2000/svg">
+	<foreignObject width="100%" height="100%">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<style>
+				.tags {
+					display: flex;
+					flex-wrap: wrap;
+					height: 100%;
+					width: 100%;
+				}
+				.tag {
+					background-color: #e3ffff;
+					border-radius: 0.25em;
+					color: #0ca4a5;
+					border: 1px solid #0ca4a5;
+					display: inline-block;
+					font-size: 0.75em;
+					line-height: 2em;
+					margin: 0.125em;
+					padding: 0 0.5em;
+					text-decoration: none;
+					font-family: sans-serif;
+				}
+			</style>
+
+			<div class="tags">
+				<div class="tag">Angular</div>
+				<div class="tag">Vue(X)</div>
+				<div class="tag">JavaScript</div>
+				<div class="tag">TypeScript</div>
+			</div>
+			<div class="tags">
+				<div class="tag">(S)CSS</div>
+				<div class="tag">Building UIs</div>
+				<div class="tag">Web Components</div>
+			</div>
+			<div class="tags">
+				<div class="tag">Ionic</div>
+				<div class="tag">Electron</div>
+				<div class="tag">.NET</div>
+			</div>
+		</div>
+	</foreignObject>
 </svg>
-
-
 <body>
         
 <h1>TermTrain</h1>  
