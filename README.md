@@ -2,7 +2,7 @@
 TermTrain is a web application designed and written for my BA thesis.
 
 <h1>General info</h1>
-The main goal of the work was to create a didactic application imitating the behavior of the command line. This app will help new users learn how to use Linux terminal commands.01
+The main goal of the work was to create a didactic application imitating the behavior of the command line. This app will help new users learn how to use Linux terminal commands.
 
 <h2>Features:</h2>
 <ul>
@@ -34,6 +34,26 @@ they could also leave their comments under selected questions.
   </li>
 </ul>
 
+<h2>Technology<h2>
+  <ul>
+    <li>Backend</li>
+    <ul>
+     <li>Java: 17</li>
+    <li>Spring Boot</li>
+    <li>JPA</li>
+    <li>Hibernate</li>
+    </ul>
+    <li>Frontend</li>
+     <ul>
+     <li>JavaScript</li>
+    <li>React</li>
+    <li>Docker</li>
+    </ul>
+    <li>Database</li>
+     <ul>
+     <li>H2</li>
+    </ul>
+  </ul>
 
 <img src="Licencjat/project/main_page.png" alt="home page">
 <div>
