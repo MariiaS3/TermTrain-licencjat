@@ -55,6 +55,17 @@ they could also leave their comments under selected questions.
     </ul>
   
   <h2>Running the application locally</h2>
+  
+  <p>First start backend, go to this folder:  /TermTrain-licencjat/terminalCode/terminal</p>
+  <p>After navigating to the folder, start the application with this command:</p>
+      
+      <i>mvn spring-boot:run</i>
+  
+  
+  /TermTrain-licencjat/terminalCode/reactFrontend
+npm install
+npm start
+
 <img src="Licencjat/project/main_page.png" alt="home page">
 <div>
   <img src="Licencjat/project/logowanie.png" alt="logowanie" style="width: 400px"> 
