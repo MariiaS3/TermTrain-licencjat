@@ -1,6 +1,10 @@
 
 <html>
 <body>
+        <span style="color:green;font-weight:700;font-size:20px">
+    markdown color font styles
+</span>
+
         
 <h1 style="color: yellow;">TermTrain</h1>  
 TermTrain is a web application designed and written for my BA thesis.
