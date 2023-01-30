@@ -58,16 +58,25 @@ they could also leave their comments under selected questions.
   
   <p>First start backend, go to this folder: </p>
   
-  `<i>/TermTrain-licencjat/terminalCode/terminal</i>`
+  `/TermTrain-licencjat/terminalCode/terminal`
   
-  <p>After navigating to the folder, start the application with this command:</p>
+  <p>In the project directory, you can run:</p>
       
       mvn spring-boot:run
   
+  <p>Then start the frontend, first go to this folder: </p>
   
-  /TermTrain-licencjat/terminalCode/reactFrontend
-npm install
-npm start
+  `/TermTrain-licencjat/terminalCode/reactFrontend`
+  
+   <p>Iin the project directory, run the command to install the package and all packages it depends on</p>
+      
+    npm install
+
+  <p>Then run the command that starts the application in development mode.</p>
+  
+      npm start
+  
+  <p>Open http://localhost:3000 to view it in your browser</p>
 
 <img src="Licencjat/project/main_page.png" alt="home page">
 <div>
