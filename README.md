@@ -14,7 +14,7 @@ The main goal of the work was to create a didactic application imitating the beh
   The web application allows you to learn bash terminal commands through hands-on exercises.
   </li>
   <li>
-   Aplikacja zawiera podstawowe polecenia terminala systemu Linux, takie jak: ls, cd, cp, mv, cat, rm, mkdir, rmdir, touch, nano, man. 
+   The app includes basic Linux terminal commands such as: ls, cd, cp, mv, cat, rm, mkdir, rmdir, touch, nano, man. 
   </li>
   <li>
    Users will be able to consolidate their knowledge by taking a quiz.
